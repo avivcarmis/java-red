@@ -16,8 +16,6 @@ public interface RedFutureOf<T> extends RedFuture {
 
     RedFutureOf<T> addSuccessCallback(Executor executor, TypedCallback<T> callback);
 
-//    RedFutureOf<T> notifyRedFuture(OpenRedFutureOf<T> callback);
-
     T tryGet();
 
     T waitAndGet() throws ExecutionException, InterruptedException;

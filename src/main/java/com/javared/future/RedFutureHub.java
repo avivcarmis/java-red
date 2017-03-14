@@ -3,6 +3,7 @@ package com.javared.future;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,46 +19,46 @@ public class RedFutureHub {
         listenableFutures = new LinkedList<>();
     }
 
-    public RedFutureHub future(RedFuture future) {
+    public OpenRedFuture provide() {
+        OpenRedFuture future = RedFuture.future();
+        listenableFutures.add(future.getListenableFuture());
+        return future;
+    }
+
+    public RedFutureHub adopt(RedFuture future) {
         listenableFutures.add(future.getListenableFuture());
         return this;
     }
 
-    public RedFutureHub listenableFuture(ListenableFuture future) {
+    public RedFutureHub adopt(ListenableFuture future) {
         listenableFutures.add(future);
         return this;
     }
 
-    public RedFutureHub futures(List<RedFuture> futures) {
+    public RedFutureHub adopt(Collection<RedFuture> futures) {
         for (RedFuture future : futures) {
             listenableFutures.add(future.getListenableFuture());
         }
         return this;
     }
 
-    public RedFutureHub futures(RedFuture... futures) {
+    public RedFutureHub adopt(RedFuture... futures) {
         for (RedFuture future : futures) {
             listenableFutures.add(future.getListenableFuture());
         }
         return this;
     }
 
-    public RedFutureHub listenableFutures(List<ListenableFuture> futures) {
-        for (ListenableFuture future : futures) {
-            listenableFutures.add(future);
-        }
-        return this;
-    }
-
-    public RedFutureHub listenableFutures(ListenableFuture... futures) {
+    public RedFutureHub adopt(ListenableFuture... futures) {
         Collections.addAll(listenableFutures, futures);
         return this;
     }
 
-    public OpenRedFuture future() {
-        OpenRedFuture future = RedFuture.future();
-        listenableFutures.add(future.getListenableFuture());
-        return future;
+    public RedFutureHub adoptListenableFutures(Collection<ListenableFuture> futures) {
+        for (ListenableFuture future : futures) {
+            listenableFutures.add(future);
+        }
+        return this;
     }
 
     public RedFuture collectOptimistic() {

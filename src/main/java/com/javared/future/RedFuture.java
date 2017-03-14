@@ -24,13 +24,13 @@ public interface RedFuture {
 
     RedFuture addFinallyCallback(Executor executor, EmptyCallback callback);
 
-//    RedFuture notifyRedFuture(BaseOpenRedFuture listener);
-
     ListenableFuture<?> getListenableFuture();
 
     void waitForCompletion() throws ExecutionException, InterruptedException;
 
     boolean isResolved();
+
+    // Constructors
 
     static OpenRedFuture future() {
         return new OpenRedFuture();

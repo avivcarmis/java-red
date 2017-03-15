@@ -19,37 +19,43 @@ public class RedFutureHub {
         listenableFutures = new LinkedList<>();
     }
 
-    public OpenRedFuture provide() {
+    public OpenRedFuture provideFuture() {
         OpenRedFuture future = RedFuture.future();
         listenableFutures.add(future.getListenableFuture());
         return future;
     }
 
-    public RedFutureHub adopt(RedFuture future) {
+    public <T> OpenRedFutureOf<T> provideFutureOf() {
+        OpenRedFutureOf<T> future = RedFuture.futureOf();
+        listenableFutures.add(future.getListenableFuture());
+        return future;
+    }
+
+    public RedFutureHub adoptFuture(RedFuture future) {
         listenableFutures.add(future.getListenableFuture());
         return this;
     }
 
-    public RedFutureHub adopt(ListenableFuture future) {
+    public RedFutureHub adoptFutures(Collection<RedFuture> futures) {
+        for (RedFuture future : futures) {
+            listenableFutures.add(future.getListenableFuture());
+        }
+        return this;
+    }
+
+    public RedFutureHub adoptFutures(RedFuture... futures) {
+        for (RedFuture future : futures) {
+            listenableFutures.add(future.getListenableFuture());
+        }
+        return this;
+    }
+
+    public RedFutureHub adoptListenableFuture(ListenableFuture future) {
         listenableFutures.add(future);
         return this;
     }
 
-    public RedFutureHub adopt(Collection<RedFuture> futures) {
-        for (RedFuture future : futures) {
-            listenableFutures.add(future.getListenableFuture());
-        }
-        return this;
-    }
-
-    public RedFutureHub adopt(RedFuture... futures) {
-        for (RedFuture future : futures) {
-            listenableFutures.add(future.getListenableFuture());
-        }
-        return this;
-    }
-
-    public RedFutureHub adopt(ListenableFuture<?>... futures) {
+    public RedFutureHub adoptListenableFutures(ListenableFuture<?>... futures) {
         Collections.addAll(listenableFutures, futures);
         return this;
     }
@@ -61,7 +67,7 @@ public class RedFutureHub {
         return this;
     }
 
-    public RedFuture collectOptimistic() {
+    public RedFuture uniteOptimistically() {
         RedFuture validated = validate();
         if (validated != null) {
             return validated;
@@ -70,7 +76,7 @@ public class RedFutureHub {
         return RedFuture.future().follow(collection);
     }
 
-    public RedFuture collectPessimistic() {
+    public RedFuture unitePessimistically() {
         RedFuture validated = validate();
         if (validated != null) {
             return validated;
@@ -79,13 +85,13 @@ public class RedFutureHub {
         return RedFuture.future().follow(collection);
     }
 
-    public RedFuture collectCautious() {
+    public RedFuture uniteCautiously() {
         RedFuture validated = validate();
         if (validated != null) {
             return validated;
         }
-        RedFuture optimistic = collectOptimistic();
-        RedFuture pessimistic = collectPessimistic();
+        RedFuture optimistic = uniteOptimistically();
+        RedFuture pessimistic = unitePessimistically();
         OpenRedFuture future = RedFuture.future();
         pessimistic.addSuccessCallback(() -> {
             future.follow(optimistic);

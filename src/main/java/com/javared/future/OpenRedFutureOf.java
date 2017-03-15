@@ -35,12 +35,12 @@ public class OpenRedFutureOf<T> extends BaseOpenRedFuture<T> implements RedFutur
         }
     }
 
-    public OpenRedFutureOf<T> follow(OpenRedFutureOf<T> future) {
+    public OpenRedFutureOf<T> follow(RedFutureOf<T> future) {
         future.addSuccessCallback(this::resolve).addFailureCallback(this::fail);
         return this;
     }
 
-    public OpenRedFutureOf<T> follow(Executor executor, OpenRedFutureOf<T> future) {
+    public OpenRedFutureOf<T> follow(Executor executor, RedFutureOf<T> future) {
         future.addSuccessCallback(executor, this::resolve).addFailureCallback(executor, this::fail);
         return this;
     }

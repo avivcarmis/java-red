@@ -2,8 +2,6 @@ package com.javared.future;
 
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.google.common.util.concurrent.SettableFuture;
-import com.javared.future.callbacks.TypedCallback;
 
 import java.util.concurrent.Executor;
 

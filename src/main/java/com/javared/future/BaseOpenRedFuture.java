@@ -4,8 +4,8 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
+import com.javared.future.callbacks.Callback;
 import com.javared.future.callbacks.EmptyCallback;
-import com.javared.future.callbacks.TypedCallback;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
@@ -54,13 +54,13 @@ abstract public class BaseOpenRedFuture<T> implements RedFuture {
     }
 
     @Override
-    public RedFuture addFailureCallback(TypedCallback<Throwable> callback) {
+    public RedFuture addFailureCallback(Callback<Throwable> callback) {
         Futures.addCallback(_settableFuture, safeCallback(null, callback));
         return this;
     }
 
     @Override
-    public RedFuture addFailureCallback(Executor executor, TypedCallback<Throwable> callback) {
+    public RedFuture addFailureCallback(Executor executor, Callback<Throwable> callback) {
         Futures.addCallback(_settableFuture, safeCallback(null, callback), executor);
         return this;
     }
@@ -114,7 +114,7 @@ abstract public class BaseOpenRedFuture<T> implements RedFuture {
         return true;
     }
 
-    protected <K> FutureCallback<K> safeCallback(TypedCallback<K> onSuccess, TypedCallback<Throwable> onFailure) {
+    protected <K> FutureCallback<K> safeCallback(Callback<K> onSuccess, Callback<Throwable> onFailure) {
         return new FutureCallback<K>() {
 
             @Override
@@ -130,7 +130,7 @@ abstract public class BaseOpenRedFuture<T> implements RedFuture {
         };
     }
 
-    private <K> void call(TypedCallback<K> callback, K value) {
+    private <K> void call(Callback<K> callback, K value) {
         if (callback != null) {
             try {
                 callback.call(value);

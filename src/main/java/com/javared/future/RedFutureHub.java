@@ -49,7 +49,7 @@ public class RedFutureHub {
         return this;
     }
 
-    public RedFutureHub adopt(ListenableFuture... futures) {
+    public RedFutureHub adopt(ListenableFuture<?>... futures) {
         Collections.addAll(listenableFutures, futures);
         return this;
     }

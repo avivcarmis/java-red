@@ -2,9 +2,8 @@ package com.javared.future;
 
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.google.common.util.concurrent.SettableFuture;
+import com.javared.future.callbacks.Callback;
 import com.javared.future.callbacks.EmptyCallback;
-import com.javared.future.callbacks.TypedCallback;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
@@ -57,13 +56,13 @@ public class OpenRedFutureOf<T> extends BaseOpenRedFuture<T> implements RedFutur
     }
 
     @Override
-    public RedFutureOf<T> addSuccessCallback(TypedCallback<T> callback) {
+    public RedFutureOf<T> addSuccessCallback(Callback<T> callback) {
         Futures.addCallback(getListenableFuture(), safeCallback(callback, null));
         return this;
     }
 
     @Override
-    public RedFutureOf<T> addSuccessCallback(Executor executor, TypedCallback<T> callback) {
+    public RedFutureOf<T> addSuccessCallback(Executor executor, Callback<T> callback) {
         Futures.addCallback(getListenableFuture(), safeCallback(callback, null), executor);
         return this;
     }
@@ -91,13 +90,13 @@ public class OpenRedFutureOf<T> extends BaseOpenRedFuture<T> implements RedFutur
     }
 
     @Override
-    public RedFutureOf<T> addFailureCallback(TypedCallback<Throwable> callback) {
+    public RedFutureOf<T> addFailureCallback(Callback<Throwable> callback) {
         super.addFailureCallback(callback);
         return this;
     }
 
     @Override
-    public RedFutureOf<T> addFailureCallback(Executor executor, TypedCallback<Throwable> callback) {
+    public RedFutureOf<T> addFailureCallback(Executor executor, Callback<Throwable> callback) {
         super.addFailureCallback(executor, callback);
         return this;
     }

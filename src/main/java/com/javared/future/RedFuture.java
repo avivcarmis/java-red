@@ -1,8 +1,8 @@
 package com.javared.future;
 
 import com.google.common.util.concurrent.ListenableFuture;
+import com.javared.future.callbacks.Callback;
 import com.javared.future.callbacks.EmptyCallback;
-import com.javared.future.callbacks.TypedCallback;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
@@ -16,9 +16,9 @@ public interface RedFuture {
 
     RedFuture addSuccessCallback(Executor executor, EmptyCallback callback);
 
-    RedFuture addFailureCallback(TypedCallback<Throwable> callback);
+    RedFuture addFailureCallback(Callback<Throwable> callback);
 
-    RedFuture addFailureCallback(Executor executor, TypedCallback<Throwable> callback);
+    RedFuture addFailureCallback(Executor executor, Callback<Throwable> callback);
 
     RedFuture addFinallyCallback(EmptyCallback callback);
 

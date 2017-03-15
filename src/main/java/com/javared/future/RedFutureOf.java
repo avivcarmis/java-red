@@ -1,8 +1,8 @@
 package com.javared.future;
 
 import com.google.common.util.concurrent.ListenableFuture;
+import com.javared.future.callbacks.Callback;
 import com.javared.future.callbacks.EmptyCallback;
-import com.javared.future.callbacks.TypedCallback;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
@@ -12,9 +12,9 @@ import java.util.concurrent.Executor;
  */
 public interface RedFutureOf<T> extends RedFuture {
 
-    RedFutureOf<T> addSuccessCallback(TypedCallback<T> callback);
+    RedFutureOf<T> addSuccessCallback(Callback<T> callback);
 
-    RedFutureOf<T> addSuccessCallback(Executor executor, TypedCallback<T> callback);
+    RedFutureOf<T> addSuccessCallback(Executor executor, Callback<T> callback);
 
     T tryGet();
 
@@ -27,10 +27,10 @@ public interface RedFutureOf<T> extends RedFuture {
     RedFutureOf<T> addSuccessCallback(Executor executor, EmptyCallback callback);
 
     @Override
-    RedFutureOf<T> addFailureCallback(TypedCallback<Throwable> callback);
+    RedFutureOf<T> addFailureCallback(Callback<Throwable> callback);
 
     @Override
-    RedFutureOf<T> addFailureCallback(Executor executor, TypedCallback<Throwable> callback);
+    RedFutureOf<T> addFailureCallback(Executor executor, Callback<Throwable> callback);
 
     @Override
     RedFutureOf<T> addFinallyCallback(EmptyCallback callback);

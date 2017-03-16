@@ -1416,9 +1416,9 @@ public class TestRedFuture {
             AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
             AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
             RedFutureHub hub = RedFuture.hub();
-            OpenRedFuture future1 = hub.provideFuture();
+            hub.provideFuture();
             OpenRedFuture future2 = hub.provideFuture();
-            OpenRedFutureOf<Object> futureOf = hub.provideFutureOf();
+            hub.provideFutureOf();
             RedFuture union = hub.uniteOptimistically();
             union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
             union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
@@ -1426,9 +1426,7 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFinallyBlock.get());
             Assert.assertFalse(reachedSuccessBlock.get());
             Assert.assertFalse(reachedFailureBlock.get());
-            future1.resolve();
             future2.fail(new TestException());
-            futureOf.resolve(new Object());
             Assert.assertTrue(reachedFinallyBlock.get());
             Assert.assertFalse(reachedSuccessBlock.get());
             Assert.assertTrue(reachedFailureBlock.get());
@@ -1461,12 +1459,10 @@ public class TestRedFuture {
             AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
             AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
             RedFutureHub hub = RedFuture.hub();
-            OpenRedFuture future1 = hub.provideFuture();
+            hub.provideFuture();
             OpenRedFuture future2 = hub.provideFuture();
-            OpenRedFutureOf<Object> futureOf = hub.provideFutureOf();
-            future1.resolve();
+            hub.provideFutureOf();
             future2.fail(new TestException());
-            futureOf.resolve(new Object());
             RedFuture union = hub.uniteOptimistically();
             union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
             union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
@@ -1561,16 +1557,7 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFinallyBlock.get());
             Assert.assertFalse(reachedSuccessBlock.get());
             Assert.assertFalse(reachedFailureBlock.get());
-            future1.resolve();
-            future2.resolve();
-            future3.resolve();
-            futureOf1.resolve(new Object());
-            futureOf2.resolve(new Object());
             settableFuture1.setException(new TestException());
-            settableFuture2.set(new Object());
-            settableFuture3.set(new Object());
-            settableFuture4.set(new Object());
-            settableFuture5.set(new Object());
             Assert.assertTrue(reachedFinallyBlock.get());
             Assert.assertFalse(reachedSuccessBlock.get());
             Assert.assertTrue(reachedFailureBlock.get());
@@ -1651,16 +1638,7 @@ public class TestRedFuture {
             hub.adoptListenableFuture(settableFuture3);
             hub.adoptListenableFutures(listenableFutureCollection);
             hub.adoptListenableFutures(settableFuture4, settableFuture5);
-            future1.resolve();
-            future2.resolve();
-            future3.resolve();
-            futureOf1.resolve(new Object());
             futureOf2.fail(new TestException());
-            settableFuture1.set(new Object());
-            settableFuture2.set(new Object());
-            settableFuture3.set(new Object());
-            settableFuture4.set(new Object());
-            settableFuture5.set(new Object());
             RedFuture union = hub.uniteOptimistically();
             union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
             union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
@@ -1731,7 +1709,7 @@ public class TestRedFuture {
             OpenRedFuture future1 = RedFuture.future();
             OpenRedFuture future2 = RedFuture.future();
             OpenRedFuture future3 = RedFuture.future();
-            OpenRedFuture future4 = hub.provideFuture();
+            hub.provideFuture();
             OpenRedFutureOf<Object> futureOf1 = hub.provideFutureOf();
             OpenRedFutureOf<Object> futureOf2 = hub.provideFutureOf();
             SettableFuture<Object> settableFuture1 = SettableFuture.create();
@@ -1758,17 +1736,7 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFinallyBlock.get());
             Assert.assertFalse(reachedSuccessBlock.get());
             Assert.assertFalse(reachedFailureBlock.get());
-            future1.resolve();
-            future2.resolve();
-            future3.resolve();
-            future4.resolve();
-            futureOf1.resolve(new Object());
-            futureOf2.resolve(new Object());
             settableFuture1.setException(new TestException());
-            settableFuture2.set(new Object());
-            settableFuture3.set(new Object());
-            settableFuture4.set(new Object());
-            settableFuture5.set(new Object());
             Assert.assertTrue(reachedFinallyBlock.get());
             Assert.assertFalse(reachedSuccessBlock.get());
             Assert.assertTrue(reachedFailureBlock.get());
@@ -1832,7 +1800,7 @@ public class TestRedFuture {
             OpenRedFuture future1 = RedFuture.future();
             OpenRedFuture future2 = RedFuture.future();
             OpenRedFuture future3 = RedFuture.future();
-            OpenRedFuture future4 = hub.provideFuture();
+            hub.provideFuture();
             OpenRedFutureOf<Object> futureOf1 = hub.provideFutureOf();
             OpenRedFutureOf<Object> futureOf2 = hub.provideFutureOf();
             SettableFuture<Object> settableFuture1 = SettableFuture.create();
@@ -1852,17 +1820,7 @@ public class TestRedFuture {
             hub.adoptListenableFuture(settableFuture3);
             hub.adoptListenableFutures(listenableFutureCollection);
             hub.adoptListenableFutures(settableFuture4, settableFuture5);
-            future1.resolve();
-            future2.resolve();
-            future3.resolve();
-            future4.resolve();
-            futureOf1.resolve(new Object());
             futureOf2.fail(new TestException());
-            settableFuture1.set(new Object());
-            settableFuture2.set(new Object());
-            settableFuture3.set(new Object());
-            settableFuture4.set(new Object());
-            settableFuture5.set(new Object());
             RedFuture union = hub.uniteOptimistically();
             union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
             union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
@@ -1904,9 +1862,9 @@ public class TestRedFuture {
             AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
             AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
             RedFutureHub hub = RedFuture.hub();
-            hub.provideFuture();
+            OpenRedFuture future1 = hub.provideFuture();
             OpenRedFuture future2 = hub.provideFuture();
-            hub.provideFutureOf();
+            OpenRedFutureOf<Object> futureOf = hub.provideFutureOf();
             RedFuture union = hub.unitePessimistically();
             union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
             union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
@@ -1914,10 +1872,12 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFinallyBlock.get());
             Assert.assertFalse(reachedSuccessBlock.get());
             Assert.assertFalse(reachedFailureBlock.get());
+            future1.resolve();
             future2.fail(new TestException());
+            futureOf.resolve(new Object());
             Assert.assertTrue(reachedFinallyBlock.get());
-            Assert.assertFalse(reachedSuccessBlock.get());
-            Assert.assertTrue(reachedFailureBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
         }
 
         @Test
@@ -1947,17 +1907,19 @@ public class TestRedFuture {
             AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
             AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
             RedFutureHub hub = RedFuture.hub();
-            hub.provideFuture();
+            OpenRedFuture future1 = hub.provideFuture();
             OpenRedFuture future2 = hub.provideFuture();
-            hub.provideFutureOf();
+            OpenRedFutureOf<Object> futureOf = hub.provideFutureOf();
+            future1.resolve();
             future2.fail(new TestException());
+            futureOf.resolve(new Object());
             RedFuture union = hub.unitePessimistically();
             union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
             union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
             union.addFinallyCallback(() -> reachedFinallyBlock.set(true));
             Assert.assertTrue(reachedFinallyBlock.get());
-            Assert.assertFalse(reachedSuccessBlock.get());
-            Assert.assertTrue(reachedFailureBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
         }
 
         @Test
@@ -2045,10 +2007,19 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFinallyBlock.get());
             Assert.assertFalse(reachedSuccessBlock.get());
             Assert.assertFalse(reachedFailureBlock.get());
+            future1.resolve();
+            future2.resolve();
+            future3.resolve();
+            futureOf1.resolve(new Object());
+            futureOf2.resolve(new Object());
             settableFuture1.setException(new TestException());
+            settableFuture2.set(new Object());
+            settableFuture3.set(new Object());
+            settableFuture4.set(new Object());
+            settableFuture5.set(new Object());
             Assert.assertTrue(reachedFinallyBlock.get());
-            Assert.assertFalse(reachedSuccessBlock.get());
-            Assert.assertTrue(reachedFailureBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
         }
 
         @Test
@@ -2126,14 +2097,23 @@ public class TestRedFuture {
             hub.adoptListenableFuture(settableFuture3);
             hub.adoptListenableFutures(listenableFutureCollection);
             hub.adoptListenableFutures(settableFuture4, settableFuture5);
+            future1.resolve();
+            future2.resolve();
+            future3.resolve();
+            futureOf1.resolve(new Object());
             futureOf2.fail(new TestException());
+            settableFuture1.set(new Object());
+            settableFuture2.set(new Object());
+            settableFuture3.set(new Object());
+            settableFuture4.set(new Object());
+            settableFuture5.set(new Object());
             RedFuture union = hub.unitePessimistically();
             union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
             union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
             union.addFinallyCallback(() -> reachedFinallyBlock.set(true));
             Assert.assertTrue(reachedFinallyBlock.get());
-            Assert.assertFalse(reachedSuccessBlock.get());
-            Assert.assertTrue(reachedFailureBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
         }
 
         @Test
@@ -2197,7 +2177,7 @@ public class TestRedFuture {
             OpenRedFuture future1 = RedFuture.future();
             OpenRedFuture future2 = RedFuture.future();
             OpenRedFuture future3 = RedFuture.future();
-            hub.provideFuture();
+            OpenRedFuture future4 = hub.provideFuture();
             OpenRedFutureOf<Object> futureOf1 = hub.provideFutureOf();
             OpenRedFutureOf<Object> futureOf2 = hub.provideFutureOf();
             SettableFuture<Object> settableFuture1 = SettableFuture.create();
@@ -2224,10 +2204,20 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFinallyBlock.get());
             Assert.assertFalse(reachedSuccessBlock.get());
             Assert.assertFalse(reachedFailureBlock.get());
+            future1.resolve();
+            future2.resolve();
+            future3.resolve();
+            future4.resolve();
+            futureOf1.resolve(new Object());
+            futureOf2.resolve(new Object());
             settableFuture1.setException(new TestException());
+            settableFuture2.set(new Object());
+            settableFuture3.set(new Object());
+            settableFuture4.set(new Object());
+            settableFuture5.set(new Object());
             Assert.assertTrue(reachedFinallyBlock.get());
-            Assert.assertFalse(reachedSuccessBlock.get());
-            Assert.assertTrue(reachedFailureBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
         }
 
         @Test
@@ -2281,50 +2271,670 @@ public class TestRedFuture {
 
         @Test
         public void testPessimisticAdoptProvidePreResolveFailure() throws Throwable {
-//            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
-//            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
-//            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
-//            RedFutureHub hub = RedFuture.hub();
-//            OpenRedFuture future1 = RedFuture.future();
-//            OpenRedFuture future2 = RedFuture.future();
-//            OpenRedFuture future3 = RedFuture.future();
-//            hub.provideFuture();
-//            OpenRedFutureOf<Object> futureOf1 = hub.provideFutureOf();
-//            OpenRedFutureOf<Object> futureOf2 = hub.provideFutureOf();
-//            SettableFuture<Object> settableFuture1 = SettableFuture.create();
-//            SettableFuture<Object> settableFuture2 = SettableFuture.create();
-//            SettableFuture<Object> settableFuture3 = SettableFuture.create();
-//            SettableFuture<Object> settableFuture4 = SettableFuture.create();
-//            SettableFuture<Object> settableFuture5 = SettableFuture.create();
-//            List<RedFuture> redFutureCollection = new LinkedList<>();
-//            redFutureCollection.add(future2);
-//            redFutureCollection.add(futureOf1);
-//            List<ListenableFuture> listenableFutureCollection = new LinkedList<>();
-//            listenableFutureCollection.add(settableFuture1);
-//            listenableFutureCollection.add(settableFuture2);
-//            hub.adoptFuture(future1);
-//            hub.adoptFutures(redFutureCollection);
-//            hub.adoptFutures(future3, futureOf2);
-//            hub.adoptListenableFuture(settableFuture3);
-//            hub.adoptListenableFutures(listenableFutureCollection);
-//            hub.adoptListenableFutures(settableFuture4, settableFuture5);
-//            futureOf2.fail(new TestException());
-//            RedFuture union = hub.unitePessimistically();
-//            union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
-//            union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
-//            union.addFinallyCallback(() -> reachedFinallyBlock.set(true));
-//            Assert.assertTrue(reachedFinallyBlock.get());
-//            Assert.assertFalse(reachedSuccessBlock.get());
-//            Assert.assertTrue(reachedFailureBlock.get());
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
             RedFutureHub hub = RedFuture.hub();
-//            hub.provideFuture();
-            OpenRedFutureOf<Object> future = hub.provideFutureOf();
-            hub.adoptFuture(RedFuture.future());
-            future.fail(new TestException());
-            hub.unitePessimistically().addFailureCallback(throwable -> {
-                int i = 1;
+            OpenRedFuture future1 = RedFuture.future();
+            OpenRedFuture future2 = RedFuture.future();
+            OpenRedFuture future3 = RedFuture.future();
+            OpenRedFuture future4 = hub.provideFuture();
+            OpenRedFutureOf<Object> futureOf1 = hub.provideFutureOf();
+            OpenRedFutureOf<Object> futureOf2 = hub.provideFutureOf();
+            SettableFuture<Object> settableFuture1 = SettableFuture.create();
+            SettableFuture<Object> settableFuture2 = SettableFuture.create();
+            SettableFuture<Object> settableFuture3 = SettableFuture.create();
+            SettableFuture<Object> settableFuture4 = SettableFuture.create();
+            SettableFuture<Object> settableFuture5 = SettableFuture.create();
+            List<RedFuture> redFutureCollection = new LinkedList<>();
+            redFutureCollection.add(future2);
+            redFutureCollection.add(futureOf1);
+            List<ListenableFuture> listenableFutureCollection = new LinkedList<>();
+            listenableFutureCollection.add(settableFuture1);
+            listenableFutureCollection.add(settableFuture2);
+            hub.adoptFuture(future1);
+            hub.adoptFutures(redFutureCollection);
+            hub.adoptFutures(future3, futureOf2);
+            hub.adoptListenableFuture(settableFuture3);
+            hub.adoptListenableFutures(listenableFutureCollection);
+            hub.adoptListenableFutures(settableFuture4, settableFuture5);
+            future1.resolve();
+            future2.resolve();
+            future3.resolve();
+            future4.resolve();
+            futureOf1.resolve(new Object());
+            futureOf2.fail(new TestException());
+            settableFuture1.set(new Object());
+            settableFuture2.set(new Object());
+            settableFuture3.set(new Object());
+            settableFuture4.set(new Object());
+            settableFuture5.set(new Object());
+            RedFuture union = hub.unitePessimistically();
+            union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            union.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+        }
+
+        // cautious
+
+        @Test
+        public void testCautiousProvidePostResolveSuccess() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            RedFutureHub hub = RedFuture.hub();
+            OpenRedFuture future1 = hub.provideFuture();
+            OpenRedFuture future2 = hub.provideFuture();
+            OpenRedFutureOf<Object> futureOf = hub.provideFutureOf();
+            RedFuture union = hub.uniteCautiously();
+            union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            union.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            future1.resolve();
+            future2.resolve();
+            Assert.assertFalse(reachedFinallyBlock.get());
+            Assert.assertFalse(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+            futureOf.resolve(new Object());
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+        }
+
+        @Test
+        public void testCautiousProvidePostResolveFailure() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            RedFutureHub hub = RedFuture.hub();
+            OpenRedFuture future1 = hub.provideFuture();
+            OpenRedFuture future2 = hub.provideFuture();
+            OpenRedFutureOf<Object> futureOf = hub.provideFutureOf();
+            RedFuture union = hub.uniteCautiously();
+            union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            union.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            future1.resolve();
+            future2.fail(new TestException());
+            Assert.assertFalse(reachedFinallyBlock.get());
+            Assert.assertFalse(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+            futureOf.resolve(new Object());
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertFalse(reachedSuccessBlock.get());
+            Assert.assertTrue(reachedFailureBlock.get());
+        }
+
+        @Test
+        public void testCautiousProvidePreResolveSuccess() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            RedFutureHub hub = RedFuture.hub();
+            OpenRedFuture future1 = hub.provideFuture();
+            OpenRedFuture future2 = hub.provideFuture();
+            OpenRedFutureOf<Object> futureOf = hub.provideFutureOf();
+            future1.resolve();
+            future2.resolve();
+            futureOf.resolve(new Object());
+            RedFuture union = hub.uniteCautiously();
+            union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            union.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+        }
+
+        @Test
+        public void testCautiousProvidePreResolveFailure() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            RedFutureHub hub = RedFuture.hub();
+            OpenRedFuture future1 = hub.provideFuture();
+            OpenRedFuture future2 = hub.provideFuture();
+            OpenRedFutureOf<Object> futureOf = hub.provideFutureOf();
+            future1.resolve();
+            future2.fail(new TestException());
+            futureOf.resolve(new Object());
+            RedFuture union = hub.uniteCautiously();
+            union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            union.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertFalse(reachedSuccessBlock.get());
+            Assert.assertTrue(reachedFailureBlock.get());
+        }
+
+        @Test
+        public void testCautiousAdoptPostResolveSuccess() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            RedFutureHub hub = RedFuture.hub();
+            OpenRedFuture future1 = RedFuture.future();
+            OpenRedFuture future2 = RedFuture.future();
+            OpenRedFuture future3 = RedFuture.future();
+            OpenRedFutureOf<Object> futureOf1 = hub.provideFutureOf();
+            OpenRedFutureOf<Object> futureOf2 = hub.provideFutureOf();
+            SettableFuture<Object> settableFuture1 = SettableFuture.create();
+            SettableFuture<Object> settableFuture2 = SettableFuture.create();
+            SettableFuture<Object> settableFuture3 = SettableFuture.create();
+            SettableFuture<Object> settableFuture4 = SettableFuture.create();
+            SettableFuture<Object> settableFuture5 = SettableFuture.create();
+            List<RedFuture> redFutureCollection = new LinkedList<>();
+            redFutureCollection.add(future2);
+            redFutureCollection.add(futureOf1);
+            List<ListenableFuture> listenableFutureCollection = new LinkedList<>();
+            listenableFutureCollection.add(settableFuture1);
+            listenableFutureCollection.add(settableFuture2);
+            hub.adoptFuture(future1);
+            hub.adoptFutures(redFutureCollection);
+            hub.adoptFutures(future3, futureOf2);
+            hub.adoptListenableFuture(settableFuture3);
+            hub.adoptListenableFutures(listenableFutureCollection);
+            hub.adoptListenableFutures(settableFuture4, settableFuture5);
+            RedFuture union = hub.uniteCautiously();
+            union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            union.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            future1.resolve();
+            future2.resolve();
+            future3.resolve();
+            futureOf1.resolve(new Object());
+            futureOf2.resolve(new Object());
+            settableFuture1.set(new Object());
+            settableFuture2.set(new Object());
+            settableFuture3.set(new Object());
+            settableFuture4.set(new Object());
+            Assert.assertFalse(reachedFinallyBlock.get());
+            Assert.assertFalse(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+            settableFuture5.set(new Object());
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+        }
+
+        @Test
+        public void testCautiousAdoptPostResolveFailure() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            RedFutureHub hub = RedFuture.hub();
+            OpenRedFuture future1 = RedFuture.future();
+            OpenRedFuture future2 = RedFuture.future();
+            OpenRedFuture future3 = RedFuture.future();
+            OpenRedFutureOf<Object> futureOf1 = hub.provideFutureOf();
+            OpenRedFutureOf<Object> futureOf2 = hub.provideFutureOf();
+            SettableFuture<Object> settableFuture1 = SettableFuture.create();
+            SettableFuture<Object> settableFuture2 = SettableFuture.create();
+            SettableFuture<Object> settableFuture3 = SettableFuture.create();
+            SettableFuture<Object> settableFuture4 = SettableFuture.create();
+            SettableFuture<Object> settableFuture5 = SettableFuture.create();
+            List<RedFuture> redFutureCollection = new LinkedList<>();
+            redFutureCollection.add(future2);
+            redFutureCollection.add(futureOf1);
+            List<ListenableFuture> listenableFutureCollection = new LinkedList<>();
+            listenableFutureCollection.add(settableFuture1);
+            listenableFutureCollection.add(settableFuture2);
+            hub.adoptFuture(future1);
+            hub.adoptFutures(redFutureCollection);
+            hub.adoptFutures(future3, futureOf2);
+            hub.adoptListenableFuture(settableFuture3);
+            hub.adoptListenableFutures(listenableFutureCollection);
+            hub.adoptListenableFutures(settableFuture4, settableFuture5);
+            RedFuture union = hub.uniteCautiously();
+            union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            union.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            future1.resolve();
+            future2.resolve();
+            future3.resolve();
+            futureOf1.resolve(new Object());
+            futureOf2.resolve(new Object());
+            settableFuture1.setException(new TestException());
+            settableFuture2.set(new Object());
+            settableFuture3.set(new Object());
+            settableFuture4.set(new Object());
+            Assert.assertFalse(reachedFinallyBlock.get());
+            Assert.assertFalse(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+            settableFuture5.set(new Object());
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertFalse(reachedSuccessBlock.get());
+            Assert.assertTrue(reachedFailureBlock.get());
+        }
+
+        @Test
+        public void testCautiousAdoptPreResolveSuccess() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            RedFutureHub hub = RedFuture.hub();
+            OpenRedFuture future1 = RedFuture.future();
+            OpenRedFuture future2 = RedFuture.future();
+            OpenRedFuture future3 = RedFuture.future();
+            OpenRedFutureOf<Object> futureOf1 = hub.provideFutureOf();
+            OpenRedFutureOf<Object> futureOf2 = hub.provideFutureOf();
+            SettableFuture<Object> settableFuture1 = SettableFuture.create();
+            SettableFuture<Object> settableFuture2 = SettableFuture.create();
+            SettableFuture<Object> settableFuture3 = SettableFuture.create();
+            SettableFuture<Object> settableFuture4 = SettableFuture.create();
+            SettableFuture<Object> settableFuture5 = SettableFuture.create();
+            List<RedFuture> redFutureCollection = new LinkedList<>();
+            redFutureCollection.add(future2);
+            redFutureCollection.add(futureOf1);
+            List<ListenableFuture> listenableFutureCollection = new LinkedList<>();
+            listenableFutureCollection.add(settableFuture1);
+            listenableFutureCollection.add(settableFuture2);
+            hub.adoptFuture(future1);
+            hub.adoptFutures(redFutureCollection);
+            hub.adoptFutures(future3, futureOf2);
+            hub.adoptListenableFuture(settableFuture3);
+            hub.adoptListenableFutures(listenableFutureCollection);
+            hub.adoptListenableFutures(settableFuture4, settableFuture5);
+            future1.resolve();
+            future2.resolve();
+            future3.resolve();
+            futureOf1.resolve(new Object());
+            futureOf2.resolve(new Object());
+            settableFuture1.set(new Object());
+            settableFuture2.set(new Object());
+            settableFuture3.set(new Object());
+            settableFuture4.set(new Object());
+            settableFuture5.set(new Object());
+            RedFuture union = hub.uniteCautiously();
+            union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            union.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+        }
+
+        @Test
+        public void testCautiousAdoptPreResolveFailure() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            RedFutureHub hub = RedFuture.hub();
+            OpenRedFuture future1 = RedFuture.future();
+            OpenRedFuture future2 = RedFuture.future();
+            OpenRedFuture future3 = RedFuture.future();
+            OpenRedFutureOf<Object> futureOf1 = hub.provideFutureOf();
+            OpenRedFutureOf<Object> futureOf2 = hub.provideFutureOf();
+            SettableFuture<Object> settableFuture1 = SettableFuture.create();
+            SettableFuture<Object> settableFuture2 = SettableFuture.create();
+            SettableFuture<Object> settableFuture3 = SettableFuture.create();
+            SettableFuture<Object> settableFuture4 = SettableFuture.create();
+            SettableFuture<Object> settableFuture5 = SettableFuture.create();
+            List<RedFuture> redFutureCollection = new LinkedList<>();
+            redFutureCollection.add(future2);
+            redFutureCollection.add(futureOf1);
+            List<ListenableFuture> listenableFutureCollection = new LinkedList<>();
+            listenableFutureCollection.add(settableFuture1);
+            listenableFutureCollection.add(settableFuture2);
+            hub.adoptFuture(future1);
+            hub.adoptFutures(redFutureCollection);
+            hub.adoptFutures(future3, futureOf2);
+            hub.adoptListenableFuture(settableFuture3);
+            hub.adoptListenableFutures(listenableFutureCollection);
+            hub.adoptListenableFutures(settableFuture4, settableFuture5);
+            future1.resolve();
+            future2.resolve();
+            future3.resolve();
+            futureOf1.resolve(new Object());
+            futureOf2.fail(new TestException());
+            settableFuture1.set(new Object());
+            settableFuture2.set(new Object());
+            settableFuture3.set(new Object());
+            settableFuture4.set(new Object());
+            settableFuture5.set(new Object());
+            RedFuture union = hub.uniteCautiously();
+            union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            union.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertFalse(reachedSuccessBlock.get());
+            Assert.assertTrue(reachedFailureBlock.get());
+        }
+
+        @Test
+        public void testCautiousAdoptProvidePostResolveSuccess() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            RedFutureHub hub = RedFuture.hub();
+            OpenRedFuture future1 = RedFuture.future();
+            OpenRedFuture future2 = RedFuture.future();
+            OpenRedFuture future3 = RedFuture.future();
+            OpenRedFuture future4 = hub.provideFuture();
+            OpenRedFutureOf<Object> futureOf1 = hub.provideFutureOf();
+            OpenRedFutureOf<Object> futureOf2 = hub.provideFutureOf();
+            SettableFuture<Object> settableFuture1 = SettableFuture.create();
+            SettableFuture<Object> settableFuture2 = SettableFuture.create();
+            SettableFuture<Object> settableFuture3 = SettableFuture.create();
+            SettableFuture<Object> settableFuture4 = SettableFuture.create();
+            SettableFuture<Object> settableFuture5 = SettableFuture.create();
+            List<RedFuture> redFutureCollection = new LinkedList<>();
+            redFutureCollection.add(future2);
+            redFutureCollection.add(futureOf1);
+            List<ListenableFuture> listenableFutureCollection = new LinkedList<>();
+            listenableFutureCollection.add(settableFuture1);
+            listenableFutureCollection.add(settableFuture2);
+            hub.adoptFuture(future1);
+            hub.adoptFutures(redFutureCollection);
+            hub.adoptFutures(future3, futureOf2);
+            hub.adoptListenableFuture(settableFuture3);
+            hub.adoptListenableFutures(listenableFutureCollection);
+            hub.adoptListenableFutures(settableFuture4, settableFuture5);
+            RedFuture union = hub.uniteCautiously();
+            union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            union.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            future1.resolve();
+            future2.resolve();
+            future3.resolve();
+            future4.resolve();
+            futureOf1.resolve(new Object());
+            futureOf2.resolve(new Object());
+            settableFuture1.set(new Object());
+            settableFuture2.set(new Object());
+            settableFuture3.set(new Object());
+            settableFuture4.set(new Object());
+            Assert.assertFalse(reachedFinallyBlock.get());
+            Assert.assertFalse(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+            settableFuture5.set(new Object());
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+        }
+
+        @Test
+        public void testCautiousAdoptProvidePostResolveFailure() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            RedFutureHub hub = RedFuture.hub();
+            OpenRedFuture future1 = RedFuture.future();
+            OpenRedFuture future2 = RedFuture.future();
+            OpenRedFuture future3 = RedFuture.future();
+            OpenRedFuture future4 = hub.provideFuture();
+            OpenRedFutureOf<Object> futureOf1 = hub.provideFutureOf();
+            OpenRedFutureOf<Object> futureOf2 = hub.provideFutureOf();
+            SettableFuture<Object> settableFuture1 = SettableFuture.create();
+            SettableFuture<Object> settableFuture2 = SettableFuture.create();
+            SettableFuture<Object> settableFuture3 = SettableFuture.create();
+            SettableFuture<Object> settableFuture4 = SettableFuture.create();
+            SettableFuture<Object> settableFuture5 = SettableFuture.create();
+            List<RedFuture> redFutureCollection = new LinkedList<>();
+            redFutureCollection.add(future2);
+            redFutureCollection.add(futureOf1);
+            List<ListenableFuture> listenableFutureCollection = new LinkedList<>();
+            listenableFutureCollection.add(settableFuture1);
+            listenableFutureCollection.add(settableFuture2);
+            hub.adoptFuture(future1);
+            hub.adoptFutures(redFutureCollection);
+            hub.adoptFutures(future3, futureOf2);
+            hub.adoptListenableFuture(settableFuture3);
+            hub.adoptListenableFutures(listenableFutureCollection);
+            hub.adoptListenableFutures(settableFuture4, settableFuture5);
+            RedFuture union = hub.uniteCautiously();
+            union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            union.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            future1.resolve();
+            future2.resolve();
+            future3.resolve();
+            future4.resolve();
+            futureOf1.resolve(new Object());
+            futureOf2.resolve(new Object());
+            settableFuture1.setException(new TestException());
+            settableFuture2.set(new Object());
+            settableFuture3.set(new Object());
+            settableFuture4.set(new Object());
+            Assert.assertFalse(reachedFinallyBlock.get());
+            Assert.assertFalse(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+            settableFuture5.set(new Object());
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertFalse(reachedSuccessBlock.get());
+            Assert.assertTrue(reachedFailureBlock.get());
+        }
+
+        @Test
+        public void testCautiousAdoptProvidePreResolveSuccess() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            RedFutureHub hub = RedFuture.hub();
+            OpenRedFuture future1 = RedFuture.future();
+            OpenRedFuture future2 = RedFuture.future();
+            OpenRedFuture future3 = RedFuture.future();
+            OpenRedFuture future4 = hub.provideFuture();
+            OpenRedFutureOf<Object> futureOf1 = hub.provideFutureOf();
+            OpenRedFutureOf<Object> futureOf2 = hub.provideFutureOf();
+            SettableFuture<Object> settableFuture1 = SettableFuture.create();
+            SettableFuture<Object> settableFuture2 = SettableFuture.create();
+            SettableFuture<Object> settableFuture3 = SettableFuture.create();
+            SettableFuture<Object> settableFuture4 = SettableFuture.create();
+            SettableFuture<Object> settableFuture5 = SettableFuture.create();
+            List<RedFuture> redFutureCollection = new LinkedList<>();
+            redFutureCollection.add(future2);
+            redFutureCollection.add(futureOf1);
+            List<ListenableFuture> listenableFutureCollection = new LinkedList<>();
+            listenableFutureCollection.add(settableFuture1);
+            listenableFutureCollection.add(settableFuture2);
+            hub.adoptFuture(future1);
+            hub.adoptFutures(redFutureCollection);
+            hub.adoptFutures(future3, futureOf2);
+            hub.adoptListenableFuture(settableFuture3);
+            hub.adoptListenableFutures(listenableFutureCollection);
+            hub.adoptListenableFutures(settableFuture4, settableFuture5);
+            future1.resolve();
+            future2.resolve();
+            future3.resolve();
+            future4.resolve();
+            futureOf1.resolve(new Object());
+            futureOf2.resolve(new Object());
+            settableFuture1.set(new Object());
+            settableFuture2.set(new Object());
+            settableFuture3.set(new Object());
+            settableFuture4.set(new Object());
+            settableFuture5.set(new Object());
+            RedFuture union = hub.uniteCautiously();
+            union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            union.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+        }
+
+        @Test
+        public void testCautiousAdoptProvidePreResolveFailure() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            RedFutureHub hub = RedFuture.hub();
+            OpenRedFuture future1 = RedFuture.future();
+            OpenRedFuture future2 = RedFuture.future();
+            OpenRedFuture future3 = RedFuture.future();
+            OpenRedFuture future4 = hub.provideFuture();
+            OpenRedFutureOf<Object> futureOf1 = hub.provideFutureOf();
+            OpenRedFutureOf<Object> futureOf2 = hub.provideFutureOf();
+            SettableFuture<Object> settableFuture1 = SettableFuture.create();
+            SettableFuture<Object> settableFuture2 = SettableFuture.create();
+            SettableFuture<Object> settableFuture3 = SettableFuture.create();
+            SettableFuture<Object> settableFuture4 = SettableFuture.create();
+            SettableFuture<Object> settableFuture5 = SettableFuture.create();
+            List<RedFuture> redFutureCollection = new LinkedList<>();
+            redFutureCollection.add(future2);
+            redFutureCollection.add(futureOf1);
+            List<ListenableFuture> listenableFutureCollection = new LinkedList<>();
+            listenableFutureCollection.add(settableFuture1);
+            listenableFutureCollection.add(settableFuture2);
+            hub.adoptFuture(future1);
+            hub.adoptFutures(redFutureCollection);
+            hub.adoptFutures(future3, futureOf2);
+            hub.adoptListenableFuture(settableFuture3);
+            hub.adoptListenableFutures(listenableFutureCollection);
+            hub.adoptListenableFutures(settableFuture4, settableFuture5);
+            future1.resolve();
+            future2.resolve();
+            future3.resolve();
+            future4.resolve();
+            futureOf1.resolve(new Object());
+            futureOf2.fail(new TestException());
+            settableFuture1.set(new Object());
+            settableFuture2.set(new Object());
+            settableFuture3.set(new Object());
+            settableFuture4.set(new Object());
+            settableFuture5.set(new Object());
+            RedFuture union = hub.uniteCautiously();
+            union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            union.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertFalse(reachedSuccessBlock.get());
+            Assert.assertTrue(reachedFailureBlock.get());
+        }
+
+        // empty
+
+        @Test
+        public void testOptimisticEmptyResolve() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            RedFutureHub hub = RedFuture.hub();
+            RedFuture union = hub.uniteOptimistically();
+            union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            union.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+        }
+
+        @Test
+        public void testPessimisticEmptyResolve() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            RedFutureHub hub = RedFuture.hub();
+            RedFuture union = hub.unitePessimistically();
+            union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            union.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+        }
+
+        @Test
+        public void testCautiousEmptyResolve() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            RedFutureHub hub = RedFuture.hub();
+            RedFuture union = hub.uniteCautiously();
+            union.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            union.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            union.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+        }
+
+    }
+
+    public static class TestCompletedFutures {
+
+        @Test
+        public void testResolvedFuture() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            RedFuture future = RedFuture.resolved();
+            future.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            future.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            future.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+        }
+
+        @Test
+        public void testResolvedFutureOf() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedTypedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean correctValueReturned = new AtomicBoolean(false);
+            Object object = new Object();
+            RedFutureOf<Object> future = RedFuture.resolvedOf(object);
+            future.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            future.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            future.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            future.addSuccessCallback(o -> {
+                correctValueReturned.set(o == object);
+                reachedTypedSuccessBlock.set(true);
             });
-            Thread.sleep(100);
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+            Assert.assertTrue(reachedTypedSuccessBlock.get());
+            Assert.assertTrue(correctValueReturned.get());
+        }
+
+        @Test
+        public void testFailedFuture() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            AtomicBoolean correctValueReturned = new AtomicBoolean(false);
+            AtomicBoolean reachedTypedSuccessBlock = new AtomicBoolean(false);
+            TestException exception = new TestException();
+            RedFutureOf<Object> future = RedFuture.failedOf(exception);
+            future.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            future.addFailureCallback(throwable -> {
+                correctValueReturned.set(throwable == exception);
+                reachedFailureBlock.set(true);
+            });
+            future.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            future.addSuccessCallback(o -> reachedTypedSuccessBlock.set(true));
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertFalse(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedTypedSuccessBlock.get());
+            Assert.assertTrue(reachedFailureBlock.get());
+            Assert.assertTrue(correctValueReturned.get());
+        }
+
+        @Test
+        public void testFailedFutureOf() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            AtomicBoolean correctValueReturned = new AtomicBoolean(false);
+            TestException exception = new TestException();
+            RedFuture future = RedFuture.failed(exception);
+            future.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            future.addFailureCallback(throwable -> {
+                correctValueReturned.set(throwable == exception);
+                reachedFailureBlock.set(true);
+            });
+            future.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertFalse(reachedSuccessBlock.get());
+            Assert.assertTrue(reachedFailureBlock.get());
+            Assert.assertTrue(correctValueReturned.get());
         }
 
     }

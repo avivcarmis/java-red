@@ -15,19 +15,33 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
- * Created by Mamot on 3/15/2017.
+ * Runs different test suits to test the entire functionality of {@link RedFuture},
+ * {@link RedFutureOf}, {@link OpenRedFuture}, {@link OpenRedFutureOf} and {@link RedFutureHub}.
  */
 @RunWith(Enclosed.class)
 public class TestRedFuture {
 
+    /**
+     * Millisecond delay time for resolving of all test futures.
+     */
     private static final long FUTURE_SLEEP_TIME = 100;
 
+    /**
+     * Millisecond duration for sleeping at the end of tests
+     * to make sure no extra callbacks are made.
+     */
     private static final long VALIDATION_SLEEP_TIME = 100;
 
+    /**
+     * Test the attaching and invocation of all {@link RedFuture} callbacks
+     */
     public static class TestFutureCallbacks {
 
-        // success on current thread
+        // Success on current thread
 
+        /**
+         * Tests successfully resolved {@link RedFuture} callbacks on current thread.
+         */
         @Test
         public void testFutureSuccessOnCurrentThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(2);
@@ -60,12 +74,16 @@ public class TestRedFuture {
             }
         }
 
+        /**
+         * Tests successfully following {@link RedFuture} callbacks on current thread.
+         */
         @Test
         public void testFutureFollowSuccessOnCurrentThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(2);
             AtomicReference<Throwable> failure = new AtomicReference<>();
             long time = System.currentTimeMillis();
-            RedFuture future = RedFuture.future().follow(successfulFuture());
+            OpenRedFuture future = RedFuture.future();
+            future.follow(successfulFuture());
             future.addFailureCallback(throwable -> failure.compareAndSet(null, throwable));
             future.addSuccessCallback(() -> {
                 if (System.currentTimeMillis() - time < FUTURE_SLEEP_TIME) {
@@ -92,12 +110,16 @@ public class TestRedFuture {
             }
         }
 
+        /**
+         * Tests successfully following {@link RedFuture} callbacks on current thread.
+         */
         @Test
         public void testFutureFollowListenableSuccessOnCurrentThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(2);
             AtomicReference<Throwable> failure = new AtomicReference<>();
             long time = System.currentTimeMillis();
-            RedFuture future = RedFuture.future().follow(successfulListenableFuture(null));
+            OpenRedFuture future = RedFuture.future();
+            future.follow(successfulListenableFuture(null));
             future.addFailureCallback(throwable -> failure.compareAndSet(null, throwable));
             future.addSuccessCallback(() -> {
                 if (System.currentTimeMillis() - time < FUTURE_SLEEP_TIME) {
@@ -126,6 +148,9 @@ public class TestRedFuture {
 
         // failure on current thread
 
+        /**
+         * Tests failed {@link RedFuture} callbacks on current thread.
+         */
         @Test
         public void testFutureFailureOnCurrentThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(2);
@@ -162,12 +187,16 @@ public class TestRedFuture {
             }
         }
 
+        /**
+         * Tests failed following {@link RedFuture} callbacks on current thread.
+         */
         @Test
         public void testFutureFollowFailureOnCurrentThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(2);
             AtomicReference<Throwable> failure = new AtomicReference<>();
             long time = System.currentTimeMillis();
-            RedFuture future = RedFuture.future().follow(failingFuture(new TestException()));
+            OpenRedFuture future = RedFuture.future();
+            future.follow(failingFuture(new TestException()));
             future.addFailureCallback(throwable -> {
                 if (!(throwable instanceof TestException)) {
                     failure.compareAndSet(null, throwable);
@@ -198,12 +227,16 @@ public class TestRedFuture {
             }
         }
 
+        /**
+         * Tests failed following {@link RedFuture} callbacks on current thread.
+         */
         @Test
         public void testFutureFollowListenableFailureOnCurrentThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(2);
             AtomicReference<Throwable> failure = new AtomicReference<>();
             long time = System.currentTimeMillis();
-            RedFuture future = RedFuture.future().follow(failingListenableFuture(new TestException()));
+            OpenRedFuture future = RedFuture.future();
+            future.follow(failingListenableFuture(new TestException()));
             future.addFailureCallback(throwable -> {
                 if (!(throwable instanceof TestException)) {
                     failure.compareAndSet(null, throwable);
@@ -236,6 +269,9 @@ public class TestRedFuture {
 
         // success on test thread thread
 
+        /**
+         * Tests successfully resolved {@link RedFuture} callbacks on current thread.
+         */
         @Test
         public void testFutureSuccessOnTestThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(2);
@@ -268,12 +304,16 @@ public class TestRedFuture {
             }
         }
 
+        /**
+         * Tests successfully following {@link RedFuture} callbacks on a given thread.
+         */
         @Test
         public void testFutureFollowSuccessOnTestThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(2);
             AtomicReference<Throwable> failure = new AtomicReference<>();
             long time = System.currentTimeMillis();
-            RedFuture future = RedFuture.future().follow(TEST_EXECUTOR, successfulFuture());
+            OpenRedFuture future = RedFuture.future();
+            future.follow(TEST_EXECUTOR, successfulFuture());
             future.addFailureCallback(throwable -> failure.compareAndSet(null, throwable));
             future.addSuccessCallback(() -> {
                 if (System.currentTimeMillis() - time < FUTURE_SLEEP_TIME) {
@@ -300,12 +340,16 @@ public class TestRedFuture {
             }
         }
 
+        /**
+         * Tests successfully following {@link RedFuture} callbacks on a given thread.
+         */
         @Test
         public void testFutureFollowListenableSuccessOnTestThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(2);
             AtomicReference<Throwable> failure = new AtomicReference<>();
             long time = System.currentTimeMillis();
-            RedFuture future = RedFuture.future().follow(TEST_EXECUTOR, successfulListenableFuture(null));
+            OpenRedFuture future = RedFuture.future();
+            future.follow(TEST_EXECUTOR, successfulListenableFuture(null));
             future.addFailureCallback(throwable -> failure.compareAndSet(null, throwable));
             future.addSuccessCallback(() -> {
                 if (System.currentTimeMillis() - time < FUTURE_SLEEP_TIME) {
@@ -334,6 +378,9 @@ public class TestRedFuture {
 
         // failure on test thread thread
 
+        /**
+         * Tests failed {@link RedFuture} callbacks on a given thread.
+         */
         @Test
         public void testFutureFailureOnTestThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(2);
@@ -370,12 +417,16 @@ public class TestRedFuture {
             }
         }
 
+        /**
+         * Tests failed following {@link RedFuture} callbacks on a given thread.
+         */
         @Test
         public void testFutureFollowFailureOnTestThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(2);
             AtomicReference<Throwable> failure = new AtomicReference<>();
             long time = System.currentTimeMillis();
-            RedFuture future = RedFuture.future().follow(TEST_EXECUTOR, failingFuture(new TestException()));
+            OpenRedFuture future = RedFuture.future();
+            future.follow(TEST_EXECUTOR, failingFuture(new TestException()));
             future.addFailureCallback(throwable -> {
                 if (!(throwable instanceof TestException)) {
                     failure.compareAndSet(null, throwable);
@@ -406,12 +457,16 @@ public class TestRedFuture {
             }
         }
 
+        /**
+         * Tests failed following {@link RedFuture} callbacks on a given thread.
+         */
         @Test
         public void testFutureFollowListenableFailureOnTestThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(2);
             AtomicReference<Throwable> failure = new AtomicReference<>();
             long time = System.currentTimeMillis();
-            RedFuture future = RedFuture.future().follow(TEST_EXECUTOR, failingListenableFuture(new TestException()));
+            OpenRedFuture future = RedFuture.future();
+            future.follow(TEST_EXECUTOR, failingListenableFuture(new TestException()));
             future.addFailureCallback(throwable -> {
                 if (!(throwable instanceof TestException)) {
                     failure.compareAndSet(null, throwable);
@@ -444,10 +499,16 @@ public class TestRedFuture {
 
     }
 
+    /**
+     * Test the attaching and invocation of all {@link RedFutureOf} callbacks
+     */
     public static class TestFutureOfCallbacks {
 
         // success on current thread
 
+        /**
+         * Tests successfully resolved {@link RedFutureOf} callbacks on current thread.
+         */
         @Test
         public void testFutureOfSuccessOnCurrentThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(3);
@@ -493,13 +554,17 @@ public class TestRedFuture {
             }
         }
 
+        /**
+         * Tests successfully following {@link RedFutureOf} callbacks on current thread.
+         */
         @Test
         public void testFutureOfFollowSuccessOnCurrentThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(3);
             AtomicReference<Throwable> failure = new AtomicReference<>();
             long time = System.currentTimeMillis();
             Object object = new Object();
-            RedFutureOf<Object> future = RedFuture.futureOf().follow(successfulFutureOf(object));
+            OpenRedFutureOf<Object> future = RedFuture.futureOf();
+            future.follow(successfulFutureOf(object));
             future.addFailureCallback(throwable -> failure.compareAndSet(null, throwable));
             future.addSuccessCallback(() -> {
                 if (System.currentTimeMillis() - time < FUTURE_SLEEP_TIME) {
@@ -538,13 +603,17 @@ public class TestRedFuture {
             }
         }
 
+        /**
+         * Tests successfully following {@link RedFutureOf} callbacks on current thread.
+         */
         @Test
         public void testFutureOfFollowListenableSuccessOnCurrentThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(3);
             AtomicReference<Throwable> failure = new AtomicReference<>();
             long time = System.currentTimeMillis();
             Object object = new Object();
-            RedFutureOf<Object> future = RedFuture.futureOf().follow(successfulListenableFuture(object));
+            OpenRedFutureOf<Object> future = RedFuture.futureOf();
+            future.follow(successfulListenableFuture(object));
             future.addFailureCallback(throwable -> failure.compareAndSet(null, throwable));
             future.addSuccessCallback(() -> {
                 if (System.currentTimeMillis() - time < FUTURE_SLEEP_TIME) {
@@ -585,6 +654,9 @@ public class TestRedFuture {
 
         // failure on current thread
 
+        /**
+         * Tests failed {@link RedFutureOf} callbacks on current thread.
+         */
         @Test
         public void testFutureOfFailureOnCurrentThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(2);
@@ -623,12 +695,16 @@ public class TestRedFuture {
             }
         }
 
+        /**
+         * Tests failed following {@link RedFutureOf} callbacks on current thread.
+         */
         @Test
         public void testFutureOfFollowFailureOnCurrentThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(2);
             AtomicReference<Throwable> failure = new AtomicReference<>();
             long time = System.currentTimeMillis();
-            RedFutureOf<Object> future = RedFuture.futureOf().follow(failingFutureOf(new TestException()));
+            OpenRedFutureOf<Object> future = RedFuture.futureOf();
+            future.follow(failingFutureOf(new TestException()));
             future.addFailureCallback(throwable -> {
                 if (!(throwable instanceof TestException)) {
                     failure.compareAndSet(null, throwable);
@@ -661,12 +737,16 @@ public class TestRedFuture {
             }
         }
 
+        /**
+         * Tests failed following {@link RedFutureOf} callbacks on current thread.
+         */
         @Test
         public void testFutureOfFollowListenableFailureOnCurrentThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(2);
             AtomicReference<Throwable> failure = new AtomicReference<>();
             long time = System.currentTimeMillis();
-            RedFutureOf<Object> future = RedFuture.futureOf().follow(failingFutureOf(new TestException()));
+            OpenRedFutureOf<Object> future = RedFuture.futureOf();
+            future.follow(failingFutureOf(new TestException()));
             future.addFailureCallback(throwable -> {
                 if (!(throwable instanceof TestException)) {
                     failure.compareAndSet(null, throwable);
@@ -701,6 +781,9 @@ public class TestRedFuture {
 
         // success on test thread thread
 
+        /**
+         * Tests successfully resolved {@link RedFutureOf} callbacks on current thread.
+         */
         @Test
         public void testFutureOfSuccessOnTestThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(3);
@@ -746,13 +829,17 @@ public class TestRedFuture {
             }
         }
 
+        /**
+         * Tests successfully following {@link RedFutureOf} callbacks on a given thread.
+         */
         @Test
         public void testFutureOfFollowSuccessOnTestThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(3);
             AtomicReference<Throwable> failure = new AtomicReference<>();
             long time = System.currentTimeMillis();
             Object object = new Object();
-            RedFutureOf<Object> future = RedFuture.futureOf().follow(TEST_EXECUTOR, successfulFutureOf(object));
+            OpenRedFutureOf<Object> future = RedFuture.futureOf();
+            future.follow(TEST_EXECUTOR, successfulFutureOf(object));
             future.addFailureCallback(throwable -> failure.compareAndSet(null, throwable));
             future.addSuccessCallback(() -> {
                 if (System.currentTimeMillis() - time < FUTURE_SLEEP_TIME) {
@@ -791,13 +878,17 @@ public class TestRedFuture {
             }
         }
 
+        /**
+         * Tests successfully following {@link RedFutureOf} callbacks on a given thread.
+         */
         @Test
         public void testFutureOfFollowListenableSuccessOnTestThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(3);
             AtomicReference<Throwable> failure = new AtomicReference<>();
             long time = System.currentTimeMillis();
             Object object = new Object();
-            RedFutureOf<Object> future = RedFuture.futureOf().follow(TEST_EXECUTOR, successfulListenableFuture(object));
+            OpenRedFutureOf<Object> future = RedFuture.futureOf();
+            future.follow(TEST_EXECUTOR, successfulListenableFuture(object));
             future.addFailureCallback(throwable -> failure.compareAndSet(null, throwable));
             future.addSuccessCallback(() -> {
                 if (System.currentTimeMillis() - time < FUTURE_SLEEP_TIME) {
@@ -838,6 +929,9 @@ public class TestRedFuture {
 
         // failure on test thread thread
 
+        /**
+         * Tests failed {@link RedFutureOf} callbacks on a given thread.
+         */
         @Test
         public void testFutureOfFailureOnTestThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(2);
@@ -876,12 +970,16 @@ public class TestRedFuture {
             }
         }
 
+        /**
+         * Tests failed following {@link RedFutureOf} callbacks on a given thread.
+         */
         @Test
         public void testFutureOfFollowOnTestThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(2);
             AtomicReference<Throwable> failure = new AtomicReference<>();
             long time = System.currentTimeMillis();
-            RedFutureOf<Object> future = RedFuture.futureOf().follow(TEST_EXECUTOR, failingFutureOf(new TestException()));
+            OpenRedFutureOf<Object> future = RedFuture.futureOf();
+            future.follow(TEST_EXECUTOR, failingFutureOf(new TestException()));
             future.addFailureCallback(throwable -> {
                 if (!(throwable instanceof TestException)) {
                     failure.compareAndSet(null, throwable);
@@ -914,12 +1012,16 @@ public class TestRedFuture {
             }
         }
 
+        /**
+         * Tests failed following {@link RedFutureOf} callbacks on a given thread.
+         */
         @Test
         public void testFutureOfFollowListenableOnTestThread() throws Throwable {
             CountDownLatch lock = new CountDownLatch(2);
             AtomicReference<Throwable> failure = new AtomicReference<>();
             long time = System.currentTimeMillis();
-            RedFutureOf<Object> future = RedFuture.futureOf().follow(TEST_EXECUTOR, failingListenableFuture(new TestException()));
+            OpenRedFutureOf<Object> future = RedFuture.futureOf();
+            future.follow(TEST_EXECUTOR, failingListenableFuture(new TestException()));
             future.addFailureCallback(throwable -> {
                 if (!(throwable instanceof TestException)) {
                     failure.compareAndSet(null, throwable);
@@ -954,10 +1056,16 @@ public class TestRedFuture {
 
     }
 
+    /**
+     * Test resolving and failing functionality of {@link OpenRedFuture} and {@link OpenRedFutureOf} classes
+     */
     public static class TestResolving {
 
         // future post callbacks
 
+        /**
+         * Test the resolving of {@link OpenRedFuture} through {@link OpenRedFuture#resolve()}
+         */
         @Test
         public void testFutureResolve() throws Throwable {
             AtomicBoolean failureBlockReached = new AtomicBoolean(false);
@@ -974,6 +1082,9 @@ public class TestRedFuture {
             Assert.assertEquals(failureBlockReached.get(), false);
         }
 
+        /**
+         * Test the resolving of {@link OpenRedFuture} through {@link OpenRedFuture#tryResolve()}
+         */
         @Test
         public void testFutureTryResolve() throws Throwable {
             AtomicBoolean failureBlockReached = new AtomicBoolean(false);
@@ -990,6 +1101,9 @@ public class TestRedFuture {
             Assert.assertEquals(failureBlockReached.get(), false);
         }
 
+        /**
+         * Test the failing of {@link OpenRedFuture} through {@link OpenRedFuture#fail(Throwable)}
+         */
         @Test
         public void testFutureFail() throws Throwable {
             AtomicBoolean failureBlockReached = new AtomicBoolean(false);
@@ -1014,6 +1128,9 @@ public class TestRedFuture {
             Assert.assertEquals(finallyBlockReached.get(), true);
         }
 
+        /**
+         * Test the failing of {@link OpenRedFuture} through {@link OpenRedFuture#tryFail(Throwable)}
+         */
         @Test
         public void testFutureTryFail() throws Throwable {
             AtomicBoolean failureBlockReached = new AtomicBoolean(false);
@@ -1040,6 +1157,9 @@ public class TestRedFuture {
 
         // future of post callbacks
 
+        /**
+         * Test the resolving of {@link OpenRedFutureOf} through {@link OpenRedFutureOf#resolve(Object)}
+         */
         @Test
         public void testFutureOfResolve() throws Throwable {
             AtomicBoolean failureBlockReached = new AtomicBoolean(false);
@@ -1067,6 +1187,9 @@ public class TestRedFuture {
             Assert.assertEquals(failureBlockReached.get(), false);
         }
 
+        /**
+         * Test the resolving of {@link OpenRedFutureOf} through {@link OpenRedFutureOf#tryResolve(Object)}
+         */
         @Test
         public void testFutureOfTryResolve() throws Throwable {
             AtomicBoolean failureBlockReached = new AtomicBoolean(false);
@@ -1094,6 +1217,9 @@ public class TestRedFuture {
             Assert.assertEquals(failureBlockReached.get(), false);
         }
 
+        /**
+         * Test the failing of {@link OpenRedFutureOf} through {@link OpenRedFutureOf#fail(Throwable)}
+         */
         @Test
         public void testFutureOfFail() throws Throwable {
             AtomicBoolean failureBlockReached = new AtomicBoolean(false);
@@ -1121,6 +1247,9 @@ public class TestRedFuture {
             Assert.assertEquals(valueSuccessBlockReached.get(), false);
         }
 
+        /**
+         * Test the failing of {@link OpenRedFutureOf} through {@link OpenRedFutureOf#tryFail(Throwable)}
+         */
         @Test
         public void testFutureOfTryFail() throws Throwable {
             AtomicBoolean failureBlockReached = new AtomicBoolean(false);
@@ -1150,6 +1279,9 @@ public class TestRedFuture {
 
         // future pre callbacks
 
+        /**
+         * Test to validate invocation of callbacks registering after resolve of {@link OpenRedFuture}
+         */
         @Test
         public void testFuturePreResolve() throws Throwable {
             AtomicBoolean failureBlockReached = new AtomicBoolean(false);
@@ -1166,6 +1298,9 @@ public class TestRedFuture {
             Assert.assertEquals(failureBlockReached.get(), false);
         }
 
+        /**
+         * Test to validate invocation of callbacks registering after try-resolve of {@link OpenRedFuture}
+         */
         @Test
         public void testFuturePreTryResolve() throws Throwable {
             AtomicBoolean failureBlockReached = new AtomicBoolean(false);
@@ -1182,6 +1317,9 @@ public class TestRedFuture {
             Assert.assertEquals(failureBlockReached.get(), false);
         }
 
+        /**
+         * Test to validate invocation of callbacks registering after fail of {@link OpenRedFuture}
+         */
         @Test
         public void testFuturePreFail() throws Throwable {
             AtomicBoolean failureBlockReached = new AtomicBoolean(false);
@@ -1206,6 +1344,9 @@ public class TestRedFuture {
             Assert.assertEquals(finallyBlockReached.get(), true);
         }
 
+        /**
+         * Test to validate invocation of callbacks registering after try-fail of {@link OpenRedFuture}
+         */
         @Test
         public void testFuturePreTryFail() throws Throwable {
             AtomicBoolean failureBlockReached = new AtomicBoolean(false);
@@ -1232,6 +1373,9 @@ public class TestRedFuture {
 
         // future of pre callbacks
 
+        /**
+         * Test to validate invocation of callbacks registering after resolve of {@link OpenRedFutureOf}
+         */
         @Test
         public void testFutureOfPreResolve() throws Throwable {
             AtomicBoolean failureBlockReached = new AtomicBoolean(false);
@@ -1259,6 +1403,9 @@ public class TestRedFuture {
             Assert.assertEquals(failureBlockReached.get(), false);
         }
 
+        /**
+         * Test to validate invocation of callbacks registering after try-resolve of {@link OpenRedFutureOf}
+         */
         @Test
         public void testFutureOfPreTryResolve() throws Throwable {
             AtomicBoolean failureBlockReached = new AtomicBoolean(false);
@@ -1286,6 +1433,9 @@ public class TestRedFuture {
             Assert.assertEquals(failureBlockReached.get(), false);
         }
 
+        /**
+         * Test to validate invocation of callbacks registering after fail of {@link OpenRedFutureOf}
+         */
         @Test
         public void testFutureOfPreFail() throws Throwable {
             AtomicBoolean failureBlockReached = new AtomicBoolean(false);
@@ -1313,6 +1463,9 @@ public class TestRedFuture {
             Assert.assertEquals(valueSuccessBlockReached.get(), false);
         }
 
+        /**
+         * Test to validate invocation of callbacks registering after try-fail of {@link OpenRedFutureOf}
+         */
         @Test
         public void testFutureOfPreTryFail() throws Throwable {
             AtomicBoolean failureBlockReached = new AtomicBoolean(false);
@@ -1342,8 +1495,14 @@ public class TestRedFuture {
 
     }
 
+    /**
+     * Test all waiting operations of {@link RedFuture} and {@link RedFutureOf} classes
+     */
     public static class TestWaitOperations {
 
+        /**
+         * Test the functionality of {@link RedFuture#isResolved()}
+         */
         @Test
         public void testIsResolved() throws Throwable {
             OpenRedFuture future = RedFuture.future();
@@ -1352,6 +1511,9 @@ public class TestRedFuture {
             Assert.assertTrue(future.isResolved());
         }
 
+        /**
+         * Test the functionality of {@link RedFuture#waitForCompletion()}
+         */
         @Test
         public void testWaitForCompletion() throws Throwable {
             long time = System.currentTimeMillis();
@@ -1361,6 +1523,9 @@ public class TestRedFuture {
             Assert.assertTrue(future.isResolved());
         }
 
+        /**
+         * Test the functionality of {@link RedFutureOf#tryGet()}
+         */
         @Test
         public void testTryGet() throws Throwable {
             OpenRedFutureOf<Object> future = RedFuture.futureOf();
@@ -1370,6 +1535,9 @@ public class TestRedFuture {
             Assert.assertEquals(future.tryGet(), object);
         }
 
+        /**
+         * Test the functionality of {@link RedFutureOf#waitAndGet()}
+         */
         @Test
         public void testWaitAndGet() throws Throwable {
             long time = System.currentTimeMillis();
@@ -1382,10 +1550,116 @@ public class TestRedFuture {
 
     }
 
+    /**
+     * Test additional static {@link RedFuture} constructors
+     */
+    public static class TestCompletedFutures {
+
+        /**
+         * Test the constructor of a resolved {@link RedFuture} through {@link RedFuture#resolved()}
+         */
+        @Test
+        public void testResolvedFuture() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            RedFuture future = RedFuture.resolved();
+            future.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            future.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            future.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+        }
+
+        /**
+         * Test the constructor of a resolved {@link RedFutureOf} through {@link RedFuture#resolvedOf(Object)}
+         */
+        @Test
+        public void testResolvedFutureOf() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedTypedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean correctValueReturned = new AtomicBoolean(false);
+            Object object = new Object();
+            RedFutureOf<Object> future = RedFuture.resolvedOf(object);
+            future.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            future.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            future.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            future.addSuccessCallback(o -> {
+                correctValueReturned.set(o == object);
+                reachedTypedSuccessBlock.set(true);
+            });
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+            Assert.assertTrue(reachedTypedSuccessBlock.get());
+            Assert.assertTrue(correctValueReturned.get());
+        }
+
+        /**
+         * Test the constructor of a failed {@link RedFuture} through {@link RedFuture#failed(Throwable)}
+         */
+        @Test
+        public void testFailedFuture() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            AtomicBoolean correctValueReturned = new AtomicBoolean(false);
+            AtomicBoolean reachedTypedSuccessBlock = new AtomicBoolean(false);
+            TestException exception = new TestException();
+            RedFutureOf<Object> future = RedFuture.failedOf(exception);
+            future.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            future.addFailureCallback(throwable -> {
+                correctValueReturned.set(throwable == exception);
+                reachedFailureBlock.set(true);
+            });
+            future.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            future.addSuccessCallback(o -> reachedTypedSuccessBlock.set(true));
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertFalse(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedTypedSuccessBlock.get());
+            Assert.assertTrue(reachedFailureBlock.get());
+            Assert.assertTrue(correctValueReturned.get());
+        }
+
+        /**
+         * Test the constructor of a failed {@link RedFutureOf} through {@link RedFuture#failedOf(Throwable)}
+         */
+        @Test
+        public void testFailedFutureOf() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            AtomicBoolean correctValueReturned = new AtomicBoolean(false);
+            TestException exception = new TestException();
+            RedFuture future = RedFuture.failed(exception);
+            future.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            future.addFailureCallback(throwable -> {
+                correctValueReturned.set(throwable == exception);
+                reachedFailureBlock.set(true);
+            });
+            future.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertFalse(reachedSuccessBlock.get());
+            Assert.assertTrue(reachedFailureBlock.get());
+            Assert.assertTrue(correctValueReturned.get());
+        }
+
+    }
+
+    /**
+     * Test functionality of {@link RedFutureHub} class
+     */
     public static class TestFutureHub {
 
-        // optimistic
+        // Optimistic - provide
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * optimistic union of provided futures that later were successfully resolved
+         */
         @Test
         public void testOptimisticProvidePostResolveSuccess() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -1410,6 +1684,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * optimistic union of provided futures that later were failed
+         */
         @Test
         public void testOptimisticProvidePostResolveFailure() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -1432,6 +1710,10 @@ public class TestRedFuture {
             Assert.assertTrue(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * optimistic union of provided futures that previously were successfully resolved
+         */
         @Test
         public void testOptimisticProvidePreResolveSuccess() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -1453,6 +1735,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * optimistic union of provided futures that previously were failed
+         */
         @Test
         public void testOptimisticProvidePreResolveFailure() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -1472,6 +1758,12 @@ public class TestRedFuture {
             Assert.assertTrue(reachedFailureBlock.get());
         }
 
+        // Optimistic - adopt
+
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * optimistic union of adopted futures that later were successfully resolved
+         */
         @Test
         public void testOptimisticAdoptPostResolveSuccess() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -1522,6 +1814,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * optimistic union of adopted futures that later were failed
+         */
         @Test
         public void testOptimisticAdoptPostResolveFailure() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -1563,6 +1859,10 @@ public class TestRedFuture {
             Assert.assertTrue(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * optimistic union of adopted futures that previously were successfully resolved
+         */
         @Test
         public void testOptimisticAdoptPreResolveSuccess() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -1610,6 +1910,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * optimistic union of adopted futures that previously were failed
+         */
         @Test
         public void testOptimisticAdoptPreResolveFailure() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -1648,6 +1952,12 @@ public class TestRedFuture {
             Assert.assertTrue(reachedFailureBlock.get());
         }
 
+        // Optimistic - provide and adopt
+
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * optimistic union of provided and adopted futures that later were successfully resolved
+         */
         @Test
         public void testOptimisticAdoptProvidePostResolveSuccess() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -1700,6 +2010,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * optimistic union of provided and adopted futures that later were failed
+         */
         @Test
         public void testOptimisticAdoptProvidePostResolveFailure() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -1742,6 +2056,10 @@ public class TestRedFuture {
             Assert.assertTrue(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * optimistic union of provided and adopted futures that previously were successfully resolved
+         */
         @Test
         public void testOptimisticAdoptProvidePreResolveSuccess() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -1791,6 +2109,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * optimistic union of provided and adopted futures that previously were failed
+         */
         @Test
         public void testOptimisticAdoptProvidePreResolveFailure() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -1830,8 +2152,12 @@ public class TestRedFuture {
             Assert.assertTrue(reachedFailureBlock.get());
         }
 
-        // pessimistic
+        // Pessimistic - provide
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * pessimistic union of provided futures that later were successfully resolved
+         */
         @Test
         public void testPessimisticProvidePostResolveSuccess() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -1856,6 +2182,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * pessimistic union of provided futures that later were failed
+         */
         @Test
         public void testPessimisticProvidePostResolveFailure() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -1880,6 +2210,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * pessimistic union of provided futures that previously were successfully resolved
+         */
         @Test
         public void testPessimisticProvidePreResolveSuccess() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -1901,6 +2235,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * pessimistic union of provided futures that previously were failed
+         */
         @Test
         public void testPessimisticProvidePreResolveFailure() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -1922,6 +2260,12 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        // Pessimistic - adopt
+
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * pessimistic union of adopted futures that later were successfully resolved
+         */
         @Test
         public void testPessimisticAdoptPostResolveSuccess() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -1972,6 +2316,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * pessimistic union of adopted futures that later were failed
+         */
         @Test
         public void testPessimisticAdoptPostResolveFailure() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2022,6 +2370,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * pessimistic union of adopted futures that previously were successfully resolved
+         */
         @Test
         public void testPessimisticAdoptPreResolveSuccess() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2069,6 +2421,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * pessimistic union of adopted futures that previously were failed
+         */
         @Test
         public void testPessimisticAdoptPreResolveFailure() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2116,6 +2472,12 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        // Pessimistic - provide and adopt
+
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * pessimistic union of provided and adopted futures that later were successfully resolved
+         */
         @Test
         public void testPessimisticAdoptProvidePostResolveSuccess() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2168,6 +2530,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * pessimistic union of provided and adopted futures that later were failed
+         */
         @Test
         public void testPessimisticAdoptProvidePostResolveFailure() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2220,6 +2586,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * pessimistic union of provided and adopted futures that previously were successfully resolved
+         */
         @Test
         public void testPessimisticAdoptProvidePreResolveSuccess() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2269,6 +2639,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * pessimistic union of provided and adopted futures that previously were failed
+         */
         @Test
         public void testPessimisticAdoptProvidePreResolveFailure() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2318,8 +2692,12 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
-        // cautious
+        // Cautious - provide
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * cautious union of provided futures that later were successfully resolved
+         */
         @Test
         public void testCautiousProvidePostResolveSuccess() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2344,6 +2722,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * cautious union of provided futures that later were failed
+         */
         @Test
         public void testCautiousProvidePostResolveFailure() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2368,6 +2750,10 @@ public class TestRedFuture {
             Assert.assertTrue(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * cautious union of provided futures that previously were successfully resolved
+         */
         @Test
         public void testCautiousProvidePreResolveSuccess() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2389,6 +2775,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * cautious union of provided futures that previously were failed
+         */
         @Test
         public void testCautiousProvidePreResolveFailure() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2410,6 +2800,12 @@ public class TestRedFuture {
             Assert.assertTrue(reachedFailureBlock.get());
         }
 
+        // Cautious - adopt
+
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * cautious union of adopted futures that later were successfully resolved
+         */
         @Test
         public void testCautiousAdoptPostResolveSuccess() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2460,6 +2856,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * cautious union of adopted futures that later were failed
+         */
         @Test
         public void testCautiousAdoptPostResolveFailure() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2510,6 +2910,10 @@ public class TestRedFuture {
             Assert.assertTrue(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * cautious union of adopted futures that previously were successfully resolved
+         */
         @Test
         public void testCautiousAdoptPreResolveSuccess() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2557,6 +2961,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * cautious union of adopted futures that previously were failed
+         */
         @Test
         public void testCautiousAdoptPreResolveFailure() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2604,6 +3012,12 @@ public class TestRedFuture {
             Assert.assertTrue(reachedFailureBlock.get());
         }
 
+        // Cautious - provide and adopt
+
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * cautious union of provided and adopted futures that later were successfully resolved
+         */
         @Test
         public void testCautiousAdoptProvidePostResolveSuccess() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2656,6 +3070,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * cautious union of provided and adopted futures that later were failed
+         */
         @Test
         public void testCautiousAdoptProvidePostResolveFailure() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2708,6 +3126,10 @@ public class TestRedFuture {
             Assert.assertTrue(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * cautious union of provided and adopted futures that previously were successfully resolved
+         */
         @Test
         public void testCautiousAdoptProvidePreResolveSuccess() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2757,6 +3179,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Test the completion and callback invocation of {@link RedFutureHub}
+         * cautious union of provided and adopted futures that previously were failed
+         */
         @Test
         public void testCautiousAdoptProvidePreResolveFailure() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2806,8 +3232,12 @@ public class TestRedFuture {
             Assert.assertTrue(reachedFailureBlock.get());
         }
 
-        // empty
+        // Empty hubs
 
+        /**
+         * Tests to validate completion and callback invocation of optimistic union
+         * of a {@link RedFutureHub} with no tracked futures
+         */
         @Test
         public void testOptimisticEmptyResolve() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2823,6 +3253,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Tests to validate completion and callback invocation of pessimistic union
+         * of a {@link RedFutureHub} with no tracked futures
+         */
         @Test
         public void testPessimisticEmptyResolve() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2838,6 +3272,10 @@ public class TestRedFuture {
             Assert.assertFalse(reachedFailureBlock.get());
         }
 
+        /**
+         * Tests to validate completion and callback invocation of cautious union
+         * of a {@link RedFutureHub} with no tracked futures
+         */
         @Test
         public void testCautiousEmptyResolve() throws Throwable {
             AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
@@ -2855,126 +3293,71 @@ public class TestRedFuture {
 
     }
 
-    public static class TestCompletedFutures {
+    // Utils
 
-        @Test
-        public void testResolvedFuture() throws Throwable {
-            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
-            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
-            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
-            RedFuture future = RedFuture.resolved();
-            future.addSuccessCallback(() -> reachedSuccessBlock.set(true));
-            future.addFailureCallback(throwable -> reachedFailureBlock.set(true));
-            future.addFinallyCallback(() -> reachedFinallyBlock.set(true));
-            Assert.assertTrue(reachedFinallyBlock.get());
-            Assert.assertTrue(reachedSuccessBlock.get());
-            Assert.assertFalse(reachedFailureBlock.get());
-        }
-
-        @Test
-        public void testResolvedFutureOf() throws Throwable {
-            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
-            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
-            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
-            AtomicBoolean reachedTypedSuccessBlock = new AtomicBoolean(false);
-            AtomicBoolean correctValueReturned = new AtomicBoolean(false);
-            Object object = new Object();
-            RedFutureOf<Object> future = RedFuture.resolvedOf(object);
-            future.addSuccessCallback(() -> reachedSuccessBlock.set(true));
-            future.addFailureCallback(throwable -> reachedFailureBlock.set(true));
-            future.addFinallyCallback(() -> reachedFinallyBlock.set(true));
-            future.addSuccessCallback(o -> {
-                correctValueReturned.set(o == object);
-                reachedTypedSuccessBlock.set(true);
-            });
-            Assert.assertTrue(reachedFinallyBlock.get());
-            Assert.assertTrue(reachedSuccessBlock.get());
-            Assert.assertFalse(reachedFailureBlock.get());
-            Assert.assertTrue(reachedTypedSuccessBlock.get());
-            Assert.assertTrue(correctValueReturned.get());
-        }
-
-        @Test
-        public void testFailedFuture() throws Throwable {
-            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
-            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
-            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
-            AtomicBoolean correctValueReturned = new AtomicBoolean(false);
-            AtomicBoolean reachedTypedSuccessBlock = new AtomicBoolean(false);
-            TestException exception = new TestException();
-            RedFutureOf<Object> future = RedFuture.failedOf(exception);
-            future.addSuccessCallback(() -> reachedSuccessBlock.set(true));
-            future.addFailureCallback(throwable -> {
-                correctValueReturned.set(throwable == exception);
-                reachedFailureBlock.set(true);
-            });
-            future.addFinallyCallback(() -> reachedFinallyBlock.set(true));
-            future.addSuccessCallback(o -> reachedTypedSuccessBlock.set(true));
-            Assert.assertTrue(reachedFinallyBlock.get());
-            Assert.assertFalse(reachedSuccessBlock.get());
-            Assert.assertFalse(reachedTypedSuccessBlock.get());
-            Assert.assertTrue(reachedFailureBlock.get());
-            Assert.assertTrue(correctValueReturned.get());
-        }
-
-        @Test
-        public void testFailedFutureOf() throws Throwable {
-            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
-            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
-            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
-            AtomicBoolean correctValueReturned = new AtomicBoolean(false);
-            TestException exception = new TestException();
-            RedFuture future = RedFuture.failed(exception);
-            future.addSuccessCallback(() -> reachedSuccessBlock.set(true));
-            future.addFailureCallback(throwable -> {
-                correctValueReturned.set(throwable == exception);
-                reachedFailureBlock.set(true);
-            });
-            future.addFinallyCallback(() -> reachedFinallyBlock.set(true));
-            Assert.assertTrue(reachedFinallyBlock.get());
-            Assert.assertFalse(reachedSuccessBlock.get());
-            Assert.assertTrue(reachedFailureBlock.get());
-            Assert.assertTrue(correctValueReturned.get());
-        }
-
-    }
-
-    // utils
-
+    /**
+     * Validates whether or not the current thread is named like the scheduler thread name.
+     * The scheduler is responsible for delayed resolving of test futures (@see {@link #successfulFuture()}),
+     * thus, if not otherwise requested, the thread invoking callback methods should be the same.
+     */
     private static boolean isCallbackThread() {
         return Thread.currentThread().getName().equals(SCHEDULER_THREAD_NAME);
     }
 
+    /**
+     * @return a {@link RedFuture} that will be successfully resolved
+     * within {@link TestRedFuture#FUTURE_SLEEP_TIME} milliseconds
+     */
     private static RedFuture successfulFuture() {
         OpenRedFuture future = RedFuture.future();
         SCHEDULER.schedule(future::resolve, FUTURE_SLEEP_TIME, TimeUnit.MILLISECONDS);
         return future;
     }
 
+    /**
+     * @return a {@link RedFutureOf} that will be successfully resolved with given value
+     * within {@link TestRedFuture#FUTURE_SLEEP_TIME} milliseconds
+     */
     private static <T> RedFutureOf<T> successfulFutureOf(T value) {
         OpenRedFutureOf<T> future = RedFuture.futureOf();
         SCHEDULER.schedule(() -> future.resolve(value), FUTURE_SLEEP_TIME, TimeUnit.MILLISECONDS);
         return future;
     }
 
+    /**
+     * @return a {@link ListenableFuture} that will be successfully resolved with given value
+     * within {@link TestRedFuture#FUTURE_SLEEP_TIME} milliseconds
+     */
     private static <T> ListenableFuture<T> successfulListenableFuture(T value) {
         SettableFuture<T> future = SettableFuture.create();
         SCHEDULER.schedule(() -> future.set(value), FUTURE_SLEEP_TIME, TimeUnit.MILLISECONDS);
         return future;
     }
 
+    /**
+     * @return a {@link RedFuture} that will be failed within {@link TestRedFuture#FUTURE_SLEEP_TIME}
+     * milliseconds
+     */
     private static RedFuture failingFuture(Throwable throwable) {
         OpenRedFuture future = RedFuture.future();
         SCHEDULER.schedule(() -> future.fail(throwable), FUTURE_SLEEP_TIME, TimeUnit.MILLISECONDS);
         return future;
     }
 
+    /**
+     * @return a {@link RedFutureOf} that will be failed within {@link TestRedFuture#FUTURE_SLEEP_TIME}
+     * milliseconds
+     */
     private static <T> RedFutureOf<T> failingFutureOf(Throwable throwable) {
         OpenRedFutureOf<T> future = RedFuture.futureOf();
         SCHEDULER.schedule(() -> future.fail(throwable), FUTURE_SLEEP_TIME, TimeUnit.MILLISECONDS);
         return future;
     }
 
+    /**
+     * @return a {@link ListenableFuture} that will be failed within {@link TestRedFuture#FUTURE_SLEEP_TIME}
+     * milliseconds
+     */
     private static <T> ListenableFuture<T> failingListenableFuture(Throwable throwable) {
         SettableFuture<T> future = SettableFuture.create();
         SCHEDULER.schedule(() -> future.setException(throwable), FUTURE_SLEEP_TIME, TimeUnit.MILLISECONDS);
@@ -2983,14 +3366,20 @@ public class TestRedFuture {
 
     private static final String SCHEDULER_THREAD_NAME = "SCHEDULER_THREAD_NAME";
 
+    private static final String TEST_THREAD_NAME = "TEST_THREAD_NAME";
+
+    /**
+     * ScheduledExecutorService to invoke delayed resolving of futures
+     */
     private static final ScheduledExecutorService SCHEDULER = Executors.newScheduledThreadPool(1, r -> {
         Thread thread = new Thread(r);
         thread.setName(SCHEDULER_THREAD_NAME);
         return thread;
     });
 
-    private static final String TEST_THREAD_NAME = "TEST_THREAD_NAME";
-
+    /**
+     * Executor to be used to register callbacks with
+     */
     private static final Executor TEST_EXECUTOR = Executors.newSingleThreadExecutor(r -> {
         Thread thread = new Thread(r);
         thread.setName(TEST_THREAD_NAME);

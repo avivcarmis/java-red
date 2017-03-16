@@ -4,9 +4,7 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.javared.future.callbacks.Callback;
 import com.javared.future.callbacks.EmptyCallback;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 /**
  * A simple {@link java.util.concurrent.Future} like interface,
@@ -100,6 +98,19 @@ public interface RedFuture {
      * @see Future#get()
      */
     void waitForCompletion() throws ExecutionException, InterruptedException;
+
+    /**
+     * Tries to blocks the thread for at most the given timeout until the future is completed.
+     * If the future is already complete, the method returns immediately.
+     *
+     * @param timeout the maximum time to wait
+     * @param unit    the time unit of the timeout argument
+     * @throws ExecutionException if the computation threw an exception
+     * @throws InterruptedException if the current thread was interrupted while waiting
+     * @throws TimeoutException if the wait timed out
+     * @see Future#get(long, TimeUnit)
+     */
+    void waitForCompletion(long timeout, TimeUnit unit) throws ExecutionException, InterruptedException, TimeoutException;
 
     /**
      * @return the underlying Guava {@link ListenableFuture}

@@ -9,6 +9,8 @@ import com.javared.future.callbacks.EmptyCallback;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -105,6 +107,11 @@ abstract public class BaseOpenRedFuture<T> implements RedFuture {
     @Override
     public void waitForCompletion() throws ExecutionException, InterruptedException {
         _settableFuture.get();
+    }
+
+    @Override
+    public void waitForCompletion(long timeout, TimeUnit unit) throws ExecutionException, InterruptedException, TimeoutException {
+        _settableFuture.get(timeout, unit);
     }
 
     @Override

@@ -1500,6 +1500,8 @@ public class TestRedFuture {
      */
     public static class TestWaitOperations {
 
+        // RedFuture wait
+
         /**
          * Test the functionality of {@link RedFuture#isResolved()}
          */
@@ -1515,13 +1517,35 @@ public class TestRedFuture {
          * Test the functionality of {@link RedFuture#waitForCompletion()}
          */
         @Test
-        public void testWaitForCompletion() throws Throwable {
+        public void testWaitForCompletionNoTimeout() throws Throwable {
             long time = System.currentTimeMillis();
             RedFuture future = successfulFuture();
             future.waitForCompletion();
             Assert.assertTrue(System.currentTimeMillis() >= time + FUTURE_SLEEP_TIME);
             Assert.assertTrue(future.isResolved());
         }
+
+        /**
+         * Test the success of {@link RedFuture#waitForCompletion(long, TimeUnit)}
+         */
+        @Test
+        public void testWaitForCompletionTimeoutSuccess() throws Throwable {
+            long time = System.currentTimeMillis();
+            RedFuture future = successfulFuture();
+            future.waitForCompletion(FUTURE_SLEEP_TIME * 2, TimeUnit.MILLISECONDS);
+            Assert.assertTrue(System.currentTimeMillis() >= time + FUTURE_SLEEP_TIME);
+            Assert.assertTrue(future.isResolved());
+        }
+
+        /**
+         * Test the timeout of {@link RedFuture#waitForCompletion(long, TimeUnit)}
+         */
+        @Test(expected = TimeoutException.class)
+        public void testWaitForCompletionTimeoutFailure() throws Throwable {
+            successfulFuture().waitForCompletion(Math.round(FUTURE_SLEEP_TIME * 0.3), TimeUnit.MILLISECONDS);
+        }
+
+        // RedFutureOf wait
 
         /**
          * Test the functionality of {@link RedFutureOf#tryGet()}
@@ -1539,13 +1563,34 @@ public class TestRedFuture {
          * Test the functionality of {@link RedFutureOf#waitAndGet()}
          */
         @Test
-        public void testWaitAndGet() throws Throwable {
+        public void testWaitAndGetNoTimeout() throws Throwable {
             long time = System.currentTimeMillis();
             Object object = new Object();
             RedFutureOf<Object> future = successfulFutureOf(object);
             Object value = future.waitAndGet();
             Assert.assertTrue(System.currentTimeMillis() >= time + FUTURE_SLEEP_TIME);
             Assert.assertEquals(object, value);
+        }
+
+        /**
+         * Test the success of {@link RedFutureOf#waitAndGet(long, TimeUnit)}
+         */
+        @Test
+        public void testWaitAndGetTimeoutSuccess() throws Throwable {
+            long time = System.currentTimeMillis();
+            Object object = new Object();
+            RedFutureOf<Object> future = successfulFutureOf(object);
+            Object value = future.waitAndGet(FUTURE_SLEEP_TIME * 2, TimeUnit.MILLISECONDS);
+            Assert.assertTrue(System.currentTimeMillis() >= time + FUTURE_SLEEP_TIME);
+            Assert.assertEquals(object, value);
+        }
+
+        /**
+         * Test the timeout of {@link RedFutureOf#waitAndGet(long, TimeUnit)}
+         */
+        @Test(expected = TimeoutException.class)
+        public void testWaitAndGetTimeoutFailure() throws Throwable {
+            successfulFutureOf(new Object()).waitAndGet(Math.round(FUTURE_SLEEP_TIME * 0.2), TimeUnit.MILLISECONDS);
         }
 
     }

@@ -7,6 +7,8 @@ import com.javared.future.callbacks.EmptyCallback;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * An implementation of {@link RedFutureOf}, which represents the settable side of the typed future.
@@ -146,6 +148,11 @@ public class OpenRedFutureOf<T> extends BaseOpenRedFuture<T> implements RedFutur
     @Override
     public T waitAndGet() throws ExecutionException, InterruptedException {
         return getListenableFuture().get();
+    }
+
+    @Override
+    public T waitAndGet(long timeout, TimeUnit unit) throws ExecutionException, InterruptedException, TimeoutException {
+        return getListenableFuture().get(timeout, unit);
     }
 
     @Override

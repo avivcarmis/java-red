@@ -9,50 +9,121 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 
 /**
- * Created by Mamot on 3/14/2017.
+ * An implementation of {@link RedFutureOf}, which represents the settable side of the typed future.
+ * A future of this type may be resolved or failed, as well as attach with callbacks.
+ *
+ * @param <T> the type of the future value
  */
 public class OpenRedFutureOf<T> extends BaseOpenRedFuture<T> implements RedFutureOf<T> {
 
     // Fields
 
+    /**
+     * the resulted value of the future
+     */
     private T _value;
 
     // Constructors
 
-    protected OpenRedFutureOf() {}
+    @SuppressWarnings("WeakerAccess")
+    protected OpenRedFutureOf() {
+        _value = null;
+    }
 
     // Public
 
+    /**
+     * Resolves the future, marking it successfully completed.
+     * As result of this method invocation, all registered success and finally callbacks
+     * will be invoked.
+     * If the future is already completed, a warning will be logged. @see {@link #resolve(Object, boolean)}
+     *
+     * @param value the value to resolve the future with
+     */
     public void resolve(T value) {
         if (resolve(value, true)) {
             _value = value;
         }
     }
 
+    /**
+     * Resolves the future, marking it successfully completed.
+     * As result of this method invocation, all registered success and finally callbacks
+     * will be invoked.
+     * If the future is already completed, this call will be ignored.
+     *
+     * @param value the value to resolve the future with
+     */
     public void tryResolve(T value) {
         if (resolve(value, false)) {
             _value = value;
         }
     }
 
-    public OpenRedFutureOf<T> follow(RedFutureOf<T> future) {
+    /**
+     * Tells the current open future to follow the given future status.
+     * When the given future will be resolved or failed, the current future will respectively
+     * be directly resolved or failed by the same thread.
+     * If the given future is already resolved or failed, the current future will respectively
+     * be directly resolved or failed by the current thread.
+     * Note that if the future is already completed when trying to follow the given future status,
+     * a warning will be logged and the second completion invocation will be ignored.
+     * Thus, trying to follow more than one future is illegal.
+     *
+     * @param future future to follow
+     */
+    public void follow(RedFutureOf<T> future) {
         future.addSuccessCallback(this::resolve).addFailureCallback(this::fail);
-        return this;
     }
 
-    public OpenRedFutureOf<T> follow(Executor executor, RedFutureOf<T> future) {
+    /**
+     * Tells the current open future to follow the given future status.
+     * When the given future will be resolved or failed, the current future will respectively
+     * queued to be resolved or failed with the given executor.
+     * If the given future is already resolved or failed, the current future will respectively
+     * be queued to be resolved or failed with the given executor.
+     * Note that if the future is already completed when trying to follow the given future status,
+     * a warning will be logged and the second completion invocation will be ignored.
+     * Thus, trying to follow more than one future is illegal.
+     *
+     * @param executor to execute the completion of this future
+     * @param future   future to follow
+     */
+    public void follow(Executor executor, RedFutureOf<T> future) {
         future.addSuccessCallback(executor, this::resolve).addFailureCallback(executor, this::fail);
-        return this;
     }
 
-    public OpenRedFutureOf<T> follow(ListenableFuture<T> listenableFuture) {
+    /**
+     * Tells the current open future to follow the given future status.
+     * When the given future will be resolved or failed, the current future will respectively
+     * be directly resolved or failed by the same thread.
+     * If the given future is already resolved or failed, the current future will respectively
+     * be directly resolved or failed by the current thread.
+     * Note that if the future is already completed when trying to follow the given future status,
+     * a warning will be logged and the second completion invocation will be ignored.
+     * Thus, trying to follow more than one future is illegal.
+     *
+     * @param listenableFuture future to follow
+     */
+    public void follow(ListenableFuture<T> listenableFuture) {
         Futures.addCallback(listenableFuture, safeCallback(this::resolve, this::fail));
-        return this;
     }
 
-    public OpenRedFutureOf<T> follow(Executor executor, ListenableFuture<T> listenableFuture) {
+    /**
+     * Tells the current open future to follow the given future status.
+     * When the given future will be resolved or failed, the current future will respectively
+     * queued to be resolved or failed with the given executor.
+     * If the given future is already resolved or failed, the current future will respectively
+     * be queued to be resolved or failed with the given executor.
+     * Note that if the future is already completed when trying to follow the given future status,
+     * a warning will be logged and the second completion invocation will be ignored.
+     * Thus, trying to follow more than one future is illegal.
+     *
+     * @param executor           to execute the completion of this future
+     * @param listenableFuture   future to follow
+     */
+    public void follow(Executor executor, ListenableFuture<T> listenableFuture) {
         Futures.addCallback(listenableFuture, safeCallback(this::resolve, this::fail), executor);
-        return this;
     }
 
     @Override

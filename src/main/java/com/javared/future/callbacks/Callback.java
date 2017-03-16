@@ -1,10 +1,15 @@
 package com.javared.future.callbacks;
 
 /**
- * Created by Mamot on 3/14/2017.
+ * A simple callback interface for receiving a typed value.
+ * @param <T> the type of the callback parameter
  */
 public interface Callback<T> {
 
+    /**
+     * Implementation of the callback
+     * @param t the resulted callback parameter
+     */
     void call(T t);
 
 }

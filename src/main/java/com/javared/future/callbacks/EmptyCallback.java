@@ -1,10 +1,13 @@
 package com.javared.future.callbacks;
 
 /**
- * Created by Mamot on 3/14/2017.
+ * A simple callback interface with no parameters.
  */
 public interface EmptyCallback {
 
+    /**
+     * Implementation of the callback
+     */
     void call();
 
 }

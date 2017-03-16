@@ -20,7 +20,10 @@ public class RedTestContext extends RedFutureHub {
     
     private final AtomicReference<Throwable> _firstFailure;
 
-    RedTestContext() {
+    private final Thread _executingThread;
+
+    RedTestContext(Thread executingThread) {
+        _executingThread = executingThread;
         assertions = new Assertions();
         _firstFailure = new AtomicReference<>(null);
     }
@@ -42,6 +45,7 @@ public class RedTestContext extends RedFutureHub {
             callback.call();
         } catch (Throwable t) {
             _firstFailure.compareAndSet(null, t);
+            _executingThread.interrupt();
         }
     }
 

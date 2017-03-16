@@ -8,6 +8,8 @@ import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.Statement;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * Created by avivc on 3/15/2017.
@@ -62,12 +64,14 @@ public class RedAsyncTestRunner extends BlockJUnit4ClassRunner {
                 super.evaluate();
             }
             else {
-                RedTestContext testContext = new RedTestContext();
-                long testTimeout = 0;
+                RedTestContext testContext = new RedTestContext(Thread.currentThread());
+                long testTimeout = 60000;
                 Class<? extends Throwable> expectedException = Test.None.class;
                 Test testAnnotation = testMethod.getAnnotation(Test.class);
                 if (testAnnotation != null) {
-                    testTimeout = testAnnotation.timeout();
+                    if (testAnnotation.timeout() > 0) {
+                        testTimeout = testAnnotation.timeout();
+                    }
                     expectedException = testAnnotation.expected();
                 }
                 try {
@@ -77,7 +81,11 @@ public class RedAsyncTestRunner extends BlockJUnit4ClassRunner {
                         throw t;
                     }
                 }
-                testContext.uniteOptimistically().waitForCompletion(); // TODO add timeout
+                try {
+                    testContext.uniteOptimistically().waitForCompletion(testTimeout, TimeUnit.MILLISECONDS);
+                } catch (TimeoutException e) {
+                    throw new AssertionError("test took more than " + testTimeout + "ms to complete");
+                } catch (InterruptedException ignored) {}
                 testContext.checkAssertions();
             }
         }

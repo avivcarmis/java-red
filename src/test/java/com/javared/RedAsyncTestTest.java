@@ -18,8 +18,7 @@ public class RedAsyncTestTest {
     public void test(RedTestContext testContext) throws Exception {
         OpenRedFuture future = testContext.provideFuture();
         testContext.scheduleTimeout(3, TimeUnit.SECONDS, () -> {
-            testContext.assertions.assertNotNull("io can't be null", null);
-            future.resolve();
+            future.fail(new Exception("ioio"));
         });
     }
 

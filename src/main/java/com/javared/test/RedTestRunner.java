@@ -8,17 +8,31 @@ import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.Statement;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 /**
- * Created by avivc on 3/15/2017.
+ * Overrides {@link BlockJUnit4ClassRunner} behaviour, so that when a {@link Test}
+ * method is called, a single {@link RedTestContext} parameter is allowed.
+ *
+ * If a {@link RedTestContext} parameter does not exist, the original {@link BlockJUnit4ClassRunner}
+ * behaviour is invoked.
+ *
+ * If a {@link RedTestContext} parameter exists, a {@link RedTestContext} instance is created
+ * prior to the test, then the test method is invoked with the new context instance.
+ * Once the test method returns, the runner waits for all the context forks to successfully
+ * finish (see {@link RedTestContext#fork()}), and eventually it looks for un-thrown assertion errors.
  */
-public class RedAsyncTestRunner extends BlockJUnit4ClassRunner {
+public class RedTestRunner extends BlockJUnit4ClassRunner {
 
-    public RedAsyncTestRunner(Class<?> klass) throws InitializationError {
-        super(klass);
+    // Constructors
+
+    public RedTestRunner(Class<?> aClass) throws InitializationError {
+        super(aClass);
     }
+
+    // private
 
     @Override
     protected Statement methodInvoker(FrameworkMethod method, Object test) {
@@ -37,56 +51,67 @@ public class RedAsyncTestRunner extends BlockJUnit4ClassRunner {
         }
     }
 
+    /**
+     * @return true if the method has no parameters, being a simple JUnit test, false otherwise
+     */
     private static boolean isNormalTest(FrameworkMethod method) {
         return method.getMethod().getParameterCount() == 0;
     }
 
+    /**
+     * @return true if the method has one {@link RedTestContext} parameter, being an async test,
+     * false otherwise.
+     */
     private static boolean isAsyncTest(FrameworkMethod method) {
         Class<?>[] types = method.getMethod().getParameterTypes();
         return types.length == 1 && types[0] == RedTestContext.class;
     }
 
+    /**
+     * Overrides the JUnit method invoker to implement async behaviour
+     */
     private static class AsyncInvokeMethod extends InvokeMethod {
 
-        private final FrameworkMethod testMethod;
+        // Fields
 
-        private final Object target;
+        private final FrameworkMethod _testMethod;
+
+        private final Object _target;
+
+        // Constructors
 
         private AsyncInvokeMethod(FrameworkMethod testMethod, Object target) {
             super(testMethod, target);
-            this.testMethod = testMethod;
-            this.target = target;
+            this._testMethod = testMethod;
+            this._target = target;
         }
+
+        // Public
 
         @Override
         public void evaluate() throws Throwable {
-            if (isNormalTest(testMethod)) {
+            if (isNormalTest(_testMethod)) {
                 super.evaluate();
             }
             else {
                 RedTestContext testContext = new RedTestContext(Thread.currentThread());
                 long testTimeout = 60000;
-                Class<? extends Throwable> expectedException = Test.None.class;
-                Test testAnnotation = testMethod.getAnnotation(Test.class);
+                Test testAnnotation = _testMethod.getAnnotation(Test.class);
                 if (testAnnotation != null) {
                     if (testAnnotation.timeout() > 0) {
                         testTimeout = testAnnotation.timeout();
                     }
-                    expectedException = testAnnotation.expected();
                 }
+                _testMethod.invokeExplosively(_target, testContext);
                 try {
-                    testMethod.invokeExplosively(target, testContext);
-                } catch (Throwable t) {
-                    if (expectedException == Test.None.class || !expectedException.isInstance(t)) {
-                        throw t;
-                    }
-                }
-                try {
-                    testContext.uniteOptimistically().waitForCompletion(testTimeout, TimeUnit.MILLISECONDS);
+                    testContext.unite().waitForCompletion(testTimeout, TimeUnit.MILLISECONDS);
                 } catch (TimeoutException e) {
                     throw new AssertionError("test took more than " + testTimeout + "ms to complete");
+                } catch (ExecutionException e) {
+                    throw e.getCause();
                 } catch (InterruptedException ignored) {}
                 testContext.checkAssertions();
+                testContext.close();
             }
         }
 

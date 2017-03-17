@@ -1,5 +1,6 @@
 package com.javared.test;
 
+import com.javared.future.RedFuture;
 import com.javared.future.RedFutureHub;
 import com.javared.future.callbacks.EmptyCallback;
 import org.junit.Assert;
@@ -10,51 +11,200 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
- * Created by avivc on 3/16/2017.
+ * The context of an asynchronous test.
+ * The test context is responsible for:
+ * <ul>
+ *     <li>Forking the test, allowing the flow test method to return
+ *     without finishing the test, to enable waiting for async operations
+ *     to finish. Each fork represents a single async operation that must
+ *     be marked as finished or failed for the test to end.</li>
+ *     <li>Assertions - since assertions may be performed on callbacks
+ *     of any async operation, on any thread, assertion errors will be
+ *     thrown, be JUnit won't be there to catch them. For that end,
+ *     the {@link RedTestContext} instance exposes all of JUnit {@link Assert}
+ *     interface, so that assertions can be made from any context, and still
+ *     influence test results.</li>
+ *     <li>Late scheduling - since scheduling late tasks and assertions
+ *     is a common async test practice, the context instance introduces
+ *     a simple utility scheduling method available at
+ *     {@link #scheduleTask(long, TimeUnit, Runnable)}.</li>
+ * </ul>
+ *
+ * Note that all the context forks must be made before the test method returns.
+ * See more at {@link #fork()}
  */
-public class RedTestContext extends RedFutureHub {
+@SuppressWarnings("SameParameterValue")
+public class RedTestContext {
 
+    // Constants
+
+    /**
+     * Scheduler service for scheduling late callbacks
+     */
     private static final ScheduledExecutorService SCHEDULER = Executors.newScheduledThreadPool(1);
 
-    public final Assertions assertions;
-    
-    private final AtomicReference<Throwable> _firstFailure;
+    // Fields
 
+    /**
+     * The context assertion interface
+     */
+    public final Assertions assertions;
+
+    /**
+     * The thread executing the test
+     * When the test method returns, the executing thread sleeps until all
+     * forks are finished. A reference to the thread is required for interrupting
+     * it in case an assertion error is thrown, to prevent it from keep sleeping.
+     */
     private final Thread _executingThread;
 
+    /**
+     * A {@link RedFutureHub} for managing the test forks
+     * Each fork has an underlying future, managed by the hub.
+     */
+    private final RedFutureHub _hub;
+
+    /**
+     * Holds the instance of the first throwable thrown anywhere on the test context
+     */
+    private final AtomicReference<Throwable> _firstFailure;
+
+    /**
+     * Whether or not the test is still active.
+     */
+    private boolean _testActive;
+
+    // Constructors
+
     RedTestContext(Thread executingThread) {
-        _executingThread = executingThread;
         assertions = new Assertions();
+        _executingThread = executingThread;
+        _hub = RedFuture.hub();
         _firstFailure = new AtomicReference<>(null);
+        _testActive = true;
     }
 
-    public void scheduleTimeout(long delay, TimeUnit unit, Runnable runnable) {
+    // Public
+
+    /**
+     * Forks the test, and returns the fork instance.
+     * The returned instance must be held and completed, for the test to successful complete.
+     *
+     * NOTE that all the context forks must be made before the test method returns.
+     * If, for example, we want to perform an async DB call, and when it's done, and only then,
+     * we want to perform another one. Then in such a case we want to fork the context twice
+     * at the beginning of the test method (or any other time before it returns), and NOT
+     * to perform the second fork after the first one is completed.
+     *
+     * @return a fork instance
+     */
+    public RedTestFork fork() {
+        return new RedTestFork(_hub.provideFuture());
+    }
+
+    /**
+     * Fails the test.
+     *
+     * @param throwable cause
+     */
+    public void fail(Throwable throwable) {
+        handleFailure(throwable);
+    }
+
+    /**
+     * Fails the test.
+     *
+     * @param message reason
+     */
+    public void fail(String message) {
+        handleFailure(new RuntimeException(message));
+    }
+
+    /**
+     * Fails the test.
+     */
+    public void fail() {
+        handleFailure(new RuntimeException());
+    }
+
+    /**
+     * Schedules a late runnable to be executed.
+     *
+     * @param delay    the delay of the execution to apply
+     * @param unit     the time unit the of given delay
+     * @param runnable the runnable task to execute
+     */
+    public void scheduleTask(long delay, TimeUnit unit, Runnable runnable) {
         SCHEDULER.schedule(runnable, delay, unit);
     }
 
-    public void fail(String message) {
-        assertion(() -> Assert.fail(message));
+    /**
+     * In some cases, in a late callback of an async operation,
+     * it may be reasonable to validate whether or not the test is still active, or completed.
+     * For example, you can create a fork, and then schedule to complete it in 10ms, and schedule
+     * another callback to run in 100ms. The second callback will get executed,
+     * but the test will already be finished at this point.
+     *
+     * @return whether or not the test is still pending results
+     */
+    public boolean isTestActive() {
+        return _testActive;
     }
 
-    public void fail() {
-        assertion(Assert::fail);
+    // Private
+
+    /**
+     * Marks the test as completed.
+     */
+    void close() {
+        _testActive = false;
     }
 
-    private void assertion(EmptyCallback callback) {
-        try {
-            callback.call();
-        } catch (Throwable t) {
-            _firstFailure.compareAndSet(null, t);
-            _executingThread.interrupt();
-        }
+    /**
+     * @return an optimistic union of all the forks futures.
+     */
+    RedFuture unite() {
+        return _hub.uniteOptimistically();
     }
 
+    /**
+     * @throws Throwable any failure of the context that hasn't been thrown on the executing thread.
+     */
     void checkAssertions() throws Throwable {
         if (_firstFailure.get() != null) {
             throw _firstFailure.get();
         }
     }
 
+    /**
+     * Executes a given callback and interrupts the executing thread
+     * if a throwable is thrown during execution.
+     * @param callback callback to execute
+     */
+    private void assertion(EmptyCallback callback) {
+        try {
+            callback.call();
+        } catch (Throwable t) {
+            handleFailure(t);
+            throw t;
+        }
+    }
+
+    /**
+     * Marks the given throwable as the cause of failure for the test,
+     * in case no prior throwable has taken place.
+     * Then, interrupts the executing thread to prevent it from keep sleeping.
+     * @param t throwable to handle
+     */
+    private void handleFailure(Throwable t) {
+        _firstFailure.compareAndSet(null, t);
+        _executingThread.interrupt();
+    }
+
+    /**
+     * Exposes JUnit {@link Assert} interface,
+     * wraps each assertion method with a call to {@link #assertion(EmptyCallback)}
+     */
     public class Assertions {
 
         public void assertTrue(String message, boolean condition) {
@@ -109,76 +259,76 @@ public class RedTestContext extends RedFutureHub {
             assertion(() -> Assert.assertNotEquals(unexpected, actual, delta));
         }
 
-        public void assertArrayEquals(String message, Object[] expecteds, Object[] actuals) {
-            assertion(() -> Assert.assertArrayEquals(message, expecteds, actuals));
+        public void assertArrayEquals(String message, Object[] expected, Object[] actual) {
+            assertion(() -> Assert.assertArrayEquals(message, expected, actual));
         }
 
-        public void assertArrayEquals(Object[] expecteds, Object[] actuals) {
-            assertion(() -> Assert.assertArrayEquals(expecteds, actuals));
+        public void assertArrayEquals(Object[] expected, Object[] actual) {
+            assertion(() -> Assert.assertArrayEquals(expected, actual));
         }
 
-        public void assertArrayEquals(String message, boolean[] expecteds, boolean[] actuals) {
-            assertion(() -> Assert.assertArrayEquals(message, expecteds, actuals));
+        public void assertArrayEquals(String message, boolean[] expected, boolean[] actual) {
+            assertion(() -> Assert.assertArrayEquals(message, expected, actual));
         }
 
-        public void assertArrayEquals(boolean[] expecteds, boolean[] actuals) {
-            assertion(() -> Assert.assertArrayEquals(expecteds, actuals));
+        public void assertArrayEquals(boolean[] expected, boolean[] actual) {
+            assertion(() -> Assert.assertArrayEquals(expected, actual));
         }
 
-        public void assertArrayEquals(String message, byte[] expecteds, byte[] actuals) {
-            assertion(() -> Assert.assertArrayEquals(message, expecteds, actuals));
+        public void assertArrayEquals(String message, byte[] expected, byte[] actual) {
+            assertion(() -> Assert.assertArrayEquals(message, expected, actual));
         }
 
-        public void assertArrayEquals(byte[] expecteds, byte[] actuals) {
-            assertion(() -> Assert.assertArrayEquals(expecteds, actuals));
+        public void assertArrayEquals(byte[] expected, byte[] actual) {
+            assertion(() -> Assert.assertArrayEquals(expected, actual));
         }
 
-        public void assertArrayEquals(String message, char[] expecteds, char[] actuals) {
-            assertion(() -> Assert.assertArrayEquals(message, expecteds, actuals));
+        public void assertArrayEquals(String message, char[] expected, char[] actual) {
+            assertion(() -> Assert.assertArrayEquals(message, expected, actual));
         }
 
-        public void assertArrayEquals(char[] expecteds, char[] actuals) {
-            assertion(() -> Assert.assertArrayEquals(expecteds, actuals));
+        public void assertArrayEquals(char[] expected, char[] actual) {
+            assertion(() -> Assert.assertArrayEquals(expected, actual));
         }
 
-        public void assertArrayEquals(String message, short[] expecteds, short[] actuals) {
-            assertion(() -> Assert.assertArrayEquals(message, expecteds, actuals));
+        public void assertArrayEquals(String message, short[] expected, short[] actual) {
+            assertion(() -> Assert.assertArrayEquals(message, expected, actual));
         }
 
-        public void assertArrayEquals(short[] expecteds, short[] actuals) {
-            assertion(() -> Assert.assertArrayEquals(expecteds, actuals));
+        public void assertArrayEquals(short[] expected, short[] actual) {
+            assertion(() -> Assert.assertArrayEquals(expected, actual));
         }
 
-        public void assertArrayEquals(String message, int[] expecteds, int[] actuals) {
-            assertion(() -> Assert.assertArrayEquals(message, expecteds, actuals));
+        public void assertArrayEquals(String message, int[] expected, int[] actual) {
+            assertion(() -> Assert.assertArrayEquals(message, expected, actual));
         }
 
-        public void assertArrayEquals(int[] expecteds, int[] actuals) {
-            assertion(() -> Assert.assertArrayEquals(expecteds, actuals));
+        public void assertArrayEquals(int[] expected, int[] actual) {
+            assertion(() -> Assert.assertArrayEquals(expected, actual));
         }
 
-        public void assertArrayEquals(String message, long[] expecteds, long[] actuals) {
-            assertion(() -> Assert.assertArrayEquals(message, expecteds, actuals));
+        public void assertArrayEquals(String message, long[] expected, long[] actual) {
+            assertion(() -> Assert.assertArrayEquals(message, expected, actual));
         }
 
-        public void assertArrayEquals(long[] expecteds, long[] actuals) {
-            assertion(() -> Assert.assertArrayEquals(expecteds, actuals));
+        public void assertArrayEquals(long[] expected, long[] actual) {
+            assertion(() -> Assert.assertArrayEquals(expected, actual));
         }
 
-        public void assertArrayEquals(String message, double[] expecteds, double[] actuals, double delta) {
-            assertion(() -> Assert.assertArrayEquals(message, expecteds, actuals, delta));
+        public void assertArrayEquals(String message, double[] expected, double[] actual, double delta) {
+            assertion(() -> Assert.assertArrayEquals(message, expected, actual, delta));
         }
 
-        public void assertArrayEquals(double[] expecteds, double[] actuals, double delta) {
-            assertion(() -> Assert.assertArrayEquals(expecteds, actuals, delta));
+        public void assertArrayEquals(double[] expected, double[] actual, double delta) {
+            assertion(() -> Assert.assertArrayEquals(expected, actual, delta));
         }
 
-        public void assertArrayEquals(String message, float[] expecteds, float[] actuals, float delta) {
-            assertion(() -> Assert.assertArrayEquals(message, expecteds, actuals, delta));
+        public void assertArrayEquals(String message, float[] expected, float[] actual, float delta) {
+            assertion(() -> Assert.assertArrayEquals(message, expected, actual, delta));
         }
 
-        public void assertArrayEquals(float[] expecteds, float[] actuals, float delta) {
-            assertion(() -> Assert.assertArrayEquals(expecteds, actuals, delta));
+        public void assertArrayEquals(float[] expected, float[] actual, float delta) {
+            assertion(() -> Assert.assertArrayEquals(expected, actual, delta));
         }
 
         public void assertEquals(String message, double expected, double actual, double delta) {

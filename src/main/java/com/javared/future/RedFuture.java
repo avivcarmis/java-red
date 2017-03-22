@@ -1,5 +1,6 @@
 package com.javared.future;
 
+import com.google.common.util.concurrent.JdkFutureAdapters;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.javared.future.callbacks.Callback;
 import com.javared.future.callbacks.EmptyCallback;
@@ -173,6 +174,58 @@ public interface RedFuture {
         OpenRedFutureOf<T> future = futureOf();
         future.fail(t);
         return future;
+    }
+
+    /**
+     * Converts the given {@link Future<T>} object to a {@link RedFuture<T>}
+     * see {@link JdkFutureAdapters#listenInPoolThread(Future)} for detailed implications
+     * @param future future to convert
+     * @param <T>    type of the future value
+     * @return a RedFuture instance tracking the given {@link Future}
+     */
+    static <T> RedFutureOf<T> convert(Future<T> future) {
+        return convert(JdkFutureAdapters.listenInPoolThread(future));
+    }
+
+    /**
+     * Converts the given {@link Future<T>} object to a {@link RedFuture<T>} with given executor
+     * see {@link JdkFutureAdapters#listenInPoolThread(Future, Executor)} for detailed implications
+     * @param future   future to convert
+     * @param executor executor to wait to future to complete and then execute callbacks
+     *                 note that if the future is already completed, the callbacks will be
+     *                 executed by the current thread
+     * @param <T>      type of the future value
+     * @return a RedFuture instance tracking the given {@link Future}
+     */
+    static <T> RedFutureOf<T> convert(Future<T> future, Executor executor) {
+        return convert(JdkFutureAdapters.listenInPoolThread(future, executor), executor);
+    }
+
+    /**
+     * Converts the given {@link ListenableFuture<T>} object to a {@link RedFuture<T>}
+     * @param future future to convert
+     * @param <T>    type of the future value
+     * @return a RedFuture instance tracking the given {@link ListenableFuture}
+     */
+    static <T> RedFutureOf<T> convert(ListenableFuture<T> future) {
+        OpenRedFutureOf<T> result = futureOf();
+        result.follow(future);
+        return result;
+    }
+
+    /**
+     * Converts the given {@link ListenableFuture<T>} object to a {@link RedFuture<T>}
+     * @param future   future to convert
+     * @param executor executor to execute callbacks
+     *                 note that if the future is already completed, the callbacks will be
+     *                 executed by the current thread
+     * @param <T>      type of the future value
+     * @return a RedFuture instance tracking the given {@link ListenableFuture}
+     */
+    static <T> RedFutureOf<T> convert(ListenableFuture<T> future, Executor executor) {
+        OpenRedFutureOf<T> result = futureOf();
+        result.follow(executor, future);
+        return result;
     }
 
     /**

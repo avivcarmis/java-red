@@ -3338,6 +3338,304 @@ public class TestRedFuture {
 
     }
 
+    /**
+     * Test conversions of supported futures to a {@link RedFuture}
+     */
+    public static class TestConversions {
+
+        // Future to RedFuture
+
+        /**
+         * Test the conversion of successful {@link Future} to {@link RedFuture}
+         * through {@link RedFuture#convert(Future)}
+         */
+        @Test
+        public void FutureConversionSuccess() throws Throwable {
+            CountDownLatch lock = new CountDownLatch(3);
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedTypedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean correctValueReturned = new AtomicBoolean(false);
+            Callable<String> callable = () -> "test";
+            Future<String> javaFuture = TEST_EXECUTOR.submit(callable);
+            RedFutureOf<String> redFuture = RedFuture.convert(javaFuture);
+            redFuture.addSuccessCallback(() -> {
+                reachedSuccessBlock.set(true);
+                lock.countDown();
+            });
+            redFuture.addSuccessCallback(s -> {
+                reachedTypedSuccessBlock.set(true);
+                correctValueReturned.set(s.equals("test"));
+                lock.countDown();
+            });
+            redFuture.addFinallyCallback(() -> {
+                reachedFinallyBlock.set(true);
+                lock.countDown();
+            });
+            redFuture.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            lock.await(300, TimeUnit.MILLISECONDS);
+            Thread.sleep(VALIDATION_SLEEP_TIME);
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertTrue(reachedTypedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+        }
+
+        /**
+         * Test the conversion of failing {@link Future} to {@link RedFuture}
+         * through {@link RedFuture#convert(Future)}
+         */
+        @Test
+        public void FutureConversionFailure() throws Throwable {
+            CountDownLatch lock = new CountDownLatch(2);
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedTypedSuccessBlock = new AtomicBoolean(false);
+            Callable<String> callable = () -> {
+                throw new TestException();
+            };
+            Future<String> javaFuture = TEST_EXECUTOR.submit(callable);
+            RedFutureOf<String> redFuture = RedFuture.convert(javaFuture);
+            redFuture.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            redFuture.addSuccessCallback(s -> reachedTypedSuccessBlock.set(true));
+            redFuture.addFinallyCallback(() -> {
+                reachedFinallyBlock.set(true);
+                lock.countDown();
+            });
+            redFuture.addFailureCallback(throwable -> {
+                reachedFailureBlock.set(true);
+                lock.countDown();
+            });
+            lock.await(300, TimeUnit.MILLISECONDS);
+            Thread.sleep(VALIDATION_SLEEP_TIME);
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertFalse(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedTypedSuccessBlock.get());
+            Assert.assertTrue(reachedFailureBlock.get());
+        }
+
+        /**
+         * Test the conversion of successful {@link Future} to {@link RedFuture}
+         * through {@link RedFuture#convert(Future, Executor)}
+         */
+        @Test
+        public void FutureConversionWithExecutor() throws Throwable {
+            CountDownLatch lock = new CountDownLatch(3);
+            AtomicReference<Throwable> failure = new AtomicReference<>();
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedTypedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean correctValueReturned = new AtomicBoolean(false);
+            Callable<String> callable = () -> {
+                Thread.sleep(100);
+                return "test";
+            };
+            Future<String> javaFuture = TEST_EXECUTOR.submit(callable);
+            RedFutureOf<String> redFuture = RedFuture.convert(javaFuture, TEST_EXECUTOR);
+            redFuture.addSuccessCallback(() -> {
+                reachedSuccessBlock.set(true);
+                if (!Thread.currentThread().getName().equals(TEST_THREAD_NAME)) {
+                    failure.compareAndSet(null, new RuntimeException("success block on unexpected thread"));
+                }
+                lock.countDown();
+            });
+            redFuture.addSuccessCallback(s -> {
+                reachedTypedSuccessBlock.set(true);
+                correctValueReturned.set(s.equals("test"));
+                if (!Thread.currentThread().getName().equals(TEST_THREAD_NAME)) {
+                    failure.compareAndSet(null, new RuntimeException("typed success block on unexpected thread"));
+                }
+                lock.countDown();
+            });
+            redFuture.addFinallyCallback(() -> {
+                reachedFinallyBlock.set(true);
+                if (!Thread.currentThread().getName().equals(TEST_THREAD_NAME)) {
+                    failure.compareAndSet(null, new RuntimeException("finally block on unexpected thread"));
+                }
+                lock.countDown();
+            });
+            redFuture.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            lock.await(300, TimeUnit.MILLISECONDS);
+            Thread.sleep(VALIDATION_SLEEP_TIME);
+            if (failure.get() != null) {
+                throw failure.get();
+            }
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertTrue(reachedTypedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+        }
+
+        /**
+         * Test the conversion of an already resolved {@link Future} to {@link RedFuture}
+         * through {@link RedFuture#convert(Future)}
+         */
+        @Test
+        public void ResolvedFutureConversion() throws Throwable {
+            CountDownLatch lock = new CountDownLatch(3);
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedTypedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean correctValueReturned = new AtomicBoolean(false);
+            Callable<String> callable = () -> "test";
+            Future<String> javaFuture = TEST_EXECUTOR.submit(callable);
+            Thread.sleep(VALIDATION_SLEEP_TIME);
+            RedFutureOf<String> redFuture = RedFuture.convert(javaFuture, TEST_EXECUTOR);
+            redFuture.addSuccessCallback(() -> {
+                reachedSuccessBlock.set(true);
+                lock.countDown();
+            });
+            redFuture.addSuccessCallback(s -> {
+                reachedTypedSuccessBlock.set(true);
+                correctValueReturned.set(s.equals("test"));
+                lock.countDown();
+            });
+            redFuture.addFinallyCallback(() -> {
+                reachedFinallyBlock.set(true);
+                lock.countDown();
+            });
+            redFuture.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            lock.await(300, TimeUnit.MILLISECONDS);
+            Thread.sleep(VALIDATION_SLEEP_TIME);
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertTrue(reachedTypedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+        }
+
+        // ListenableFuture to RedFuture
+
+        /**
+         * Test the conversion of successful {@link Future} to {@link RedFuture}
+         * through {@link RedFuture#convert(Future)}
+         */
+        @Test
+        public void ListenableFutureConversionSuccess() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedTypedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean correctValueReturned = new AtomicBoolean(false);
+            SettableFuture<String> settableFuture = SettableFuture.create();
+            RedFutureOf<String> redFuture = RedFuture.convert(settableFuture);
+            redFuture.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            redFuture.addSuccessCallback(s -> {
+                reachedTypedSuccessBlock.set(true);
+                correctValueReturned.set(s.equals("test"));
+            });
+            redFuture.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            redFuture.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            settableFuture.set("test");
+            Thread.sleep(VALIDATION_SLEEP_TIME);
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertTrue(reachedTypedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+        }
+
+        /**
+         * Test the conversion of failing {@link Future} to {@link RedFuture}
+         * through {@link RedFuture#convert(Future)}
+         */
+        @Test
+        public void ListenableFutureConversionFailure() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedTypedSuccessBlock = new AtomicBoolean(false);
+            SettableFuture<String> settableFuture = SettableFuture.create();
+            RedFutureOf<String> redFuture = RedFuture.convert(settableFuture);
+            redFuture.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            redFuture.addSuccessCallback(s -> reachedTypedSuccessBlock.set(true));
+            redFuture.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            redFuture.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            settableFuture.setException(new TestException());
+            Thread.sleep(VALIDATION_SLEEP_TIME);
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertFalse(reachedSuccessBlock.get());
+            Assert.assertFalse(reachedTypedSuccessBlock.get());
+            Assert.assertTrue(reachedFailureBlock.get());
+        }
+
+        /**
+         * Test the conversion of successful {@link Future} to {@link RedFuture}
+         * through {@link RedFuture#convert(Future, Executor)}
+         */
+        @Test
+        public void ListenableFutureConversionWithExecutor() throws Throwable {
+            AtomicReference<Throwable> failure = new AtomicReference<>();
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedTypedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean correctValueReturned = new AtomicBoolean(false);
+            SettableFuture<String> settableFuture = SettableFuture.create();
+            RedFutureOf<String> redFuture = RedFuture.convert(settableFuture, TEST_EXECUTOR);
+            redFuture.addSuccessCallback(() -> {
+                reachedSuccessBlock.set(true);
+                if (!Thread.currentThread().getName().equals(TEST_THREAD_NAME)) {
+                    failure.compareAndSet(null, new RuntimeException("success block on unexpected thread"));
+                }
+            });
+            redFuture.addSuccessCallback(s -> {
+                reachedTypedSuccessBlock.set(true);
+                correctValueReturned.set(s.equals("test"));
+                if (!Thread.currentThread().getName().equals(TEST_THREAD_NAME)) {
+                    failure.compareAndSet(null, new RuntimeException("typed success block on unexpected thread"));
+                }
+            });
+            redFuture.addFinallyCallback(() -> {
+                reachedFinallyBlock.set(true);
+                if (!Thread.currentThread().getName().equals(TEST_THREAD_NAME)) {
+                    failure.compareAndSet(null, new RuntimeException("finally block on unexpected thread"));
+                }
+            });
+            redFuture.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            settableFuture.set("test");
+            Thread.sleep(VALIDATION_SLEEP_TIME);
+            if (failure.get() != null) {
+                throw failure.get();
+            }
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertTrue(reachedTypedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+        }
+
+        /**
+         * Test the conversion of an already resolved {@link Future} to {@link RedFuture}
+         * through {@link RedFuture#convert(Future)}
+         */
+        @Test
+        public void ListenableFutureFutureConversion() throws Throwable {
+            AtomicBoolean reachedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFailureBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedFinallyBlock = new AtomicBoolean(false);
+            AtomicBoolean reachedTypedSuccessBlock = new AtomicBoolean(false);
+            AtomicBoolean correctValueReturned = new AtomicBoolean(false);
+            SettableFuture<String> settableFuture = SettableFuture.create();
+            settableFuture.set("test");
+            RedFutureOf<String> redFuture = RedFuture.convert(settableFuture, TEST_EXECUTOR);
+            redFuture.addSuccessCallback(() -> reachedSuccessBlock.set(true));
+            redFuture.addSuccessCallback(s -> {
+                reachedTypedSuccessBlock.set(true);
+                correctValueReturned.set(s.equals("test"));
+            });
+            redFuture.addFinallyCallback(() -> reachedFinallyBlock.set(true));
+            redFuture.addFailureCallback(throwable -> reachedFailureBlock.set(true));
+            Thread.sleep(VALIDATION_SLEEP_TIME);
+            Assert.assertTrue(reachedFinallyBlock.get());
+            Assert.assertTrue(reachedSuccessBlock.get());
+            Assert.assertTrue(reachedTypedSuccessBlock.get());
+            Assert.assertFalse(reachedFailureBlock.get());
+        }
+
+    }
+
     // Utils
 
     /**
@@ -3425,7 +3723,7 @@ public class TestRedFuture {
     /**
      * Executor to be used to register callbacks with
      */
-    private static final Executor TEST_EXECUTOR = Executors.newSingleThreadExecutor(r -> {
+    private static final ExecutorService TEST_EXECUTOR = Executors.newFixedThreadPool(1, r -> {
         Thread thread = new Thread(r);
         thread.setName(TEST_THREAD_NAME);
         return thread;

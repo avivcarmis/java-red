@@ -1,5 +1,6 @@
 package com.javared.executor.asssss;
 
+import com.google.common.util.concurrent.SettableFuture;
 import com.javared.executor.RedExecutor;
 import com.javared.future.RedFuture;
 import com.javared.future.RedFutureOf;
@@ -14,7 +15,7 @@ import java.util.concurrent.TimeoutException;
  */
 public class io extends RedExecutor {
 
-    Future<Boolean> future = new Future<Boolean>() {
+    Future<String> future = new Future<String>() {
         @Override
         public boolean cancel(boolean mayInterruptIfRunning) {
             return false;
@@ -31,28 +32,31 @@ public class io extends RedExecutor {
         }
 
         @Override
-        public Boolean get() throws InterruptedException, ExecutionException {
+        public String get() throws InterruptedException, ExecutionException {
             return null;
         }
 
         @Override
-        public Boolean get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
+        public String get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
             return null;
         }
     };
 
+    public static class User {}
+
     public void io() {
-        RedFutureOf<String> dbRead1Future = RedFuture.futureOf();
-        RedFutureOf<String> dbRead2Future = RedFuture.futureOf();
-        RedFutureOf<String> fileRead1Future = RedFuture.futureOf();
-        RedFutureOf<String> fileRead2Future = RedFuture.futureOf();
-        RedFutureOf<Boolean> combine1Future = produce.futureOf(Boolean.class).after(dbRead1Future, fileRead1Future).with((dbRead1Result, fileRead1Result) -> {
-            if ((dbRead1Result.toLowerCase() + fileRead1Result.toLowerCase()).equals("")) {
-                // bla bla
+        Result<User> userResult = produce.valueOf(User.class).after().byRunning(User::new);
+        Result<String> lastVisitResult = produce.futureOf(String.class).after().byRunning(() -> future);
+        Result<Boolean> shouldReportResult = produce.listenableFutureOf(Boolean.class).after(userResult, lastVisitResult).byRunning((user, lastVisit) -> {
+            SettableFuture<Boolean> future = SettableFuture.create();
+            if (lastVisit.equals("")) {
+                future.set(true);
+            } else {
+                future.set(false);
             }
             return future;
         });
-        produce.valueOf(String.class).
+
     }
 
 }

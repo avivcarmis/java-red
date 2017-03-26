@@ -1,9 +1,6 @@
-package com.javared.executor.asssss;
+package com.javared.asssss;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.javared.executor.RedExecutor;
-import com.javared.future.RedFuture;
-import com.javared.future.RedFutureOf;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -42,21 +39,32 @@ public class io extends RedExecutor {
         }
     };
 
-    public static class User {}
+    public static class User {
 
-    public void io() {
-        Result<User> userResult = produce.valueOf(User.class).after().byRunning(User::new);
-        Result<String> lastVisitResult = produce.futureOf(String.class).after().byRunning(() -> future);
-        Result<Boolean> shouldReportResult = produce.listenableFutureOf(Boolean.class).after(userResult, lastVisitResult).byRunning((user, lastVisit) -> {
-            SettableFuture<Boolean> future = SettableFuture.create();
-            if (lastVisit.equals("")) {
-                future.set(true);
+        boolean westernTimezone;
+
+        void save(Runnable finish) {
+
+        }
+
+    }
+
+    public Result<Boolean> io() {
+        Result<User> userResult = produce(User.class).byExecuting(User::new);
+        Result<String> timezoneResult = produceFutureOf(String.class).byExecuting(() -> future);
+        Result<Boolean> result = once(userResult, timezoneResult).succeed().produce(Boolean.class).byExecuting((user, timezone) ->
+                user.westernTimezone && timezone.equals("western"));
+        Marker marker = once(userResult, result).finish().execute((result1, f0, f1) -> {
+            if (f1 != null && f1) {
+                f0.save(result1::resolve);
             } else {
-                future.set(false);
+                result1.resolve();
             }
-            return future;
         });
+        once(marker).succeed().execute(result1 -> {
 
+        });
+        return result;
     }
 
 }

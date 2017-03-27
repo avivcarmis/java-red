@@ -2,7 +2,6 @@ package com.javared;
 
 import com.javared.future.callbacks.EmptyCallback;
 import com.javared.test.RedTestContext;
-import com.javared.test.RedTestFork;
 import com.javared.test.RedTestRunner;
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,7 +14,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * Test the functionality of the Async Test module.
  * Tests the {@link RedTestRunner} to validate correct flow control and handling of failures.
  * Tests the {@link RedTestContext} to validate forking, scheduling and assertions.
- * Tests the {@link RedTestFork} to validate completion and failing of tests.
+ * Tests the {@link RedTestContext.Fork} to validate completion and failing of tests.
  */
 @RunWith(RedTestRunner.class)
 public class TestRedTest {
@@ -109,11 +108,11 @@ public class TestRedTest {
     // Single fork
 
     /**
-     * Tests a forked task fork failing through {@link RedTestFork#fail(Throwable)}
+     * Tests a forked task fork failing through {@link RedTestContext.Fork#fail(Throwable)}
      */
     @Test(expected = TestException.class)
     public void testSingleFailingFork(RedTestContext redTestContext) {
-        RedTestFork fork = redTestContext.fork();
+        RedTestContext.Fork fork = redTestContext.fork();
         redTestContext.scheduleTask(100, TimeUnit.MILLISECONDS, () -> fork.fail(new TestException()));
     }
 
@@ -123,7 +122,7 @@ public class TestRedTest {
      */
     @Test
     public void testSingleSuccessfulFork(RedTestContext redTestContext) {
-        RedTestFork fork = redTestContext.fork();
+        RedTestContext.Fork fork = redTestContext.fork();
         redTestContext.scheduleTask(100, TimeUnit.MILLISECONDS, () -> {
             if (!redTestContext.isTestActive()) {
                 fork.fail("test is not active");
@@ -142,7 +141,7 @@ public class TestRedTest {
      */
     @Test
     public void testDoubleSuccessfulFork(RedTestContext redTestContext) {
-        RedTestFork fork1 = redTestContext.fork();
+        RedTestContext.Fork fork1 = redTestContext.fork();
         redTestContext.scheduleTask(50, TimeUnit.MILLISECONDS, () -> {
             if (!redTestContext.isTestActive()) {
                 fork1.fail("test is not active on fork1");
@@ -151,7 +150,7 @@ public class TestRedTest {
                 fork1.complete();
             }
         });
-        RedTestFork fork2 = redTestContext.fork();
+        RedTestContext.Fork fork2 = redTestContext.fork();
         redTestContext.scheduleTask(100, TimeUnit.MILLISECONDS, () -> {
             if (!redTestContext.isTestActive()) {
                 fork2.fail("test is not active on fork2");
@@ -168,7 +167,7 @@ public class TestRedTest {
      */
     @Test(expected = RuntimeException.class)
     public void testDoubleSuccessfulAndFailingFork(RedTestContext redTestContext) {
-        RedTestFork fork1 = redTestContext.fork();
+        RedTestContext.Fork fork1 = redTestContext.fork();
         redTestContext.scheduleTask(50, TimeUnit.MILLISECONDS, () -> {
             if (!redTestContext.isTestActive()) {
                 fork1.fail("test is not active on fork1");
@@ -177,7 +176,7 @@ public class TestRedTest {
                 fork1.complete();
             }
         });
-        RedTestFork fork2 = redTestContext.fork();
+        RedTestContext.Fork fork2 = redTestContext.fork();
         redTestContext.scheduleTask(100, TimeUnit.MILLISECONDS, () -> {
             if (!redTestContext.isTestActive()) {
                 fork2.fail("test is not active on fork2");
@@ -192,8 +191,8 @@ public class TestRedTest {
      */
     @Test
     public void testDoubleNestedFork(RedTestContext redTestContext) {
-        RedTestFork fork1 = redTestContext.fork();
-        RedTestFork fork2 = redTestContext.fork();
+        RedTestContext.Fork fork1 = redTestContext.fork();
+        RedTestContext.Fork fork2 = redTestContext.fork();
         redTestContext.scheduleTask(50, TimeUnit.MILLISECONDS, () -> {
             if (!redTestContext.isTestActive()) {
                 fork1.fail("test is not active on fork1");
@@ -383,7 +382,7 @@ public class TestRedTest {
      */
     @Test
     public void testForkedPositiveAssertion(RedTestContext redTestContext) {
-        RedTestFork fork = redTestContext.fork();
+        RedTestContext.Fork fork = redTestContext.fork();
         redTestContext.scheduleTask(100, TimeUnit.MILLISECONDS, () ->  {
             redTestContext.assertions.assertNull(null);
             fork.complete();

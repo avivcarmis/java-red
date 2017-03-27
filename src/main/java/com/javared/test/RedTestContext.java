@@ -1,5 +1,6 @@
 package com.javared.test;
 
+import com.javared.future.OpenRedFuture;
 import com.javared.future.RedFuture;
 import com.javared.future.RedFutureHub;
 import com.javared.future.callbacks.EmptyCallback;
@@ -98,8 +99,8 @@ public class RedTestContext {
      *
      * @return a fork instance
      */
-    public RedTestFork fork() {
-        return new RedTestFork(_hub.provideFuture());
+    public Fork fork() {
+        return new Fork(_hub.provideFuture());
     }
 
     /**
@@ -136,6 +137,20 @@ public class RedTestContext {
      */
     public void scheduleTask(long delay, TimeUnit unit, Runnable runnable) {
         SCHEDULER.schedule(runnable, delay, unit);
+    }
+
+    /**
+     * Schedules a late runnable to be executed with a given delay of milliseconds.
+     *
+     * @param delayMillis the delay of the execution to apply in milliseconds
+     * @param runnable    the runnable task to execute
+     */
+    public void scheduleTask(long delayMillis, Runnable runnable) { // TODO test
+        scheduleTask(delayMillis, TimeUnit.MILLISECONDS, runnable);
+    }
+
+    public TimingTester timingTester() {
+        return new TimingTester();
     }
 
     /**
@@ -199,6 +214,97 @@ public class RedTestContext {
     private void handleFailure(Throwable t) {
         _firstFailure.compareAndSet(null, t);
         _executingThread.interrupt();
+    }
+
+    /**
+     * A fork of a {@link RedTestContext}
+     * see {@link RedTestContext#fork()}
+     */
+    public static class Fork {
+
+        // Fields
+
+        /**
+         * The underlying future to resolve or fail
+         */
+        private final OpenRedFuture _future;
+
+        // Constructors
+
+        private Fork(OpenRedFuture future) {
+            _future = future;
+        }
+
+        // Public
+
+        /**
+         * Mark the fork as completed, allowing the test to successfully complete
+         */
+        public void complete() {
+            _future.resolve();
+        }
+
+        /**
+         * Fails the entire test, calling this method is logically identical to
+         * calling {@link RedTestContext#fail(Throwable)}
+         * @param throwable cause of failure
+         */
+        public void fail(Throwable throwable) {
+            _future.fail(throwable);
+        }
+
+        /**
+         * Fails the entire test, calling this method is logically identical to
+         * calling {@link RedTestContext#fail(String)}
+         * @param message reason of failure
+         */
+        public void fail(String message) {
+            _future.fail(new RuntimeException(message));
+        }
+
+        /**
+         * Fails the entire test, calling this method is logically identical to
+         * calling {@link RedTestContext#fail()}
+         */
+        public void fail() {
+            _future.fail(new RuntimeException());
+        }
+
+    }
+
+    // TODO
+    public class TimingTester {
+
+        private final long _startTimeNano;
+
+        private TimingTester() {
+            _startTimeNano = System.nanoTime();
+        }
+
+        public void validatePassed(long time, TimeUnit unit) {
+            if (timePassedNanos() < unit.toNanos(time)) {
+                fail(time + " " + unit.name() + " did not pass yet");
+            }
+        }
+
+        public void validatePassed(long timeMillis) {
+            validatePassed(timeMillis, TimeUnit.MILLISECONDS);
+        }
+
+        public void validateNotPassed(long time, TimeUnit unit) {
+            if (timePassedNanos() >= unit.toNanos(time)) {
+                fail(time + " " + unit.name() + " already passed");
+            }
+        }
+
+        public void validateNotPassed(long timeMillis) {
+            validateNotPassed(timeMillis, TimeUnit.MILLISECONDS);
+        }
+
+        private long timePassedNanos() {
+            return System.nanoTime() - _startTimeNano;
+        }
+
     }
 
     /**
@@ -392,5 +498,5 @@ public class RedTestContext {
         }
 
     }
-    
+
 }

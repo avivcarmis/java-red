@@ -9,6 +9,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * An implementation of {@link RedFutureOf}, which represents the settable side of the typed future.
@@ -23,13 +24,13 @@ public class OpenRedFutureOf<T> extends BaseOpenRedFuture<T> implements RedFutur
     /**
      * the resulted value of the future
      */
-    private T _value;
+    private final AtomicReference<T> _value;
 
     // Constructors
 
     @SuppressWarnings("WeakerAccess")
     protected OpenRedFutureOf() {
-        _value = null;
+        _value = new AtomicReference<>(null);
     }
 
     // Public
@@ -43,9 +44,8 @@ public class OpenRedFutureOf<T> extends BaseOpenRedFuture<T> implements RedFutur
      * @param value the value to resolve the future with
      */
     public void resolve(T value) {
-        if (resolve(value, true)) {
-            _value = value;
-        }
+        _value.compareAndSet(null, value);
+        resolve(value, true);
     }
 
     /**
@@ -57,9 +57,8 @@ public class OpenRedFutureOf<T> extends BaseOpenRedFuture<T> implements RedFutur
      * @param value the value to resolve the future with
      */
     public void tryResolve(T value) {
-        if (resolve(value, false)) {
-            _value = value;
-        }
+        _value.compareAndSet(null, value);
+        resolve(value, false);
     }
 
     /**
@@ -142,7 +141,7 @@ public class OpenRedFutureOf<T> extends BaseOpenRedFuture<T> implements RedFutur
 
     @Override
     public T tryGet() {
-        return _value;
+        return _value.get();
     }
 
     @Override

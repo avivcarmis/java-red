@@ -31,8 +31,8 @@ public class TestRedSynchronizer {
      * -function result
      */
     @Test
-    public void test1(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
-        runFunctionTest(redTestContext, TestSynchronizers.Test1Synchronizer.class);
+    public void noDependenciesTest1(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runFunctionTest(redTestContext, TestSynchronizers.NoDependenciesTest1Synchronizer.class);
     }
 
     /**
@@ -42,8 +42,8 @@ public class TestRedSynchronizer {
      * -function result
      */
     @Test
-    public void test2(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
-        runFunctionTest(redTestContext, TestSynchronizers.Test2Synchronizer.class);
+    public void noDependenciesTest2(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runFunctionTest(redTestContext, TestSynchronizers.NoDependenciesTest2Synchronizer.class);
     }
 
     /**
@@ -53,8 +53,8 @@ public class TestRedSynchronizer {
      * -function result
      */
     @Test
-    public void test3(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
-        runFunctionTest(redTestContext, TestSynchronizers.Test3Synchronizer.class);
+    public void noDependenciesTest3(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runFunctionTest(redTestContext, TestSynchronizers.NoDependenciesTest3Synchronizer.class);
     }
 
     /**
@@ -64,8 +64,8 @@ public class TestRedSynchronizer {
      * -function result
      */
     @Test
-    public void test4(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
-        runFunctionTest(redTestContext, TestSynchronizers.Test4Synchronizer.class);
+    public void noDependenciesTest4(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runFunctionTest(redTestContext, TestSynchronizers.NoDependenciesTest4Synchronizer.class);
     }
 
     /**
@@ -76,8 +76,8 @@ public class TestRedSynchronizer {
      * -function result
      */
     @Test
-    public void test5(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
-        runFunctionTest(redTestContext, TestSynchronizers.Test5Synchronizer.class);
+    public void noDependenciesTest5(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runFunctionTest(redTestContext, TestSynchronizers.NoDependenciesTest5Synchronizer.class);
     }
 
     /**
@@ -88,8 +88,8 @@ public class TestRedSynchronizer {
      * -function result
      */
     @Test
-    public void test6(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
-        runFunctionTest(redTestContext, TestSynchronizers.Test6Synchronizer.class);
+    public void noDependenciesTest6(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runFunctionTest(redTestContext, TestSynchronizers.NoDependenciesTest6Synchronizer.class);
     }
 
     /**
@@ -100,8 +100,8 @@ public class TestRedSynchronizer {
      * -function result
      */
     @Test
-    public void test7(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
-        runFunctionTest(redTestContext, TestSynchronizers.Test7Synchronizer.class);
+    public void noDependenciesTest7(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runFunctionTest(redTestContext, TestSynchronizers.NoDependenciesTest7Synchronizer.class);
     }
 
     /**
@@ -111,8 +111,8 @@ public class TestRedSynchronizer {
      * -command result
      */
     @Test
-    public void test8(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
-        runCommandTest(redTestContext, TestSynchronizers.Test8Synchronizer.class);
+    public void noDependenciesTest8(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runCommandTest(redTestContext, TestSynchronizers.NoDependenciesTest8Synchronizer.class);
     }
 
     /**
@@ -122,8 +122,8 @@ public class TestRedSynchronizer {
      * -command result
      */
     @Test
-    public void test9(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
-        runCommandTest(redTestContext, TestSynchronizers.Test9Synchronizer.class);
+    public void noDependenciesTest9(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runCommandTest(redTestContext, TestSynchronizers.NoDependenciesTest9Synchronizer.class);
     }
 
     /**
@@ -133,8 +133,8 @@ public class TestRedSynchronizer {
      * -command result
      */
     @Test
-    public void test10(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
-        runCommandTest(redTestContext, TestSynchronizers.Test10Synchronizer.class);
+    public void noDependenciesTest10(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runCommandTest(redTestContext, TestSynchronizers.NoDependenciesTest10Synchronizer.class);
     }
 
     /**
@@ -144,8 +144,8 @@ public class TestRedSynchronizer {
      * -command result
      */
     @Test
-    public void test11(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
-        runCommandTest(redTestContext, TestSynchronizers.Test11Synchronizer.class);
+    public void noDependenciesTest11(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runCommandTest(redTestContext, TestSynchronizers.NoDependenciesTest11Synchronizer.class);
     }
 
     /**
@@ -156,8 +156,8 @@ public class TestRedSynchronizer {
      * -command result
      */
     @Test
-    public void test12(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
-        runCommandTest(redTestContext, TestSynchronizers.Test12Synchronizer.class);
+    public void noDependenciesTest12(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runCommandTest(redTestContext, TestSynchronizers.NoDependenciesTest12Synchronizer.class);
     }
 
     /**
@@ -168,8 +168,8 @@ public class TestRedSynchronizer {
      * -command result
      */
     @Test
-    public void test13(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
-        runCommandTest(redTestContext, TestSynchronizers.Test13Synchronizer.class);
+    public void noDependenciesTest13(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runCommandTest(redTestContext, TestSynchronizers.NoDependenciesTest13Synchronizer.class);
     }
 
     /**
@@ -180,8 +180,41 @@ public class TestRedSynchronizer {
      * -command result
      */
     @Test
-    public void test14(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
-        runCommandTest(redTestContext, TestSynchronizers.Test14Synchronizer.class);
+    public void noDependenciesTest14(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runCommandTest(redTestContext, TestSynchronizers.NoDependenciesTest14Synchronizer.class);
+    }
+
+    /**
+     * Test synchronization of execution with:
+     * -1 result dependency with success status
+     * -no markers
+     * -function result
+     */
+    @Test
+    public void explicitDependenciesTest1(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runFunctionTest(redTestContext, TestSynchronizers.ExplicitDependenciesTest1Synchronizer.class);
+    }
+
+    /**
+     * Test synchronization of execution with:
+     * -2 result dependencies with failure status
+     * -no markers
+     * -function result
+     */
+    @Test
+    public void explicitDependenciesTest2(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runFunctionTest(redTestContext, TestSynchronizers.ExplicitDependenciesTest2Synchronizer.class);
+    }
+
+    /**
+     * Test synchronization of execution with:
+     * -3 result dependencies with finish status
+     * -no markers
+     * -function result
+     */
+    @Test
+    public void explicitDependenciesTest3(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runFunctionTest(redTestContext, TestSynchronizers.ExplicitDependenciesTest3Synchronizer.class);
     }
 
     // Utils
@@ -192,13 +225,7 @@ public class TestRedSynchronizer {
         RedTestContext.Fork fork = redTestContext.fork();
         RedSynchronizer<RedTestContext, T> synchronizer = syncClass.newInstance();
         synchronizer.execute(redTestContext).addFailureCallback(redTestContext::fail).addSuccessCallback(result -> {
-            if (result != null && result instanceof Boolean && result == booleanSuccess()) {
-                fork.complete();
-            }
-            else if (result != null && result instanceof String && result.equals(stringSuccess())) {
-                fork.complete();
-            }
-            else if (result != null && result instanceof TestObject && result == testObjectSuccess()) {
+            if (checkBooleanSuccess(result) || checkStringSuccess(result) || checkTestObjectSuccess(result)) {
                 fork.complete();
             }
             else {
@@ -233,6 +260,18 @@ public class TestRedSynchronizer {
 
     private static TestObject testObjectSuccess() {
         return TestObject.INSTANCE;
+    }
+
+    private static boolean checkBooleanSuccess(Object result) {
+        return result != null && result instanceof Boolean && result == booleanSuccess();
+    }
+
+    private static boolean checkStringSuccess(Object result) {
+        return result != null && result instanceof String && result.equals(stringSuccess());
+    }
+
+    private static boolean checkTestObjectSuccess(Object result) {
+        return result != null && result instanceof TestObject && result == testObjectSuccess();
     }
 
     private static <T> Future<T> futureOf(T value, RedTestContext redTestContext) {
@@ -303,7 +342,7 @@ public class TestRedSynchronizer {
 
     public static class TestSynchronizers {
 
-        public static class Test1Synchronizer extends RedSynchronizer<RedTestContext, Boolean> {
+        public static class NoDependenciesTest1Synchronizer extends RedSynchronizer<RedTestContext, Boolean> {
 
             @Override
             protected Result<Boolean> handle(RedTestContext redTestContext) {
@@ -312,7 +351,7 @@ public class TestRedSynchronizer {
 
         }
 
-        public static class Test2Synchronizer extends RedSynchronizer<RedTestContext, String> {
+        public static class NoDependenciesTest2Synchronizer extends RedSynchronizer<RedTestContext, String> {
 
             @Override
             protected Result<String> handle(RedTestContext context) {
@@ -327,7 +366,7 @@ public class TestRedSynchronizer {
 
         }
 
-        public static class Test3Synchronizer extends RedSynchronizer<RedTestContext, TestObject> {
+        public static class NoDependenciesTest3Synchronizer extends RedSynchronizer<RedTestContext, TestObject> {
 
             @Override
             protected Result<TestObject> handle(RedTestContext context) {
@@ -344,7 +383,7 @@ public class TestRedSynchronizer {
 
         }
 
-        public static class Test4Synchronizer extends RedSynchronizer<RedTestContext, Boolean> {
+        public static class NoDependenciesTest4Synchronizer extends RedSynchronizer<RedTestContext, Boolean> {
 
             @Override
             protected Result<Boolean> handle(RedTestContext context) {
@@ -360,7 +399,7 @@ public class TestRedSynchronizer {
 
         }
 
-        public static class Test5Synchronizer extends RedSynchronizer<RedTestContext, String> {
+        public static class NoDependenciesTest5Synchronizer extends RedSynchronizer<RedTestContext, String> {
 
             @Override
             protected Result<String> handle(RedTestContext context) {
@@ -376,7 +415,7 @@ public class TestRedSynchronizer {
 
         }
 
-        public static class Test6Synchronizer extends RedSynchronizer<RedTestContext, TestObject> {
+        public static class NoDependenciesTest6Synchronizer extends RedSynchronizer<RedTestContext, TestObject> {
 
             @Override
             protected Result<TestObject> handle(RedTestContext context) {
@@ -393,7 +432,7 @@ public class TestRedSynchronizer {
 
         }
 
-        public static class Test7Synchronizer extends RedSynchronizer<RedTestContext, Boolean> {
+        public static class NoDependenciesTest7Synchronizer extends RedSynchronizer<RedTestContext, Boolean> {
 
             @Override
             protected Result<Boolean> handle(RedTestContext context) {
@@ -411,7 +450,7 @@ public class TestRedSynchronizer {
 
         }
 
-        public static class Test8Synchronizer extends RedVoidSynchronizer<CommandTestContext> {
+        public static class NoDependenciesTest8Synchronizer extends RedVoidSynchronizer<CommandTestContext> {
 
             @Override
             protected Marker handle(CommandTestContext context) {
@@ -423,7 +462,7 @@ public class TestRedSynchronizer {
 
         }
 
-        public static class Test9Synchronizer extends RedVoidSynchronizer<CommandTestContext> {
+        public static class NoDependenciesTest9Synchronizer extends RedVoidSynchronizer<CommandTestContext> {
 
             @Override
             protected Marker handle(CommandTestContext context) {
@@ -441,7 +480,7 @@ public class TestRedSynchronizer {
 
         }
 
-        public static class Test10Synchronizer extends RedVoidSynchronizer<CommandTestContext> {
+        public static class NoDependenciesTest10Synchronizer extends RedVoidSynchronizer<CommandTestContext> {
 
             @Override
             protected Marker handle(CommandTestContext context) {
@@ -459,7 +498,7 @@ public class TestRedSynchronizer {
 
         }
 
-        public static class Test11Synchronizer extends RedVoidSynchronizer<CommandTestContext> {
+        public static class NoDependenciesTest11Synchronizer extends RedVoidSynchronizer<CommandTestContext> {
 
             @Override
             protected Marker handle(CommandTestContext context) {
@@ -476,7 +515,7 @@ public class TestRedSynchronizer {
 
         }
 
-        public static class Test12Synchronizer extends RedVoidSynchronizer<CommandTestContext> {
+        public static class NoDependenciesTest12Synchronizer extends RedVoidSynchronizer<CommandTestContext> {
 
             @Override
             protected Marker handle(CommandTestContext context) {
@@ -492,7 +531,7 @@ public class TestRedSynchronizer {
 
         }
 
-        public static class Test13Synchronizer extends RedVoidSynchronizer<CommandTestContext> {
+        public static class NoDependenciesTest13Synchronizer extends RedVoidSynchronizer<CommandTestContext> {
 
             @Override
             protected Marker handle(CommandTestContext context) {
@@ -509,7 +548,7 @@ public class TestRedSynchronizer {
 
         }
 
-        public static class Test14Synchronizer extends RedVoidSynchronizer<CommandTestContext> {
+        public static class NoDependenciesTest14Synchronizer extends RedVoidSynchronizer<CommandTestContext> {
 
             @Override
             protected Marker handle(CommandTestContext context) {
@@ -523,6 +562,98 @@ public class TestRedSynchronizer {
                     context.finished.set(true);
                     pendingMarker.complete();
                 });
+            }
+
+        }
+
+        public static class ExplicitDependenciesTest1Synchronizer extends RedSynchronizer<RedTestContext, String> {
+
+            @Override
+            protected Result<String> handle(RedTestContext redTestContext) {
+                Result<Boolean> booleanResult = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
+                return onceResult(booleanResult).succeed().produce(String.class).byExecuting(f0 -> {
+                    redTestContext.assertions.assertTrue(checkBooleanSuccess(f0));
+                    return stringSuccess();
+                });
+            }
+
+        }
+
+        public static class ExplicitDependenciesTest2Synchronizer extends RedSynchronizer<RedTestContext, TestObject> {
+
+            @Override
+            protected Result<TestObject> handle(RedTestContext redTestContext) {
+                Result<Boolean> result1 = produceFutureOf(Boolean.class).byExecuting(() ->
+                        futureOf(Boolean.class, TestException.INSTANCE, redTestContext));
+                Result<String> result2 = produceListenableFutureOf(String.class).byExecuting(() ->
+                        listenableFutureOf(String.class, TestException.INSTANCE, redTestContext));
+                return onceResults(result1, result2).fail().produce(TestObject.class)
+                        .byExecuting(TestRedSynchronizer::testObjectSuccess);
+            }
+
+        }
+
+        public static class ExplicitDependenciesTest3Synchronizer extends RedSynchronizer<RedTestContext, Boolean> {
+
+            @Override
+            protected Result<Boolean> handle(RedTestContext redTestContext) {
+                Result<Boolean> result1 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                        redFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
+                Result<String> result2 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
+                        futureOf(testObjectSuccess(), redTestContext));
+                return onceResults(result1, result2, result3).finish().produce(Boolean.class)
+                        .byExecuting((f0, f1, f2) -> {
+                            redTestContext.assertions.assertNull(f0);
+                            redTestContext.assertions.assertTrue(checkStringSuccess(f1));
+                            redTestContext.assertions.assertTrue(checkTestObjectSuccess(f2));
+                            return booleanSuccess();
+                        });
+            }
+
+        }
+
+        public static class ExplicitDependenciesTest4Synchronizer extends RedSynchronizer<RedTestContext, String> {
+
+            @Override
+            protected Result<String> handle(RedTestContext redTestContext) {
+                Result<Boolean> result1 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
+                Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
+                        futureOf(stringSuccess(), redTestContext));
+                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                        listenableFutureOf(testObjectSuccess(), redTestContext));
+                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                        redFutureOf(booleanSuccess(), redTestContext));
+                return onceResults(result1, result2, result3, result4).succeed()
+                        .produce(String.class).byExecuting((f0, f1, f2, f3) -> {
+                            redTestContext.assertions.assertTrue(checkBooleanSuccess(f0));
+                            redTestContext.assertions.assertTrue(checkStringSuccess(f1));
+                            redTestContext.assertions.assertTrue(checkTestObjectSuccess(f2));
+                            redTestContext.assertions.assertTrue(checkBooleanSuccess(f3));
+                            return stringSuccess();
+                        });
+            }
+
+        }
+
+        public static class ExplicitDependenciesTest5Synchronizer extends RedSynchronizer<RedTestContext, String> {
+
+            @Override
+            protected Result<String> handle(RedTestContext redTestContext) {
+                Result<Boolean> result1 = produce(Boolean.class).byExecuting(() -> {
+                    throw TestException.INSTANCE;
+                });
+                Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
+                        futureOf(String.class, TestException.INSTANCE, redTestContext));
+                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                        listenableFutureOf(TestObject.class, TestException.INSTANCE, redTestContext));
+                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                        redFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
+                Result<String> result5 = produce(String.class).byExecuting(() -> {
+                    throw TestException.INSTANCE;
+                });
+                return onceResults(result1, result2, result3, result4, result5).fail()
+                        .produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
             }
 
         }

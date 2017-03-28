@@ -191,8 +191,8 @@ abstract public class BaseRedSynchronizer {
             return createClassifier(_newPrerequisites);
         }
 
-        public RETURN_CLASSIFIER fail() {
-            return createClassifier(mapPrerequisites(_newPrerequisites, future -> {
+        public ReturnClassifier.ReturnClassifier0 fail() {
+            return new ReturnClassifier.ReturnClassifier0(mapPrerequisites(_newPrerequisites, future -> {
                 OpenRedFuture result = RedFuture.future();
                 future.addSuccessCallback(() -> result.fail(FLIPPED_EXCEPTION));
                 future.addFailureCallback(throwable -> result.resolve());
@@ -202,9 +202,16 @@ abstract public class BaseRedSynchronizer {
 
         public RETURN_CLASSIFIER finish() {
             return createClassifier(mapPrerequisites(_newPrerequisites, future -> {
-                OpenRedFuture result = RedFuture.future();
-                future.addFinallyCallback(result::resolve);
-                return result;
+                if (future instanceof RedFutureOf) {
+                    RedFutureOf<?> futureOf = (RedFutureOf) future;
+                    OpenRedFutureOf<Object> open = RedFuture.futureOf();
+                    futureOf.addSuccessCallback(open::resolve);
+                    future.addFailureCallback(throwable -> open.resolve(null));
+                    return open;
+                }
+                OpenRedFuture open = RedFuture.future();
+                future.addFinallyCallback(open::resolve);
+                return open;
             }));
         }
 
@@ -476,7 +483,7 @@ abstract public class BaseRedSynchronizer {
             return transformer(prerequisites(), markers);
         }
 
-        abstract protected void call(COMMAND c, PendingMarker pendingMarker);
+        abstract protected void call(COMMAND c, PendingMarker pendingMarker) throws Throwable;
 
         abstract protected TRANSFORMER transformer(RedFuture[] oldPrerequisites, Marker... markers);
 
@@ -496,7 +503,7 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected void call(Executables.Command0 c, PendingMarker pendingMarker) {
+            protected void call(Executables.Command0 c, PendingMarker pendingMarker) throws Throwable {
                 c.call(pendingMarker);
             }
 
@@ -540,7 +547,7 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected void call(Executables.Command1<T0> c, PendingMarker pendingMarker) {
+            protected void call(Executables.Command1<T0> c, PendingMarker pendingMarker) throws Throwable {
                 c.call(pendingMarker, result(0));
             }
 
@@ -584,7 +591,7 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected void call(Executables.Command2<T0, T1> c, PendingMarker pendingMarker) {
+            protected void call(Executables.Command2<T0, T1> c, PendingMarker pendingMarker) throws Throwable {
                 c.call(pendingMarker, result(0), result(1));
             }
 
@@ -628,7 +635,7 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected void call(Executables.Command3<T0, T1, T2> c, PendingMarker pendingMarker) {
+            protected void call(Executables.Command3<T0, T1, T2> c, PendingMarker pendingMarker) throws Throwable {
                 c.call(pendingMarker, result(0), result(1), result(2));
             }
 
@@ -672,7 +679,7 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected void call(Executables.Command4<T0, T1, T2, T3> c, PendingMarker pendingMarker) {
+            protected void call(Executables.Command4<T0, T1, T2, T3> c, PendingMarker pendingMarker) throws Throwable {
                 c.call(pendingMarker, result(0), result(1), result(2), result(3));
             }
 
@@ -716,7 +723,8 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected void call(Executables.Command5<T0, T1, T2, T3, T4> c, PendingMarker pendingMarker) {
+            protected void call(Executables.Command5<T0, T1, T2, T3, T4> c, PendingMarker pendingMarker)
+                    throws Throwable {
                 c.call(pendingMarker, result(0), result(1), result(2), result(3), result(4));
             }
 
@@ -760,7 +768,8 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected void call(Executables.Command6<T0, T1, T2, T3, T4, T5> c, PendingMarker pendingMarker) {
+            protected void call(Executables.Command6<T0, T1, T2, T3, T4, T5> c, PendingMarker pendingMarker)
+                    throws Throwable {
                 c.call(pendingMarker, result(0), result(1), result(2), result(3), result(4), result(5));
             }
 
@@ -804,7 +813,8 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected void call(Executables.Command7<T0, T1, T2, T3, T4, T5, T6> c, PendingMarker pendingMarker) {
+            protected void call(Executables.Command7<T0, T1, T2, T3, T4, T5, T6> c, PendingMarker pendingMarker)
+                    throws Throwable {
                 c.call(pendingMarker, result(0), result(1), result(2), result(3), result(4), result(5), result(6));
             }
 
@@ -848,7 +858,8 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected void call(Executables.Command8<T0, T1, T2, T3, T4, T5, T6, T7> c, PendingMarker pendingMarker) {
+            protected void call(Executables.Command8<T0, T1, T2, T3, T4, T5, T6, T7> c, PendingMarker pendingMarker)
+                    throws Throwable {
                 c.call(pendingMarker, result(0), result(1), result(2), result(3), result(4), result(5),
                         result(6), result(7));
             }
@@ -894,7 +905,7 @@ abstract public class BaseRedSynchronizer {
 
             @Override
             protected void call(Executables.Command9<T0, T1, T2, T3, T4, T5, T6, T7, T8> c,
-                                PendingMarker pendingMarker) {
+                                PendingMarker pendingMarker) throws Throwable {
                 c.call(pendingMarker, result(0), result(1), result(2), result(3), result(4),
                         result(5), result(6), result(7), result(8));
             }
@@ -940,7 +951,7 @@ abstract public class BaseRedSynchronizer {
 
             @Override
             protected void call(Executables.Command10<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> c,
-                                PendingMarker pendingMarker) {
+                                PendingMarker pendingMarker) throws Throwable {
                 c.call(pendingMarker, result(0), result(1), result(2), result(3), result(4),
                         result(5), result(6), result(7), result(8), result(9));
             }
@@ -982,7 +993,7 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected void call(Executables.CommandN c, PendingMarker pendingMarker) {
+            protected void call(Executables.CommandN c, PendingMarker pendingMarker) throws Throwable {
                 c.call(pendingMarker, new Results(prerequisites()));
             }
 
@@ -1044,7 +1055,7 @@ abstract public class BaseRedSynchronizer {
             return result;
         }
 
-        abstract protected WRAPPER call(FUNCTION f);
+        abstract protected WRAPPER call(FUNCTION f) throws Throwable;
 
         public static class Runner0<WRAPPER, R>
                 extends Runner<Executables.Function0<WRAPPER>, WRAPPER, R> {
@@ -1054,7 +1065,7 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected WRAPPER call(Executables.Function0<WRAPPER> f) {
+            protected WRAPPER call(Executables.Function0<WRAPPER> f) throws Throwable {
                 return f.call();
             }
 
@@ -1068,7 +1079,7 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected WRAPPER call(Executables.Function1<WRAPPER, T0> f) {
+            protected WRAPPER call(Executables.Function1<WRAPPER, T0> f) throws Throwable {
                 return f.call(result(0));
             }
 
@@ -1082,7 +1093,7 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected WRAPPER call(Executables.Function2<WRAPPER, T0, T1> f) {
+            protected WRAPPER call(Executables.Function2<WRAPPER, T0, T1> f) throws Throwable {
                 return f.call(result(0), result(1));
             }
 
@@ -1096,7 +1107,7 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected WRAPPER call(Executables.Function3<WRAPPER, T0, T1, T2> f) {
+            protected WRAPPER call(Executables.Function3<WRAPPER, T0, T1, T2> f) throws Throwable {
                 return f.call(result(0), result(1), result(2));
             }
 
@@ -1110,7 +1121,7 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected WRAPPER call(Executables.Function4<WRAPPER, T0, T1, T2, T3> f) {
+            protected WRAPPER call(Executables.Function4<WRAPPER, T0, T1, T2, T3> f) throws Throwable {
                 return f.call(result(0), result(1), result(2), result(3));
             }
 
@@ -1124,7 +1135,7 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected WRAPPER call(Executables.Function5<WRAPPER, T0, T1, T2, T3, T4> f) {
+            protected WRAPPER call(Executables.Function5<WRAPPER, T0, T1, T2, T3, T4> f) throws Throwable {
                 return f.call(result(0), result(1), result(2), result(3), result(4));
             }
 
@@ -1138,7 +1149,7 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected WRAPPER call(Executables.Function6<WRAPPER, T0, T1, T2, T3, T4, T5> f) {
+            protected WRAPPER call(Executables.Function6<WRAPPER, T0, T1, T2, T3, T4, T5> f) throws Throwable {
                 return f.call(result(0), result(1), result(2), result(3), result(4), result(5));
             }
 
@@ -1152,7 +1163,7 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected WRAPPER call(Executables.Function7<WRAPPER, T0, T1, T2, T3, T4, T5, T6> f) {
+            protected WRAPPER call(Executables.Function7<WRAPPER, T0, T1, T2, T3, T4, T5, T6> f) throws Throwable {
                 return f.call(result(0), result(1), result(2), result(3), result(4), result(5), result(6));
             }
 
@@ -1166,7 +1177,7 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected WRAPPER call(Executables.Function8<WRAPPER, T0, T1, T2, T3, T4, T5, T6, T7> f) {
+            protected WRAPPER call(Executables.Function8<WRAPPER, T0, T1, T2, T3, T4, T5, T6, T7> f) throws Throwable {
                 return f.call(result(0), result(1), result(2), result(3), result(4), result(5), result(6), result(7));
             }
 
@@ -1180,7 +1191,8 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected WRAPPER call(Executables.Function9<WRAPPER, T0, T1, T2, T3, T4, T5, T6, T7, T8> f) {
+            protected WRAPPER call(Executables.Function9<WRAPPER, T0, T1, T2, T3, T4, T5, T6, T7, T8> f)
+                    throws Throwable {
                 return f.call(result(0), result(1), result(2), result(3), result(4), result(5), result(6), result(7),
                         result(8));
             }
@@ -1195,7 +1207,8 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected WRAPPER call(Executables.Function10<WRAPPER, T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> f) {
+            protected WRAPPER call(Executables.Function10<WRAPPER, T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> f)
+                    throws Throwable {
                 return f.call(result(0), result(1), result(2), result(3), result(4), result(5), result(6), result(7),
                         result(8), result(9));
             }
@@ -1209,7 +1222,7 @@ abstract public class BaseRedSynchronizer {
             }
 
             @Override
-            protected WRAPPER call(Executables.FunctionN<WRAPPER> f) {
+            protected WRAPPER call(Executables.FunctionN<WRAPPER> f) throws Throwable {
                 return f.call(new Results(prerequisites()));
             }
         }
@@ -1220,145 +1233,148 @@ abstract public class BaseRedSynchronizer {
 
         public interface Function0<WRAPPER> {
 
-            WRAPPER call();
+            WRAPPER call() throws Throwable;
 
         }
 
         public interface Function1<WRAPPER, T0> {
 
-            WRAPPER call(T0 f0);
+            WRAPPER call(T0 f0) throws Throwable;
 
         }
 
         public interface Function2<WRAPPER, T0, T1> {
 
-            WRAPPER call(T0 f0, T1 f1);
+            WRAPPER call(T0 f0, T1 f1) throws Throwable;
 
         }
 
         public interface Function3<WRAPPER, T0, T1, T2> {
 
-            WRAPPER call(T0 f0, T1 f1, T2 f2);
+            WRAPPER call(T0 f0, T1 f1, T2 f2) throws Throwable;
 
         }
 
         public interface Function4<WRAPPER, T0, T1, T2, T3> {
 
-            WRAPPER call(T0 f0, T1 f1, T2 f2, T3 f3);
+            WRAPPER call(T0 f0, T1 f1, T2 f2, T3 f3) throws Throwable;
 
         }
 
         public interface Function5<WRAPPER, T0, T1, T2, T3, T4> {
 
-            WRAPPER call(T0 f0, T1 f1, T2 f2, T3 f3, T4 f4);
+            WRAPPER call(T0 f0, T1 f1, T2 f2, T3 f3, T4 f4) throws Throwable;
 
         }
 
         public interface Function6<WRAPPER, T0, T1, T2, T3, T4, T5> {
 
-            WRAPPER call(T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5);
+            WRAPPER call(T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5) throws Throwable;
 
         }
 
         public interface Function7<WRAPPER, T0, T1, T2, T3, T4, T5, T6> {
 
-            WRAPPER call(T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5, T6 f6);
+            WRAPPER call(T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5, T6 f6) throws Throwable;
 
         }
 
         public interface Function8<WRAPPER, T0, T1, T2, T3, T4, T5, T6, T7> {
 
-            WRAPPER call(T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5, T6 f6, T7 f7);
+            WRAPPER call(T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5, T6 f6, T7 f7) throws Throwable;
 
         }
 
         public interface Function9<WRAPPER, T0, T1, T2, T3, T4, T5, T6, T7, T8> {
 
-            WRAPPER call(T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5, T6 f6, T7 f7, T8 f8);
+            WRAPPER call(T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5, T6 f6, T7 f7, T8 f8) throws Throwable;
 
         }
 
         public interface Function10<WRAPPER, T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> {
 
-            WRAPPER call(T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5, T6 f6, T7 f7, T8 f8, T9 f9);
+            WRAPPER call(T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5, T6 f6, T7 f7, T8 f8, T9 f9) throws Throwable;
 
         }
 
         public interface FunctionN<WRAPPER> {
 
-            WRAPPER call(Results results);
+            WRAPPER call(Results results) throws Throwable;
 
         }
 
         public interface Command0 {
 
-            void call(PendingMarker pendingMarker);
+            void call(PendingMarker pendingMarker) throws Throwable;
 
         }
 
         public interface Command1<T0> {
 
-            void call(PendingMarker pendingMarker, T0 f0);
+            void call(PendingMarker pendingMarker, T0 f0) throws Throwable;
 
         }
 
         public interface Command2<T0, T1> {
 
-            void call(PendingMarker pendingMarker, T0 f0, T1 f1);
+            void call(PendingMarker pendingMarker, T0 f0, T1 f1) throws Throwable;
 
         }
 
         public interface Command3<T0, T1, T2> {
 
-            void call(PendingMarker pendingMarker, T0 f0, T1 f1, T2 f2);
+            void call(PendingMarker pendingMarker, T0 f0, T1 f1, T2 f2) throws Throwable;
 
         }
 
         public interface Command4<T0, T1, T2, T3> {
 
-            void call(PendingMarker pendingMarker, T0 f0, T1 f1, T2 f2, T3 f3);
+            void call(PendingMarker pendingMarker, T0 f0, T1 f1, T2 f2, T3 f3) throws Throwable;
 
         }
 
         public interface Command5<T0, T1, T2, T3, T4> {
 
-            void call(PendingMarker pendingMarker, T0 f0, T1 f1, T2 f2, T3 f3, T4 f4);
+            void call(PendingMarker pendingMarker, T0 f0, T1 f1, T2 f2, T3 f3, T4 f4) throws Throwable;
 
         }
 
         public interface Command6<T0, T1, T2, T3, T4, T5> {
 
-            void call(PendingMarker pendingMarker, T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5);
+            void call(PendingMarker pendingMarker, T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5) throws Throwable;
 
         }
 
         public interface Command7<T0, T1, T2, T3, T4, T5, T6> {
 
-            void call(PendingMarker pendingMarker, T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5, T6 f6);
+            void call(PendingMarker pendingMarker, T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5, T6 f6) throws Throwable;
 
         }
 
         public interface Command8<T0, T1, T2, T3, T4, T5, T6, T7> {
 
-            void call(PendingMarker pendingMarker, T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5, T6 f6, T7 f7);
+            void call(PendingMarker pendingMarker, T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5, T6 f6, T7 f7)
+                    throws Throwable;
 
         }
 
         public interface Command9<T0, T1, T2, T3, T4, T5, T6, T7, T8> {
 
-            void call(PendingMarker pendingMarker, T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5, T6 f6, T7 f7, T8 f8);
+            void call(PendingMarker pendingMarker, T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5, T6 f6, T7 f7, T8 f8)
+                    throws Throwable;
 
         }
 
         public interface Command10<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> {
 
-            void call(PendingMarker pendingMarker, T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5, T6 f6, T7 f7, T8 f8, T9 f9);
+            void call(PendingMarker pendingMarker, T0 f0, T1 f1, T2 f2, T3 f3, T4 f4, T5 f5, T6 f6, T7 f7, T8 f8, T9 f9)
+                    throws Throwable;
 
         }
 
         public interface CommandN {
 
-            void call(PendingMarker pendingMarker, Results results);
+            void call(PendingMarker pendingMarker, Results results) throws Throwable;
 
         }
 

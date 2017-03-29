@@ -2,6 +2,7 @@ package com.javared;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
+import com.javared.executor.BaseRedSynchronizer;
 import com.javared.executor.RedSynchronizer;
 import com.javared.executor.RedVoidSynchronizer;
 import com.javared.future.OpenRedFutureOf;
@@ -215,6 +216,83 @@ public class TestRedSynchronizer {
     @Test
     public void explicitDependenciesTest3(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
         runFunctionTest(redTestContext, TestSynchronizers.ExplicitDependenciesTest3Synchronizer.class);
+    }
+
+    /**
+     * Test synchronization of execution with:
+     * -4 result dependencies with success status
+     * -no markers
+     * -function result
+     */
+    @Test
+    public void explicitDependenciesTest4(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runFunctionTest(redTestContext, TestSynchronizers.ExplicitDependenciesTest4Synchronizer.class);
+    }
+
+    /**
+     * Test synchronization of execution with:
+     * -5 result dependencies with failure status
+     * -no markers
+     * -function result
+     */
+    @Test
+    public void explicitDependenciesTest5(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runFunctionTest(redTestContext, TestSynchronizers.ExplicitDependenciesTest5Synchronizer.class);
+    }
+
+    /**
+     * Test synchronization of execution with:
+     * -6 result dependencies with finish status
+     * -no markers
+     * -function result
+     */
+    @Test
+    public void explicitDependenciesTest6(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runFunctionTest(redTestContext, TestSynchronizers.ExplicitDependenciesTest6Synchronizer.class);
+    }
+
+    /**
+     * Test synchronization of execution with:
+     * -7 result dependencies with success status
+     * -no markers
+     * -function result
+     */
+    @Test
+    public void explicitDependenciesTest7(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runFunctionTest(redTestContext, TestSynchronizers.ExplicitDependenciesTest7Synchronizer.class);
+    }
+
+    /**
+     * Test synchronization of execution with:
+     * -8 result dependencies with failure status
+     * -no markers
+     * -function result
+     */
+    @Test
+    public void explicitDependenciesTest8(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runFunctionTest(redTestContext, TestSynchronizers.ExplicitDependenciesTest8Synchronizer.class);
+    }
+
+    /**
+     * Test synchronization of execution with:
+     * -9 result dependencies with finish status
+     * -no markers
+     * -function result
+     */
+    @Test
+    public void explicitDependenciesTest9(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runFunctionTest(redTestContext, TestSynchronizers.ExplicitDependenciesTest9Synchronizer.class);
+    }
+
+    /**
+     * Test synchronization of execution with:
+     * -10 result dependencies with success status
+     * -no markers
+     * -function result
+     */
+    @Test
+    public void explicitDependenciesTest9(RedTestContext redTestContext) throws InstantiationException, IllegalAccessException {
+        runFunctionTest(redTestContext, TestSynchronizers.ExplicitDependenciesTest9Synchronizer.class);
     }
 
     // Utils
@@ -587,8 +665,8 @@ public class TestRedSynchronizer {
                         futureOf(Boolean.class, TestException.INSTANCE, redTestContext));
                 Result<String> result2 = produceListenableFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(String.class, TestException.INSTANCE, redTestContext));
-                return onceResults(result1, result2).fail().produce(TestObject.class)
-                        .byExecuting(TestRedSynchronizer::testObjectSuccess);
+                return onceResults(result1, result2).fail().produceFutureOf(TestObject.class)
+                        .byExecuting(() -> futureOf(testObjectSuccess(), redTestContext));
             }
 
         }
@@ -602,12 +680,12 @@ public class TestRedSynchronizer {
                 Result<String> result2 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
                 Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(testObjectSuccess(), redTestContext));
-                return onceResults(result1, result2, result3).finish().produce(Boolean.class)
+                return onceResults(result1, result2, result3).finish().produceListenableFutureOf(Boolean.class)
                         .byExecuting((f0, f1, f2) -> {
                             redTestContext.assertions.assertNull(f0);
                             redTestContext.assertions.assertTrue(checkStringSuccess(f1));
                             redTestContext.assertions.assertTrue(checkTestObjectSuccess(f2));
-                            return booleanSuccess();
+                            return listenableFutureOf(booleanSuccess(), redTestContext);
                         });
             }
 
@@ -624,22 +702,27 @@ public class TestRedSynchronizer {
                         listenableFutureOf(testObjectSuccess(), redTestContext));
                 Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(booleanSuccess(), redTestContext));
-                return onceResults(result1, result2, result3, result4).succeed()
-                        .produce(String.class).byExecuting((f0, f1, f2, f3) -> {
+                Marker marker1 = execute(pendingMarker ->
+                        redTestContext.scheduleTask(FUTURE_DELAY, () -> pendingMarker.fail(TestException.INSTANCE)));
+                Marker marker2 = execute(pendingMarker ->
+                        redTestContext.scheduleTask(FUTURE_DELAY, () -> pendingMarker.fail(TestException.INSTANCE)));
+                FutureTransformer.FutureTransformer4<Boolean, String, TestObject, Boolean> z = onceResults(result1, result2, result3, result4).succeed().andMarkers(marker1, marker2);
+                return onceResults(result1, result2, result3, result4).succeed().andMarkers(marker1, marker2).fail()
+                        .produceRedFutureOf(String.class).byExecuting((f0, f1, f2, f3) -> {
                             redTestContext.assertions.assertTrue(checkBooleanSuccess(f0));
                             redTestContext.assertions.assertTrue(checkStringSuccess(f1));
                             redTestContext.assertions.assertTrue(checkTestObjectSuccess(f2));
                             redTestContext.assertions.assertTrue(checkBooleanSuccess(f3));
-                            return stringSuccess();
+                            return redFutureOf(stringSuccess(), redTestContext);
                         });
             }
 
         }
 
-        public static class ExplicitDependenciesTest5Synchronizer extends RedSynchronizer<RedTestContext, String> {
+        public static class ExplicitDependenciesTest5Synchronizer extends RedSynchronizer<RedTestContext, TestObject> {
 
             @Override
-            protected Result<String> handle(RedTestContext redTestContext) {
+            protected Result<TestObject> handle(RedTestContext redTestContext) {
                 Result<Boolean> result1 = produce(Boolean.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
@@ -652,8 +735,188 @@ public class TestRedSynchronizer {
                 Result<String> result5 = produce(String.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
+                Marker marker1 = execute(pendingMarker ->
+                        redTestContext.scheduleTask(FUTURE_DELAY, () -> pendingMarker.fail(TestException.INSTANCE)));
+                Marker marker2 = execute(pendingMarker ->
+                        redTestContext.scheduleTask(FUTURE_DELAY, pendingMarker::complete));
                 return onceResults(result1, result2, result3, result4, result5).fail()
-                        .produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
+                        .produce(TestObject.class).byExecuting(TestRedSynchronizer::testObjectSuccess);
+            }
+
+        }
+
+        public static class ExplicitDependenciesTest6Synchronizer extends RedSynchronizer<RedTestContext, Boolean> {
+
+            @Override
+            protected Result<Boolean> handle(RedTestContext redTestContext) {
+                Result<Boolean> result1 = produce(Boolean.class).byExecuting(() -> {
+                    throw TestException.INSTANCE;
+                });
+                Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
+                        futureOf(String.class, TestException.INSTANCE, redTestContext));
+                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                        listenableFutureOf(TestObject.class, TestException.INSTANCE, redTestContext));
+                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                        redFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
+                Result<String> result5 = produce(String.class).byExecuting(() -> {
+                    throw TestException.INSTANCE;
+                });
+                Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
+                        futureOf(TestObject.class, TestException.INSTANCE, redTestContext));
+                return onceResults(result1, result2, result3, result4, result5, result6).finish()
+                        .produceFutureOf(Boolean.class).byExecuting((f0, f1, f2, f3, f4, f5) -> {
+                            redTestContext.assertions.assertNull(f0);
+                            redTestContext.assertions.assertNull(f1);
+                            redTestContext.assertions.assertNull(f2);
+                            redTestContext.assertions.assertNull(f3);
+                            redTestContext.assertions.assertNull(f4);
+                            redTestContext.assertions.assertNull(f5);
+                            return futureOf(booleanSuccess(), redTestContext);
+                        });
+            }
+
+        }
+
+        public static class ExplicitDependenciesTest7Synchronizer extends RedSynchronizer<RedTestContext, String> {
+
+            @Override
+            protected Result<String> handle(RedTestContext redTestContext) {
+                Result<Boolean> result1 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
+                Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
+                        futureOf(stringSuccess(), redTestContext));
+                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                        listenableFutureOf(testObjectSuccess(), redTestContext));
+                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                        redFutureOf(booleanSuccess(), redTestContext));
+                Result<String> result5 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
+                Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
+                        futureOf(testObjectSuccess(), redTestContext));
+                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                        listenableFutureOf(booleanSuccess(), redTestContext));
+                return onceResults(result1, result2, result3, result4, result5, result6, result7).succeed()
+                        .produceListenableFutureOf(String.class).byExecuting((f0, f1, f2, f3, f4, f5, f6) -> {
+                            redTestContext.assertions.assertTrue(checkBooleanSuccess(f0));
+                            redTestContext.assertions.assertTrue(checkStringSuccess(f1));
+                            redTestContext.assertions.assertTrue(checkTestObjectSuccess(f2));
+                            redTestContext.assertions.assertTrue(checkBooleanSuccess(f3));
+                            redTestContext.assertions.assertTrue(checkStringSuccess(f4));
+                            redTestContext.assertions.assertTrue(checkTestObjectSuccess(f5));
+                            redTestContext.assertions.assertTrue(checkBooleanSuccess(f6));
+                            return listenableFutureOf(stringSuccess(), redTestContext);
+                        });
+            }
+
+        }
+
+        public static class ExplicitDependenciesTest8Synchronizer extends RedSynchronizer<RedTestContext, TestObject> {
+
+            @Override
+            protected Result<TestObject> handle(RedTestContext redTestContext) {
+                Result<Boolean> result1 = produce(Boolean.class).byExecuting(() -> {
+                    throw TestException.INSTANCE;
+                });
+                Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
+                        futureOf(String.class, TestException.INSTANCE, redTestContext));
+                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                        listenableFutureOf(TestObject.class, TestException.INSTANCE, redTestContext));
+                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                        redFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
+                Result<String> result5 = produce(String.class).byExecuting(() -> {
+                    throw TestException.INSTANCE;
+                });
+                Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
+                        futureOf(TestObject.class, TestException.INSTANCE, redTestContext));
+                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                        listenableFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
+                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                        redFutureOf(String.class, TestException.INSTANCE, redTestContext));
+                return onceResults(result1, result2, result3, result4, result5, result6, result7, result8).fail()
+                        .produceRedFutureOf(TestObject.class).byExecuting(() ->
+                                redFutureOf(testObjectSuccess(), redTestContext));
+            }
+
+        }
+
+        public static class ExplicitDependenciesTest9Synchronizer extends RedSynchronizer<RedTestContext, Boolean> {
+
+            @Override
+            protected Result<Boolean> handle(RedTestContext redTestContext) {
+                Result<Boolean> result1 = produce(Boolean.class).byExecuting(() -> {
+                    throw TestException.INSTANCE;
+                });
+                Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
+                        futureOf(String.class, TestException.INSTANCE, redTestContext));
+                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                        listenableFutureOf(TestObject.class, TestException.INSTANCE, redTestContext));
+                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                        redFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
+                Result<String> result5 = produce(String.class).byExecuting(() -> {
+                    throw TestException.INSTANCE;
+                });
+                Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
+                        futureOf(TestObject.class, TestException.INSTANCE, redTestContext));
+                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                        listenableFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
+                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                        redFutureOf(String.class, TestException.INSTANCE, redTestContext));
+                Result<TestObject> result9 = produce(TestObject.class)
+                        .byExecuting(TestRedSynchronizer::testObjectSuccess);
+                return onceResults(result1, result2, result3, result4, result5, result6, result7, result8, result9)
+                        .finish().produce(Boolean.class).byExecuting((f0, f1, f2, f3, f4, f5, f6, f7, f8) -> {
+                            redTestContext.assertions.assertNull(f0);
+                            redTestContext.assertions.assertNull(f1);
+                            redTestContext.assertions.assertNull(f2);
+                            redTestContext.assertions.assertNull(f3);
+                            redTestContext.assertions.assertNull(f4);
+                            redTestContext.assertions.assertNull(f5);
+                            redTestContext.assertions.assertNull(f6);
+                            redTestContext.assertions.assertNull(f7);
+                            redTestContext.assertions.assertTrue(checkTestObjectSuccess(f8));
+                            return booleanSuccess();
+                        });
+            }
+
+        }
+
+        public static class ExplicitDependenciesTest10Synchronizer extends RedVoidSynchronizer<CommandTestContext> {
+
+            @Override
+            protected Marker handle(CommandTestContext context) {
+                RedTestContext.TimingTester timingTester = context.redTestContext.timingTester();
+                Result<Boolean> result1 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
+                Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
+                        futureOf(stringSuccess(), context.redTestContext));
+                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                        listenableFutureOf(testObjectSuccess(), context.redTestContext));
+                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                        redFutureOf(booleanSuccess(), context.redTestContext));
+                Result<String> result5 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
+                Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
+                        futureOf(testObjectSuccess(), context.redTestContext));
+                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                        listenableFutureOf(booleanSuccess(), context.redTestContext));
+                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                        redFutureOf(stringSuccess(), context.redTestContext));
+                Result<TestObject> result9 = produce(TestObject.class)
+                        .byExecuting(TestRedSynchronizer::testObjectSuccess);
+                Result<Boolean> result10 = produceFutureOf(Boolean.class).byExecuting(() ->
+                        futureOf(booleanSuccess(), context.redTestContext));
+                return onceResults(result1, result2, result3, result4, result5, result6, result7, result8, result9,
+                        result10).succeed().execute((pendingMarker, f0, f1, f2, f3, f4, f5, f6, f7, f8, f9) -> {
+                            timingTester.validatePassed(FUTURE_DELAY);
+                            context.redTestContext.assertions.assertTrue(checkBooleanSuccess(f0));
+                            context.redTestContext.assertions.assertTrue(checkStringSuccess(f1));
+                            context.redTestContext.assertions.assertTrue(checkTestObjectSuccess(f2));
+                            context.redTestContext.assertions.assertTrue(checkBooleanSuccess(f3));
+                            context.redTestContext.assertions.assertTrue(checkStringSuccess(f4));
+                            context.redTestContext.assertions.assertTrue(checkTestObjectSuccess(f5));
+                            context.redTestContext.assertions.assertTrue(checkBooleanSuccess(f6));
+                            context.redTestContext.assertions.assertTrue(checkStringSuccess(f7));
+                            context.redTestContext.assertions.assertTrue(checkTestObjectSuccess(f8));
+                            context.redTestContext.assertions.assertTrue(checkBooleanSuccess(f9));
+                            context.finished.set(true);
+                            pendingMarker.complete();
+                        });
             }
 
         }

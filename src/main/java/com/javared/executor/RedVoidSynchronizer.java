@@ -1,7 +1,6 @@
 package com.javared.executor;
 
 import com.javared.future.RedFuture;
-import com.javared.future.RedFutureOf;
 
 /**
  * Created by avivc on 3/27/2017.
@@ -21,6 +20,6 @@ abstract public class RedVoidSynchronizer<INPUT> extends BaseRedSynchronizer {
 
     // Private
 
-    abstract protected Marker handle(INPUT input);
+    abstract protected Marker handle(INPUT input) throws Throwable;
 
 }

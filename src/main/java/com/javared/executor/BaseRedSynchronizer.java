@@ -468,7 +468,20 @@ abstract public class BaseRedSynchronizer {
          * @return a {@link ReturnClassifier} to choose which kind of value wrapper to produce
          */
         public RETURN_CLASSIFIER succeed() {
-            return createClassifier(_currentLayer);
+            return createClassifier(future -> {
+                if (future instanceof RedFutureOf) {
+                    RedFutureOf<?> futureOf = (RedFutureOf) future;
+                    OpenRedFutureOf<Object> result = RedFuture.futureOf();
+                    futureOf.addSuccessCallback(result::resolve);
+                    futureOf.addFailureCallback(throwable ->
+                            result.fail(new PreconditionFailedException.Success(throwable)));
+                    return result;
+                }
+                OpenRedFuture result = RedFuture.future();
+                future.addSuccessCallback(result::resolve);
+                future.addFailureCallback(throwable -> result.fail(new PreconditionFailedException.Success(throwable)));
+                return result;
+            });
         }
 
         /**
@@ -480,14 +493,14 @@ abstract public class BaseRedSynchronizer {
             return createClassifier(future -> {
                 if (future instanceof RedFutureOf) {
                     RedFutureOf<?> futureOf = (RedFutureOf) future;
-                    OpenRedFutureOf<Object> open = RedFuture.futureOf();
-                    futureOf.addSuccessCallback(open::resolve);
-                    future.addFailureCallback(throwable -> open.resolve(null));
-                    return open;
+                    OpenRedFutureOf<Object> result = RedFuture.futureOf();
+                    futureOf.addSuccessCallback(result::resolve);
+                    futureOf.addFailureCallback(throwable -> result.resolve(null));
+                    return result;
                 }
-                OpenRedFuture open = RedFuture.future();
-                future.addFinallyCallback(open::resolve);
-                return open;
+                OpenRedFuture result = RedFuture.future();
+                future.addFinallyCallback(result::resolve);
+                return result;
             });
         }
         
@@ -574,7 +587,7 @@ abstract public class BaseRedSynchronizer {
             public ReturnClassifier.Classifier0 fail() {
                 return new ReturnClassifier.Classifier0(mapCurrentLayer(future -> {
                     OpenRedFuture result = RedFuture.future();
-                    future.addSuccessCallback(() -> result.fail(PreconditionFailedException.FLIPPED_EXCEPTION));
+                    future.addSuccessCallback(() -> result.fail(PreconditionFailedException.Failure.INSTANCE));
                     future.addFailureCallback(throwable -> result.resolve());
                     return result;
                 }));
@@ -881,7 +894,7 @@ abstract public class BaseRedSynchronizer {
             public RETURN_CLASSIFIER fail() {
                 return createClassifier(future -> {
                     OpenRedFuture result = RedFuture.future();
-                    future.addSuccessCallback(() -> result.fail(PreconditionFailedException.FLIPPED_EXCEPTION));
+                    future.addSuccessCallback(() -> result.fail(PreconditionFailedException.Failure.INSTANCE));
                     future.addFailureCallback(throwable -> result.resolve());
                     return result;
                 });

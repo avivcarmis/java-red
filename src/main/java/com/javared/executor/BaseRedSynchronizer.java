@@ -548,7 +548,7 @@ abstract public class BaseRedSynchronizer {
         abstract protected RETURN_CLASSIFIER classifier(RedFuture[] preconditions);
 
         /**
-         * A {@link FutureTransformer} which overrides the <RETURN_CLASSIFIER> parameter
+         * A {@link FutureTransformer} which overrides the RETURN_CLASSIFIER parameter
          * to {@link ReturnClassifier.Classifier0} in case {@link #fail()} has been called.
          * 
          * This is used for example in a case where one performs:
@@ -860,7 +860,7 @@ abstract public class BaseRedSynchronizer {
         }
 
         /**
-         * A {@link FutureTransformer} which leaves the original <RETURN_CLASSIFIER> parameter
+         * A {@link FutureTransformer} which leaves the original RETURN_CLASSIFIER parameter
          * in case {@link #fail()} has been called.
          *
          * This is used for example in a case where one performs:
@@ -1179,7 +1179,7 @@ abstract public class BaseRedSynchronizer {
      * The {@link ReturnClassifier} middleware also support adding additional preconditions
      * in the form of {@link Marker} which return a {@link FutureTransformer.Locked} instance.
      *
-     * @param <COMMAND>     the type of command to {@link #execute(Command)}
+     * @param <COMMAND>     the type of command to execute when invoking {@link #execute(Command)}
      * @param <TRANSFORMER> the type of transformer to return when calling {@link #andMarkers(Marker...)}
      */
     abstract protected static class ReturnClassifier<COMMAND extends Command,
@@ -2224,8 +2224,8 @@ abstract public class BaseRedSynchronizer {
      * and the chain is just pending an actual function to execute.
      * @param <FUNCTION> type of the function to expect
      * @param <WRAPPER>  type of the object to be returned from the function
-     *                   the wrapper may be <R>, {@link Future} of <R>,
-     *                   {@link ListenableFuture} of <R> or {@link RedFutureOf} of <R>.
+     *                   the wrapper may be R, {@link Future} of R,
+     *                   {@link ListenableFuture} of R or {@link RedFutureOf} of R.
      * @param <R>        the type of the result of the execution
      */
     abstract protected static class Runner<FUNCTION extends Function, WRAPPER, R> extends Middleware {
@@ -3194,7 +3194,7 @@ abstract public class BaseRedSynchronizer {
 
     /**
      * Class representing the result of an async execution, when completed
-     * producing either a value of <T> or a {@link Throwable}
+     * producing either a value of T or a {@link Throwable}
      * @param <T> type of the produced value
      */
     protected static class Result<T> {

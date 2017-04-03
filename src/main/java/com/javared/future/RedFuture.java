@@ -177,7 +177,7 @@ public interface RedFuture {
     }
 
     /**
-     * Converts the given {@link Future<T>} object to a {@link RedFuture<T>}
+     * Converts the given {@link Future} object to a {@link RedFuture}
      * see {@link JdkFutureAdapters#listenInPoolThread(Future)} for detailed implications
      * @param future future to convert
      * @param <T>    type of the future value
@@ -188,7 +188,7 @@ public interface RedFuture {
     }
 
     /**
-     * Converts the given {@link Future<T>} object to a {@link RedFuture<T>} with given executor
+     * Converts the given {@link Future} object to a {@link RedFuture} with given executor
      * see {@link JdkFutureAdapters#listenInPoolThread(Future, Executor)} for detailed implications
      * @param future   future to convert
      * @param executor executor to wait to future to complete and then execute callbacks
@@ -202,7 +202,7 @@ public interface RedFuture {
     }
 
     /**
-     * Converts the given {@link ListenableFuture<T>} object to a {@link RedFuture<T>}
+     * Converts the given {@link ListenableFuture} object to a {@link RedFuture}
      * @param future future to convert
      * @param <T>    type of the future value
      * @return a RedFuture instance tracking the given {@link ListenableFuture}
@@ -214,7 +214,7 @@ public interface RedFuture {
     }
 
     /**
-     * Converts the given {@link ListenableFuture<T>} object to a {@link RedFuture<T>}
+     * Converts the given {@link ListenableFuture} object to a {@link RedFuture}
      * @param future   future to convert
      * @param executor executor to execute callbacks
      *                 note that if the future is already completed, the callbacks will be

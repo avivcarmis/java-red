@@ -3,12 +3,22 @@ package com.javared.executor;
 import com.javared.future.RedFuture;
 
 /**
- * Created by avivc on 3/27/2017.
+ * A class to implement execution of a Red Synchronizer which receive INPUT typed
+ * inputs and returns a {@link RedFuture} to indicate the completion of an execution.
+ *
+ * @param <INPUT>  type of the input of the execution
  */
 abstract public class RedVoidSynchronizer<INPUT> extends BaseRedSynchronizer {
 
     // Public
 
+    /**
+     * Receive an input and executes it, returns a {@link RedFuture}
+     * of the execution completion.
+     *
+     * @param input input to execute
+     * @return {@link RedFuture} of the execution output
+     */
     public RedFuture execute(INPUT input) {
         try {
             Marker result = handle(input);
@@ -20,6 +30,12 @@ abstract public class RedVoidSynchronizer<INPUT> extends BaseRedSynchronizer {
 
     // Private
 
+    /**
+     * Implements the execution flow of the Synchronizer
+     * @param input input to handle
+     * @return the marker indicating the execution completion
+     * @throws Throwable to enable throwable catching
+     */
     abstract protected Marker handle(INPUT input) throws Throwable;
 
 }

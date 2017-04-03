@@ -29,6 +29,9 @@ import java.util.concurrent.atomic.AtomicReference;
  *     is a common async test practice, the context instance introduces
  *     a simple utility scheduling method available at
  *     {@link #scheduleTask(long, TimeUnit, Runnable)}.</li>
+ *     <li>Timing assertions - allowing simple and intuitive interface
+ *     to validate whether certain periods of times passed or didn't pass
+ *     from various points of the execution</li>
  * </ul>
  *
  * Note that all the context forks must be made before the test method returns.
@@ -145,12 +148,19 @@ public class RedTestContext {
      * @param delayMillis the delay of the execution to apply in milliseconds
      * @param runnable    the runnable task to execute
      */
-    public void scheduleTask(long delayMillis, Runnable runnable) { // TODO test
+    public void scheduleTask(long delayMillis, Runnable runnable) {
         scheduleTask(delayMillis, TimeUnit.MILLISECONDS, runnable);
     }
 
-    public TimingTester timingTester() {
-        return new TimingTester();
+    /**
+     * A {@link RedTestContext} provides a method for validating timing executions.
+     * A {@link TimingValidator} may be created at a certain point at time, and later,
+     * this {@link TimingValidator} instance may be used to validate certain period of
+     * time has passed or not passed since it's creation.
+     * @return a new instance of {@link TimingValidator}
+     */
+    public TimingValidator timingValidator() {
+        return new TimingValidator();
     }
 
     /**
@@ -218,6 +228,7 @@ public class RedTestContext {
 
     /**
      * A fork of a {@link RedTestContext}
+     *
      * see {@link RedTestContext#fork()}
      */
     public static class Fork {
@@ -272,37 +283,119 @@ public class RedTestContext {
 
     }
 
-    // TODO
-    public class TimingTester {
+    /**
+     * A Timing tester for a certain {@link RedTestContext}
+     * May be used to validate expected periods of time to pass or not pass,
+     * from the moment of it's creation.
+     *
+     * see {@link RedTestContext#timingValidator()}
+     */
+    public class TimingValidator {
 
+        // Fields
+
+        /**
+         * The system time in nanoseconds at the moment of creation
+         */
         private final long _startTimeNano;
 
-        private TimingTester() {
+        // Constructors
+
+        private TimingValidator() {
             _startTimeNano = System.nanoTime();
         }
 
+        // Public
+
+        /**
+         * Validates whether or not the given period of time has passed since
+         * the creation of the {@link TimingValidator} instance.
+         *
+         * If the time has not passed, the test will automatically fail with
+         * {@link NotPassedException}
+         *
+         * @param time period of time expected to have passed
+         * @param unit time unit to use
+         */
         public void validatePassed(long time, TimeUnit unit) {
             if (timePassedNanos() < unit.toNanos(time)) {
-                fail(time + " " + unit.name() + " did not pass yet");
+                fail(new NotPassedException(time, unit));
             }
         }
 
+        /**
+         * Validates whether or not the given period of time in milliseconds
+         * has passed since the creation of the {@link TimingValidator} instance.
+         *
+         * If the time has not passed, the test will automatically fail with
+         * {@link NotPassedException}
+         *
+         * @param timeMillis milliseconds expected to have passed
+         */
         public void validatePassed(long timeMillis) {
             validatePassed(timeMillis, TimeUnit.MILLISECONDS);
         }
 
+        /**
+         * Validates whether or not the given period of time has not passed
+         * since the creation of the {@link TimingValidator} instance.
+         *
+         * If the time has not passed, the test will automatically fail with
+         * {@link PassedException}
+         *
+         * @param time period of time expected to not have passed
+         * @param unit time unit to use
+         */
         public void validateNotPassed(long time, TimeUnit unit) {
             if (timePassedNanos() >= unit.toNanos(time)) {
-                fail(time + " " + unit.name() + " already passed");
+                fail(new PassedException(time, unit));
             }
         }
 
+        /**
+         * Validates whether or not the given period of time in milliseconds
+         * has not passed since the creation of the {@link TimingValidator} instance.
+         *
+         * If the time has not passed, the test will automatically fail with
+         * {@link PassedException}
+         *
+         * @param timeMillis milliseconds expected to not have passed
+         */
         public void validateNotPassed(long timeMillis) {
             validateNotPassed(timeMillis, TimeUnit.MILLISECONDS);
         }
 
+        // Private
+
+        /**
+         * @return time in nanoseconds passed since creation
+         */
         private long timePassedNanos() {
             return System.nanoTime() - _startTimeNano;
+        }
+
+        /**
+         * An exception thrown in case a {@link TimingValidator} not passed validation has failed
+         */
+        public class PassedException extends Exception {
+
+            private PassedException(long expected, TimeUnit unit) {
+                super(String.format("expected %d %s not to pass, but %d %s passed",
+                        expected, unit.name(), unit.convert(timePassedNanos(), TimeUnit.NANOSECONDS), unit.name()));
+            }
+
+        }
+
+        /**
+         * An exception thrown in case a {@link TimingValidator} passed validation has failed
+         */
+        public class NotPassedException extends Exception {
+
+            private NotPassedException(long expected, TimeUnit unit) {
+                super(String.format("expected %d %s to pass, but only %d %s passed",
+                        expected, unit.name(), unit.convert(timePassedNanos(), TimeUnit.NANOSECONDS), unit.name()));
+            }
+
         }
 
     }

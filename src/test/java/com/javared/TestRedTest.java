@@ -52,20 +52,94 @@ public class TestRedTest {
     // Scheduler
 
     /**
-     * Tests {@link RedTestContext} late tasks scheduling
+     * Tests {@link RedTestContext} late tasks scheduling with explicit time unit
      */
     @Test(timeout = 300)
-    public void testScheduler(RedTestContext redTestContext) throws InterruptedException {
+    public void testSchedulerNanos(RedTestContext redTestContext) throws InterruptedException {
+        long time = System.nanoTime();
+        AtomicBoolean tooEarly = new AtomicBoolean(false);
+        AtomicBoolean enterDelayedBlock = new AtomicBoolean(false);
+        redTestContext.scheduleTask(100 * 1000 * 1000, TimeUnit.NANOSECONDS, () -> {
+            tooEarly.set(System.nanoTime() - time < 100 * 1000 * 1000);
+            enterDelayedBlock.set(true);
+        });
+        Thread.sleep(150);
+        Assert.assertFalse(tooEarly.get());
+        Assert.assertTrue(enterDelayedBlock.get());
+    }
+
+    /**
+     * Tests {@link RedTestContext} late tasks scheduling with default time unit
+     */
+    @Test(timeout = 300)
+    public void testSchedulerDefaultTimeUnit(RedTestContext redTestContext) throws InterruptedException {
         long time = System.currentTimeMillis();
         AtomicBoolean tooEarly = new AtomicBoolean(false);
         AtomicBoolean enterDelayedBlock = new AtomicBoolean(false);
-        redTestContext.scheduleTask(100, TimeUnit.MILLISECONDS, () -> {
+        redTestContext.scheduleTask(100, () -> {
             tooEarly.set(System.currentTimeMillis() - time < 100);
             enterDelayedBlock.set(true);
         });
         Thread.sleep(150);
         Assert.assertFalse(tooEarly.get());
         Assert.assertTrue(enterDelayedBlock.get());
+    }
+
+    // Timing validator
+
+    /**
+     * Tests success of {@link com.javared.test.RedTestContext.TimingValidator}
+     */
+    @Test(timeout = 300)
+    public void testTimingValidatorSuccess(RedTestContext redTestContext) throws InterruptedException {
+        RedTestContext.TimingValidator validator = redTestContext.timingValidator();
+        validator.validateNotPassed(1000);
+        validator.validateNotPassed(1000 * 1000, TimeUnit.MICROSECONDS);
+        Thread.sleep(100);
+        validator.validatePassed(50);
+        validator.validatePassed(50 * 1000, TimeUnit.MICROSECONDS);
+    }
+
+    /**
+     * Tests {@link com.javared.test.RedTestContext.TimingValidator} not passed failure
+     * with explicit time unit
+     */
+    @Test(timeout = 300, expected = RedTestContext.TimingValidator.PassedException.class)
+    public void testTimingValidatorNotPassedTimeUnit(RedTestContext redTestContext) throws InterruptedException {
+        RedTestContext.TimingValidator validator = redTestContext.timingValidator();
+        Thread.sleep(100);
+        validator.validateNotPassed(50 * 1000, TimeUnit.MICROSECONDS);
+    }
+
+    /**
+     * Tests {@link com.javared.test.RedTestContext.TimingValidator} not passed failure
+     * with default time unit
+     */
+    @Test(timeout = 300, expected = RedTestContext.TimingValidator.PassedException.class)
+    public void testTimingValidatorNotPassed(RedTestContext redTestContext) throws InterruptedException {
+        RedTestContext.TimingValidator validator = redTestContext.timingValidator();
+        Thread.sleep(100);
+        validator.validateNotPassed(50);
+    }
+
+    /**
+     * Tests {@link com.javared.test.RedTestContext.TimingValidator} passed failure
+     * with explicit time unit
+     */
+    @Test(timeout = 300, expected = RedTestContext.TimingValidator.NotPassedException.class)
+    public void testTimingValidatorPassedTimeUnit(RedTestContext redTestContext) throws InterruptedException {
+        RedTestContext.TimingValidator validator = redTestContext.timingValidator();
+        validator.validatePassed(50 * 1000, TimeUnit.MICROSECONDS);
+    }
+
+    /**
+     * Tests {@link com.javared.test.RedTestContext.TimingValidator} passed failure
+     * with default time unit
+     */
+    @Test(timeout = 300, expected = RedTestContext.TimingValidator.NotPassedException.class)
+    public void testTimingValidatorPassed(RedTestContext redTestContext) throws InterruptedException {
+        RedTestContext.TimingValidator validator = redTestContext.timingValidator();
+        validator.validatePassed(50);
     }
 
     // Context fail

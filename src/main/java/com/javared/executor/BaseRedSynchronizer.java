@@ -725,7 +725,8 @@ abstract public class BaseRedSynchronizer {
                 }
 
                 @Override
-                protected ReturnClassifier.ReturnClassifier6<T0, T1, T2, T3, T4, T5> classifier(RedFuture[] preconditions) {
+                protected ReturnClassifier.ReturnClassifier6<T0, T1, T2, T3, T4, T5>
+                classifier(RedFuture[] preconditions) {
                     return new ReturnClassifier.ReturnClassifier6<>(preconditions);
                 }
 

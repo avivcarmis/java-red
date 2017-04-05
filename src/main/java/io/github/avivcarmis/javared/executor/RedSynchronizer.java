@@ -1,7 +1,7 @@
-package com.javared.executor;
+package io.github.avivcarmis.javared.executor;
 
-import com.javared.future.RedFuture;
-import com.javared.future.RedFutureOf;
+import io.github.avivcarmis.javared.future.RedFuture;
+import io.github.avivcarmis.javared.future.RedFutureOf;
 
 /**
  * A class to implement execution of a Red Synchronizer which receive INPUT typed

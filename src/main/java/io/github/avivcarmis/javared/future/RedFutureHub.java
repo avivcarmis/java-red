@@ -1,4 +1,4 @@
-package com.javared.future;
+package io.github.avivcarmis.javared.future;
 
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;

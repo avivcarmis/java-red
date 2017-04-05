@@ -1,4 +1,4 @@
-package com.javared.executor;
+package io.github.avivcarmis.javared.executor;
 
 /**
  * Represents the indication error that will be thrown in case an

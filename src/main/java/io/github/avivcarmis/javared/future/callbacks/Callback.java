@@ -1,4 +1,4 @@
-package com.javared.future.callbacks;
+package io.github.avivcarmis.javared.future.callbacks;
 
 /**
  * A simple callback interface for receiving a typed value.

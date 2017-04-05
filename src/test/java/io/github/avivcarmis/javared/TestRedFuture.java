@@ -1,8 +1,8 @@
-package com.javared;
+package io.github.avivcarmis.javared;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
-import com.javared.future.*;
+import io.github.avivcarmis.javared.future.*;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;

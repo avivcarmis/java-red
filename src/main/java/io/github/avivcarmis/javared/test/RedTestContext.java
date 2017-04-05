@@ -1,9 +1,9 @@
-package com.javared.test;
+package io.github.avivcarmis.javared.test;
 
-import com.javared.future.OpenRedFuture;
-import com.javared.future.RedFuture;
-import com.javared.future.RedFutureHub;
-import com.javared.future.callbacks.EmptyCallback;
+import io.github.avivcarmis.javared.future.OpenRedFuture;
+import io.github.avivcarmis.javared.future.RedFuture;
+import io.github.avivcarmis.javared.future.RedFutureHub;
+import io.github.avivcarmis.javared.future.callbacks.EmptyCallback;
 import org.junit.Assert;
 
 import java.util.concurrent.Executors;

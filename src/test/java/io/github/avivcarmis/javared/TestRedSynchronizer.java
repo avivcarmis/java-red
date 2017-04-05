@@ -1,15 +1,15 @@
-package com.javared;
+package io.github.avivcarmis.javared;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
-import com.javared.executor.PreconditionFailedException;
-import com.javared.executor.RedSynchronizer;
-import com.javared.executor.RedVoidSynchronizer;
-import com.javared.future.OpenRedFutureOf;
-import com.javared.future.RedFuture;
-import com.javared.future.RedFutureOf;
-import com.javared.test.RedTestContext;
-import com.javared.test.RedTestRunner;
+import io.github.avivcarmis.javared.executor.PreconditionFailedException;
+import io.github.avivcarmis.javared.executor.RedSynchronizer;
+import io.github.avivcarmis.javared.executor.RedVoidSynchronizer;
+import io.github.avivcarmis.javared.future.OpenRedFutureOf;
+import io.github.avivcarmis.javared.future.RedFuture;
+import io.github.avivcarmis.javared.future.RedFutureOf;
+import io.github.avivcarmis.javared.test.RedTestContext;
+import io.github.avivcarmis.javared.test.RedTestRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

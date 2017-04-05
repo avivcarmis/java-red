@@ -1,10 +1,10 @@
-package com.javared.executor;
+package io.github.avivcarmis.javared.executor;
 
 import com.google.common.util.concurrent.ListenableFuture;
-import com.javared.future.OpenRedFuture;
-import com.javared.future.OpenRedFutureOf;
-import com.javared.future.RedFuture;
-import com.javared.future.RedFutureOf;
+import io.github.avivcarmis.javared.future.OpenRedFuture;
+import io.github.avivcarmis.javared.future.OpenRedFutureOf;
+import io.github.avivcarmis.javared.future.RedFuture;
+import io.github.avivcarmis.javared.future.RedFutureOf;
 
 import java.util.Arrays;
 import java.util.concurrent.Future;
@@ -13,9 +13,9 @@ import java.util.concurrent.Future;
  * An abstract class to implement common functionality of both
  * {@link RedSynchronizer} and {@link RedVoidSynchronizer}.
  *
- * The Synchronizers instances use a Synchronizer Syntax to define the different
+ * The Synchronizers instances use a Synchronizer idiom to define the different
  * aspects of the execution.
- * Synchronizer Syntax is separated into statements. Each statement constructs a single
+ * Synchronizer idiom is separated into statements. Each statement constructs a single
  * execution which can either be resulted in a value, or void.
  * The phase of declaring an execution is called The Construction Chain.
  * The different stages of the Construction Chain are called middleware.
@@ -35,7 +35,7 @@ import java.util.concurrent.Future;
  * In case the execution returns a value, the tracking object will be a {@link Result},
  * in case the execution returns void, the tracking object will be a {@link Marker}.
  * Both {@link Result} and {@link Marker} can be passed back as precondition to
- * another Construction Chain in any following statement of the Synchronizer Syntax.
+ * another Construction Chain in any following statement of the Synchronizer idiom.
  */
 abstract public class BaseRedSynchronizer {
 

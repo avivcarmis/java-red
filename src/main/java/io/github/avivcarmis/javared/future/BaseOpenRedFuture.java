@@ -1,11 +1,11 @@
-package com.javared.future;
+package io.github.avivcarmis.javared.future;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
-import com.javared.future.callbacks.Callback;
-import com.javared.future.callbacks.EmptyCallback;
+import io.github.avivcarmis.javared.future.callbacks.Callback;
+import io.github.avivcarmis.javared.future.callbacks.EmptyCallback;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;

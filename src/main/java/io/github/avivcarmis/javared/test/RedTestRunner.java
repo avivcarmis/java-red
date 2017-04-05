@@ -1,4 +1,4 @@
-package com.javared.test;
+package io.github.avivcarmis.javared.test;
 
 import org.junit.Test;
 import org.junit.internal.runners.statements.InvokeMethod;

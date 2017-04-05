@@ -1,8 +1,8 @@
-package com.javared;
+package io.github.avivcarmis.javared;
 
-import com.javared.future.callbacks.EmptyCallback;
-import com.javared.test.RedTestContext;
-import com.javared.test.RedTestRunner;
+import io.github.avivcarmis.javared.future.callbacks.EmptyCallback;
+import io.github.avivcarmis.javared.test.RedTestContext;
+import io.github.avivcarmis.javared.test.RedTestRunner;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -88,7 +88,7 @@ public class TestRedTest {
     // Timing validator
 
     /**
-     * Tests success of {@link com.javared.test.RedTestContext.TimingValidator}
+     * Tests success of {@link RedTestContext.TimingValidator}
      */
     @Test(timeout = 300)
     public void testTimingValidatorSuccess(RedTestContext redTestContext) throws InterruptedException {
@@ -101,7 +101,7 @@ public class TestRedTest {
     }
 
     /**
-     * Tests {@link com.javared.test.RedTestContext.TimingValidator} not passed failure
+     * Tests {@link RedTestContext.TimingValidator} not passed failure
      * with explicit time unit
      */
     @Test(timeout = 300, expected = RedTestContext.TimingValidator.PassedException.class)
@@ -112,7 +112,7 @@ public class TestRedTest {
     }
 
     /**
-     * Tests {@link com.javared.test.RedTestContext.TimingValidator} not passed failure
+     * Tests {@link RedTestContext.TimingValidator} not passed failure
      * with default time unit
      */
     @Test(timeout = 300, expected = RedTestContext.TimingValidator.PassedException.class)
@@ -123,7 +123,7 @@ public class TestRedTest {
     }
 
     /**
-     * Tests {@link com.javared.test.RedTestContext.TimingValidator} passed failure
+     * Tests {@link RedTestContext.TimingValidator} passed failure
      * with explicit time unit
      */
     @Test(timeout = 300, expected = RedTestContext.TimingValidator.NotPassedException.class)
@@ -133,7 +133,7 @@ public class TestRedTest {
     }
 
     /**
-     * Tests {@link com.javared.test.RedTestContext.TimingValidator} passed failure
+     * Tests {@link RedTestContext.TimingValidator} passed failure
      * with default time unit
      */
     @Test(timeout = 300, expected = RedTestContext.TimingValidator.NotPassedException.class)

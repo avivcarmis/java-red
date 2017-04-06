@@ -1503,14 +1503,14 @@ public class TestRedFuture {
         // RedFuture wait
 
         /**
-         * Test the functionality of {@link RedFuture#isResolved()}
+         * Test the functionality of {@link RedFuture#isDone()}
          */
         @Test
         public void testIsResolved() throws Throwable {
             OpenRedFuture future = RedFuture.future();
-            Assert.assertFalse(future.isResolved());
+            Assert.assertFalse(future.isDone());
             future.resolve();
-            Assert.assertTrue(future.isResolved());
+            Assert.assertTrue(future.isDone());
         }
 
         /**
@@ -1522,7 +1522,7 @@ public class TestRedFuture {
             RedFuture future = successfulFuture();
             future.waitForCompletion();
             Assert.assertTrue(System.currentTimeMillis() >= time + FUTURE_SLEEP_TIME);
-            Assert.assertTrue(future.isResolved());
+            Assert.assertTrue(future.isDone());
         }
 
         /**
@@ -1534,7 +1534,7 @@ public class TestRedFuture {
             RedFuture future = successfulFuture();
             future.waitForCompletion(FUTURE_SLEEP_TIME * 2, TimeUnit.MILLISECONDS);
             Assert.assertTrue(System.currentTimeMillis() >= time + FUTURE_SLEEP_TIME);
-            Assert.assertTrue(future.isResolved());
+            Assert.assertTrue(future.isDone());
         }
 
         /**

@@ -15,7 +15,7 @@ import java.util.concurrent.*;
  *
  * @param <T> type of the future value
  */
-public interface RedFutureOf<T> extends RedFuture {
+public interface RedFutureOf<T> extends RedFuture, Future<T> {
 
     /**
      * Attach a single parameter callback to be invoked when the future is successfully resolved,
@@ -47,7 +47,7 @@ public interface RedFutureOf<T> extends RedFuture {
      * This method is not blocking, nor is it synchronizing different thread calls.
      * Note that a return value of null can either indicate that the future is not yet resolved,
      * or that it's has resolved with a null value. To test whether it is resolved or not,
-     * one can call the inherited {@link RedFuture#isResolved()}
+     * one can call the inherited {@link RedFuture#isDone()}
      * @return the resulted value if the future is successfully resolved, null otherwise
      */
     T tryGet();

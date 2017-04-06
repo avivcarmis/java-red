@@ -1149,7 +1149,7 @@ public class TestRedSynchronizer {
                         pendingMarker.fail(TestException.INSTANCE)));
                 Marker marker2 = execute(pendingMarker -> context.scheduleTask(FUTURE_DELAY, () ->
                         pendingMarker.fail(TestException.INSTANCE)));
-                return ifMarkers(marker1, marker2).fail().produceListenableFutureOf(TestObject.class).byExecuting(() -> {
+                return ifMarkers(marker1, marker2).fail().produceFutureOf(TestObject.class).byExecuting(() -> {
                     timingValidator.validatePassed(FUTURE_DELAY);
                     return listenableFutureOf(testObjectSuccess(), context);
                 });
@@ -1165,7 +1165,7 @@ public class TestRedSynchronizer {
                 Marker marker1 = execute(pendingMarker -> context.scheduleTask(FUTURE_DELAY, () ->
                         pendingMarker.fail(TestException.INSTANCE)));
                 Marker marker2 = execute(pendingMarker -> context.scheduleTask(FUTURE_DELAY, pendingMarker::complete));
-                return ifMarkers(marker1, marker2).finish().produceRedFutureOf(Boolean.class).byExecuting(() -> {
+                return ifMarkers(marker1, marker2).finish().produceFutureOf(Boolean.class).byExecuting(() -> {
                     timingValidator.validatePassed(FUTURE_DELAY);
                     return redFutureOf(booleanSuccess(), context);
                 });
@@ -1215,7 +1215,7 @@ public class TestRedSynchronizer {
                         pendingMarker.fail(TestException.INSTANCE)));
                 Marker marker2 = execute(pendingMarker -> context.scheduleTask(FUTURE_DELAY, () ->
                         pendingMarker.fail(TestException.INSTANCE)));
-                return ifMarkers(marker1).finish().andMarkers(marker2).fail().produceListenableFutureOf(Boolean.class)
+                return ifMarkers(marker1).finish().andMarkers(marker2).fail().produceFutureOf(Boolean.class)
                         .byExecuting(() -> {
                             timingValidator.validatePassed(FUTURE_DELAY);
                             return listenableFutureOf(booleanSuccess(), context);
@@ -1359,7 +1359,7 @@ public class TestRedSynchronizer {
             protected Result<TestObject> handle(RedTestContext redTestContext) {
                 Result<Boolean> result1 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(Boolean.class, TestException.INSTANCE, redTestContext));
-                Result<String> result2 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(String.class, TestException.INSTANCE, redTestContext));
                 return ifResults(result1, result2).fail().produceFutureOf(TestObject.class)
                         .byExecuting(() -> futureOf(testObjectSuccess(), redTestContext));
@@ -1371,12 +1371,12 @@ public class TestRedSynchronizer {
 
             @Override
             protected Result<Boolean> handle(RedTestContext redTestContext) {
-                Result<Boolean> result1 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result1 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
                 Result<String> result2 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
                 Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(testObjectSuccess(), redTestContext));
-                return ifResults(result1, result2, result3).finish().produceListenableFutureOf(Boolean.class)
+                return ifResults(result1, result2, result3).finish().produceFutureOf(Boolean.class)
                         .byExecuting((f0, f1, f2) -> {
                             redTestContext.assertions.assertNull(f0);
                             redTestContext.assertions.assertTrue(checkStringSuccess(f1));
@@ -1394,16 +1394,16 @@ public class TestRedSynchronizer {
                 Result<Boolean> result1 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(stringSuccess(), redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(testObjectSuccess(), redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(booleanSuccess(), redTestContext));
                 Marker marker1 = execute(pendingMarker ->
                         redTestContext.scheduleTask(FUTURE_DELAY, () -> pendingMarker.fail(TestException.INSTANCE)));
                 Marker marker2 = execute(pendingMarker ->
                         redTestContext.scheduleTask(FUTURE_DELAY, () -> pendingMarker.fail(TestException.INSTANCE)));
                 return ifResults(result1, result2, result3, result4).succeed().andMarkers(marker1, marker2).fail()
-                        .produceRedFutureOf(String.class).byExecuting((f0, f1, f2, f3) -> {
+                        .produceFutureOf(String.class).byExecuting((f0, f1, f2, f3) -> {
                             redTestContext.assertions.assertTrue(checkBooleanSuccess(f0));
                             redTestContext.assertions.assertTrue(checkStringSuccess(f1));
                             redTestContext.assertions.assertTrue(checkTestObjectSuccess(f2));
@@ -1423,9 +1423,9 @@ public class TestRedSynchronizer {
                 });
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(String.class, TestException.INSTANCE, redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(TestObject.class, TestException.INSTANCE, redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
@@ -1449,9 +1449,9 @@ public class TestRedSynchronizer {
                 });
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(String.class, TestException.INSTANCE, redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(TestObject.class, TestException.INSTANCE, redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
@@ -1485,14 +1485,14 @@ public class TestRedSynchronizer {
                 Result<Boolean> result1 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(stringSuccess(), redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(testObjectSuccess(), redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(booleanSuccess(), redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(testObjectSuccess(), redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(booleanSuccess(), redTestContext));
                 Marker marker1 = execute(pendingMarker -> redTestContext.scheduleTask(FUTURE_DELAY, () ->
                         pendingMarker.fail(TestException.INSTANCE)));
@@ -1500,7 +1500,7 @@ public class TestRedSynchronizer {
                         pendingMarker.fail(TestException.INSTANCE)));
                 return ifResults(result1, result2, result3, result4, result5, result6, result7).succeed()
                         .andMarkers(marker1).finish().andMarkers(marker2).fail()
-                        .produceListenableFutureOf(String.class).byExecuting((f0, f1, f2, f3, f4, f5, f6) -> {
+                        .produceFutureOf(String.class).byExecuting((f0, f1, f2, f3, f4, f5, f6) -> {
                             timingValidator.validatePassed(FUTURE_DELAY);
                             redTestContext.assertions.assertTrue(checkBooleanSuccess(f0));
                             redTestContext.assertions.assertTrue(checkStringSuccess(f1));
@@ -1525,18 +1525,18 @@ public class TestRedSynchronizer {
                 });
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(String.class, TestException.INSTANCE, redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(TestObject.class, TestException.INSTANCE, redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(TestObject.class, TestException.INSTANCE, redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(String.class, TestException.INSTANCE, redTestContext));
                 Marker marker1 = execute(pendingMarker -> redTestContext.scheduleTask(FUTURE_DELAY, () ->
                         pendingMarker.fail(TestException.INSTANCE)));
@@ -1544,7 +1544,7 @@ public class TestRedSynchronizer {
                         pendingMarker::complete));
                 return ifResults(result1, result2, result3, result4, result5, result6, result7, result8).fail()
                         .andMarkers(marker1).fail().andMarkers(marker2).succeed()
-                        .produceRedFutureOf(TestObject.class).byExecuting(() -> {
+                        .produceFutureOf(TestObject.class).byExecuting(() -> {
                             timingValidator.validatePassed(FUTURE_DELAY);
                             return redFutureOf(testObjectSuccess(), redTestContext);
                         });
@@ -1562,18 +1562,18 @@ public class TestRedSynchronizer {
                 });
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(String.class, TestException.INSTANCE, redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(TestObject.class, TestException.INSTANCE, redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(TestObject.class, TestException.INSTANCE, redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(String.class, TestException.INSTANCE, redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class)
                         .byExecuting(TestRedSynchronizer::testObjectSuccess);
@@ -1608,16 +1608,16 @@ public class TestRedSynchronizer {
                 Result<Boolean> result1 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(stringSuccess(), context._redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(testObjectSuccess(), context._redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(booleanSuccess(), context._redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(testObjectSuccess(), context._redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(booleanSuccess(), context._redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(stringSuccess(), context._redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class)
                         .byExecuting(TestRedSynchronizer::testObjectSuccess);
@@ -1666,7 +1666,7 @@ public class TestRedSynchronizer {
                 RedTestContext.TimingValidator timingValidator = context._redTestContext.timingValidator();
                 Result<Boolean> result1 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(Boolean.class, TestException.INSTANCE, context._redTestContext));
-                Result<String> result2 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(stringSuccess(), context._redTestContext));
                 return ifResults(result1, result2).finish().execute((pendingMarker, f0, f1) -> {
                     timingValidator.validatePassed(FUTURE_DELAY);
@@ -1686,9 +1686,9 @@ public class TestRedSynchronizer {
                 RedTestContext.TimingValidator timingValidator = context._redTestContext.timingValidator();
                 Result<Boolean> result1 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(booleanSuccess(), context._redTestContext));
-                Result<String> result2 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(stringSuccess(), context._redTestContext));
-                Result<TestObject> result3 = produceRedFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         redFutureOf(testObjectSuccess(), context._redTestContext));
                 Marker marker1 = execute(pendingMarker -> context._redTestContext.scheduleTask(FUTURE_DELAY,
                         pendingMarker::complete));
@@ -1714,9 +1714,9 @@ public class TestRedSynchronizer {
                 RedTestContext.TimingValidator timingValidator = context._redTestContext.timingValidator();
                 Result<Boolean> result1 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(Boolean.class, TestException.INSTANCE, context._redTestContext));
-                Result<String> result2 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(String.class, TestException.INSTANCE, context._redTestContext));
-                Result<TestObject> result3 = produceRedFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         redFutureOf(TestObject.class, TestException.INSTANCE, context._redTestContext));
                 Result<Boolean> result4 = produce(Boolean.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
@@ -1742,9 +1742,9 @@ public class TestRedSynchronizer {
                 RedTestContext.TimingValidator timingValidator = context._redTestContext.timingValidator();
                 Result<Boolean> result1 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(Boolean.class, TestException.INSTANCE, context._redTestContext));
-                Result<String> result2 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(String.class, TestException.INSTANCE, context._redTestContext));
-                Result<TestObject> result3 = produceRedFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         redFutureOf(TestObject.class, TestException.INSTANCE, context._redTestContext));
                 Result<Boolean> result4 = produce(Boolean.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
@@ -1777,14 +1777,14 @@ public class TestRedSynchronizer {
                 RedTestContext.TimingValidator timingValidator = context._redTestContext.timingValidator();
                 Result<Boolean> result1 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(booleanSuccess(), context._redTestContext));
-                Result<String> result2 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(stringSuccess(), context._redTestContext));
-                Result<TestObject> result3 = produceRedFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         redFutureOf(testObjectSuccess(), context._redTestContext));
                 Result<Boolean> result4 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
                 Result<String> result5 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(stringSuccess(), context._redTestContext));
-                Result<TestObject> result6 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(testObjectSuccess(), context._redTestContext));
                 Marker marker1 = execute(pendingMarker -> context._redTestContext.scheduleTask(FUTURE_DELAY, () ->
                         pendingMarker.fail(TestException.INSTANCE)));
@@ -1814,18 +1814,18 @@ public class TestRedSynchronizer {
                 RedTestContext.TimingValidator timingValidator = context._redTestContext.timingValidator();
                 Result<Boolean> result1 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(Boolean.class, TestException.INSTANCE, context._redTestContext));
-                Result<String> result2 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(String.class, TestException.INSTANCE, context._redTestContext));
-                Result<TestObject> result3 = produceRedFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         redFutureOf(TestObject.class, TestException.INSTANCE, context._redTestContext));
                 Result<Boolean> result4 = produce(Boolean.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<String> result5 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(String.class, TestException.INSTANCE, context._redTestContext));
-                Result<TestObject> result6 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(TestObject.class, TestException.INSTANCE, context._redTestContext));
-                Result<Boolean> result7 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(Boolean.class, TestException.INSTANCE, context._redTestContext));
                 Marker marker1 = execute(pendingMarker -> context._redTestContext.scheduleTask(FUTURE_DELAY, () ->
                         pendingMarker.fail(TestException.INSTANCE)));
@@ -1849,16 +1849,16 @@ public class TestRedSynchronizer {
                 RedTestContext.TimingValidator timingValidator = context._redTestContext.timingValidator();
                 Result<Boolean> result1 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(Boolean.class, TestException.INSTANCE, context._redTestContext));
-                Result<String> result2 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(String.class, TestException.INSTANCE, context._redTestContext));
-                Result<TestObject> result3 = produceRedFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         redFutureOf(TestObject.class, TestException.INSTANCE, context._redTestContext));
                 Result<Boolean> result4 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
                 Result<String> result5 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(String.class, TestException.INSTANCE, context._redTestContext));
-                Result<TestObject> result6 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(TestObject.class, TestException.INSTANCE, context._redTestContext));
-                Result<Boolean> result7 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(Boolean.class, TestException.INSTANCE, context._redTestContext));
                 Result<String> result8 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
                 Marker marker1 = execute(pendingMarker -> context._redTestContext.scheduleTask(FUTURE_DELAY,
@@ -1892,22 +1892,22 @@ public class TestRedSynchronizer {
                 Result<Boolean> result1 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(stringSuccess(), redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(testObjectSuccess(), redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(booleanSuccess(), redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(testObjectSuccess(), redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(booleanSuccess(), redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(stringSuccess(), redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class)
                         .byExecuting(TestRedSynchronizer::testObjectSuccess);
                 Result<Boolean> result10 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(booleanSuccess(), redTestContext));
-                Result<String> result11 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result11 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(stringSuccess(), redTestContext));
                 return ifResults(result1, result2, result3, result4, result5, result6, result7, result8, result9,
                         result10, result11).succeed().produce(Boolean.class).byExecuting(results -> {
@@ -1946,25 +1946,25 @@ public class TestRedSynchronizer {
                 });
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(String.class, TestException.INSTANCE, redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(TestObject.class, TestException.INSTANCE, redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(TestObject.class, TestException.INSTANCE, redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(String.class, TestException.INSTANCE, redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<Boolean> result10 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(Boolean.class, TestException.INSTANCE, redTestContext));
-                Result<String> result11 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result11 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(String.class, TestException.INSTANCE, redTestContext));
                 return ifResults(result1, result2, result3, result4, result5, result6, result7, result8, result9,
                         result10, result11).fail().produce(String.class).byExecuting(() -> {
@@ -1983,23 +1983,23 @@ public class TestRedSynchronizer {
                 Result<Boolean> result1 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(stringSuccess(), redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(testObjectSuccess(), redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(booleanSuccess(), redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(testObjectSuccess(), redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(booleanSuccess(), redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(String.class, TestException.INSTANCE, redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<Boolean> result10 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(Boolean.class, TestException.INSTANCE, redTestContext));
-                Result<String> result11 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result11 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(String.class, TestException.INSTANCE, redTestContext));
                 return ifResults(result1, result2, result3, result4, result5, result6, result7, result8, result9,
                         result10, result11).finish().produce(TestObject.class).byExecuting(results -> {
@@ -2035,22 +2035,22 @@ public class TestRedSynchronizer {
                 Result<Boolean> result1 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(stringSuccess(), redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(testObjectSuccess(), redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(booleanSuccess(), redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(testObjectSuccess(), redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(booleanSuccess(), redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(stringSuccess(), redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class)
                         .byExecuting(TestRedSynchronizer::testObjectSuccess);
                 Result<Boolean> result10 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(booleanSuccess(), redTestContext));
-                Result<String> result11 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result11 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(stringSuccess(), redTestContext));
                 Marker marker1 = execute(pendingMarker -> redTestContext.scheduleTask(FUTURE_DELAY,
                         pendingMarker::complete));
@@ -2094,25 +2094,25 @@ public class TestRedSynchronizer {
                 });
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(String.class, TestException.INSTANCE, redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(TestObject.class, TestException.INSTANCE, redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(TestObject.class, TestException.INSTANCE, redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(String.class, TestException.INSTANCE, redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<Boolean> result10 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(Boolean.class, TestException.INSTANCE, redTestContext));
-                Result<String> result11 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result11 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(String.class, TestException.INSTANCE, redTestContext));
                 Marker marker1 = execute(pendingMarker -> redTestContext.scheduleTask(FUTURE_DELAY, () ->
                         pendingMarker.fail(TestException.INSTANCE)));
@@ -2136,23 +2136,23 @@ public class TestRedSynchronizer {
                 Result<Boolean> result1 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(stringSuccess(), redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(testObjectSuccess(), redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(booleanSuccess(), redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(testObjectSuccess(), redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(booleanSuccess(), redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(String.class, TestException.INSTANCE, redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<Boolean> result10 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(Boolean.class, TestException.INSTANCE, redTestContext));
-                Result<String> result11 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result11 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(String.class, TestException.INSTANCE, redTestContext));
                 Marker marker1 = execute(pendingMarker -> redTestContext.scheduleTask(FUTURE_DELAY, () ->
                         pendingMarker.fail(TestException.INSTANCE)));
@@ -2193,22 +2193,22 @@ public class TestRedSynchronizer {
                 Result<Boolean> result1 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(stringSuccess(), redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(testObjectSuccess(), redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(booleanSuccess(), redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(testObjectSuccess(), redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(booleanSuccess(), redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(stringSuccess(), redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class)
                         .byExecuting(TestRedSynchronizer::testObjectSuccess);
                 Result<Boolean> result10 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(booleanSuccess(), redTestContext));
-                Result<String> result11 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result11 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(stringSuccess(), redTestContext));
                 Marker marker1 = execute(pendingMarker -> redTestContext.scheduleTask(FUTURE_DELAY,
                         pendingMarker::complete));
@@ -2252,25 +2252,25 @@ public class TestRedSynchronizer {
                 });
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(String.class, TestException.INSTANCE, redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(TestObject.class, TestException.INSTANCE, redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(TestObject.class, TestException.INSTANCE, redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(String.class, TestException.INSTANCE, redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<Boolean> result10 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(Boolean.class, TestException.INSTANCE, redTestContext));
-                Result<String> result11 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result11 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(String.class, TestException.INSTANCE, redTestContext));
                 Marker marker1 = execute(pendingMarker -> redTestContext.scheduleTask(FUTURE_DELAY, () ->
                         pendingMarker.fail(TestException.INSTANCE)));
@@ -2294,23 +2294,23 @@ public class TestRedSynchronizer {
                 Result<Boolean> result1 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(stringSuccess(), redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(testObjectSuccess(), redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(booleanSuccess(), redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(testObjectSuccess(), redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(booleanSuccess(), redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(String.class, TestException.INSTANCE, redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<Boolean> result10 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(Boolean.class, TestException.INSTANCE, redTestContext));
-                Result<String> result11 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result11 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(String.class, TestException.INSTANCE, redTestContext));
                 Marker marker1 = execute(pendingMarker -> redTestContext.scheduleTask(FUTURE_DELAY, () ->
                         pendingMarker.fail(TestException.INSTANCE)));
@@ -2351,22 +2351,22 @@ public class TestRedSynchronizer {
                 Result<Boolean> result1 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(stringSuccess(), context._redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(testObjectSuccess(), context._redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(booleanSuccess(), context._redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(testObjectSuccess(), context._redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(booleanSuccess(), context._redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(stringSuccess(), context._redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class)
                         .byExecuting(TestRedSynchronizer::testObjectSuccess);
                 Result<Boolean> result10 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(booleanSuccess(), context._redTestContext));
-                Result<String> result11 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result11 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(stringSuccess(), context._redTestContext));
                 return ifResults(result1, result2, result3, result4, result5, result6, result7, result8, result9,
                         result10, result11).succeed().execute((pendingMarker, results) -> {
@@ -2406,25 +2406,25 @@ public class TestRedSynchronizer {
                 });
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(String.class, TestException.INSTANCE, context._redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(TestObject.class, TestException.INSTANCE, context._redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(Boolean.class, TestException.INSTANCE, context._redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(TestObject.class, TestException.INSTANCE, context._redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(Boolean.class, TestException.INSTANCE, context._redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(String.class, TestException.INSTANCE, context._redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<Boolean> result10 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(Boolean.class, TestException.INSTANCE, context._redTestContext));
-                Result<String> result11 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result11 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(String.class, TestException.INSTANCE, context._redTestContext));
                 return ifResults(result1, result2, result3, result4, result5, result6, result7, result8, result9,
                         result10, result11).fail().execute(pendingMarker -> {
@@ -2444,23 +2444,23 @@ public class TestRedSynchronizer {
                 Result<Boolean> result1 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(stringSuccess(), context._redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(testObjectSuccess(), context._redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(booleanSuccess(), context._redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(testObjectSuccess(), context._redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(booleanSuccess(), context._redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(String.class, TestException.INSTANCE, context._redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<Boolean> result10 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(Boolean.class, TestException.INSTANCE, context._redTestContext));
-                Result<String> result11 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result11 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(String.class, TestException.INSTANCE, context._redTestContext));
                 return ifResults(result1, result2, result3, result4, result5, result6, result7, result8, result9,
                         result10, result11).finish().execute((pendingMarker, results) -> {
@@ -2497,22 +2497,22 @@ public class TestRedSynchronizer {
                 Result<Boolean> result1 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(stringSuccess(), context._redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(testObjectSuccess(), context._redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(booleanSuccess(), context._redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(testObjectSuccess(), context._redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(booleanSuccess(), context._redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(stringSuccess(), context._redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class)
                         .byExecuting(TestRedSynchronizer::testObjectSuccess);
                 Result<Boolean> result10 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(booleanSuccess(), context._redTestContext));
-                Result<String> result11 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result11 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(stringSuccess(), context._redTestContext));
                 Marker marker1 = execute(pendingMarker -> context._redTestContext.scheduleTask(FUTURE_DELAY,
                         pendingMarker::complete));
@@ -2557,25 +2557,25 @@ public class TestRedSynchronizer {
                 });
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(String.class, TestException.INSTANCE, context._redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(TestObject.class, TestException.INSTANCE, context._redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(Boolean.class, TestException.INSTANCE, context._redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(TestObject.class, TestException.INSTANCE, context._redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(Boolean.class, TestException.INSTANCE, context._redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(String.class, TestException.INSTANCE, context._redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<Boolean> result10 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(Boolean.class, TestException.INSTANCE, context._redTestContext));
-                Result<String> result11 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result11 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(String.class, TestException.INSTANCE, context._redTestContext));
                 Marker marker1 = execute(pendingMarker -> context._redTestContext.scheduleTask(FUTURE_DELAY, () ->
                         pendingMarker.fail(TestException.INSTANCE)));
@@ -2599,23 +2599,23 @@ public class TestRedSynchronizer {
                 Result<Boolean> result1 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(stringSuccess(), context._redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(testObjectSuccess(), context._redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(booleanSuccess(), context._redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(testObjectSuccess(), context._redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(booleanSuccess(), context._redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(String.class, TestException.INSTANCE, context._redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<Boolean> result10 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(Boolean.class, TestException.INSTANCE, context._redTestContext));
-                Result<String> result11 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result11 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(String.class, TestException.INSTANCE, context._redTestContext));
                 Marker marker1 = execute(pendingMarker -> context._redTestContext.scheduleTask(FUTURE_DELAY, () ->
                         pendingMarker.fail(TestException.INSTANCE)));
@@ -2657,22 +2657,22 @@ public class TestRedSynchronizer {
                 Result<Boolean> result1 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(stringSuccess(), context._redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(testObjectSuccess(), context._redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(booleanSuccess(), context._redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(testObjectSuccess(), context._redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(booleanSuccess(), context._redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(stringSuccess(), context._redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class)
                         .byExecuting(TestRedSynchronizer::testObjectSuccess);
                 Result<Boolean> result10 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(booleanSuccess(), context._redTestContext));
-                Result<String> result11 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result11 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(stringSuccess(), context._redTestContext));
                 Marker marker1 = execute(pendingMarker -> context._redTestContext.scheduleTask(FUTURE_DELAY,
                         pendingMarker::complete));
@@ -2717,25 +2717,25 @@ public class TestRedSynchronizer {
                 });
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(String.class, TestException.INSTANCE, context._redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(TestObject.class, TestException.INSTANCE, context._redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(Boolean.class, TestException.INSTANCE, context._redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(TestObject.class, TestException.INSTANCE, context._redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(Boolean.class, TestException.INSTANCE, context._redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(String.class, TestException.INSTANCE, context._redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<Boolean> result10 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(Boolean.class, TestException.INSTANCE, context._redTestContext));
-                Result<String> result11 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result11 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(String.class, TestException.INSTANCE, context._redTestContext));
                 Marker marker1 = execute(pendingMarker -> context._redTestContext.scheduleTask(FUTURE_DELAY, () ->
                         pendingMarker.fail(TestException.INSTANCE)));
@@ -2760,23 +2760,23 @@ public class TestRedSynchronizer {
                 Result<Boolean> result1 = produce(Boolean.class).byExecuting(TestRedSynchronizer::booleanSuccess);
                 Result<String> result2 = produceFutureOf(String.class).byExecuting(() ->
                         futureOf(stringSuccess(), context._redTestContext));
-                Result<TestObject> result3 = produceListenableFutureOf(TestObject.class).byExecuting(() ->
+                Result<TestObject> result3 = produceFutureOf(TestObject.class).byExecuting(() ->
                         listenableFutureOf(testObjectSuccess(), context._redTestContext));
-                Result<Boolean> result4 = produceRedFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result4 = produceFutureOf(Boolean.class).byExecuting(() ->
                         redFutureOf(booleanSuccess(), context._redTestContext));
                 Result<String> result5 = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
                 Result<TestObject> result6 = produceFutureOf(TestObject.class).byExecuting(() ->
                         futureOf(testObjectSuccess(), context._redTestContext));
-                Result<Boolean> result7 = produceListenableFutureOf(Boolean.class).byExecuting(() ->
+                Result<Boolean> result7 = produceFutureOf(Boolean.class).byExecuting(() ->
                         listenableFutureOf(booleanSuccess(), context._redTestContext));
-                Result<String> result8 = produceRedFutureOf(String.class).byExecuting(() ->
+                Result<String> result8 = produceFutureOf(String.class).byExecuting(() ->
                         redFutureOf(String.class, TestException.INSTANCE, context._redTestContext));
                 Result<TestObject> result9 = produce(TestObject.class).byExecuting(() -> {
                     throw TestException.INSTANCE;
                 });
                 Result<Boolean> result10 = produceFutureOf(Boolean.class).byExecuting(() ->
                         futureOf(Boolean.class, TestException.INSTANCE, context._redTestContext));
-                Result<String> result11 = produceListenableFutureOf(String.class).byExecuting(() ->
+                Result<String> result11 = produceFutureOf(String.class).byExecuting(() ->
                         listenableFutureOf(String.class, TestException.INSTANCE, context._redTestContext));
                 Marker marker1 = execute(pendingMarker -> context._redTestContext.scheduleTask(FUTURE_DELAY, () ->
                         pendingMarker.fail(TestException.INSTANCE)));
@@ -2956,7 +2956,7 @@ public class TestRedSynchronizer {
             @Override
             protected Result<Boolean> handle(RedTestContext redTestContext) {
                 Result<String> precondition = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
-                return ifResult(precondition).succeed().produceListenableFutureOf(Boolean.class).byExecuting(f0 ->
+                return ifResult(precondition).succeed().produceFutureOf(Boolean.class).byExecuting(f0 ->
                         listenableFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
             }
 
@@ -2967,7 +2967,7 @@ public class TestRedSynchronizer {
             @Override
             protected Result<Boolean> handle(RedTestContext redTestContext) {
                 Result<String> precondition = produce(String.class).byExecuting(TestRedSynchronizer::stringSuccess);
-                return ifResult(precondition).succeed().produceRedFutureOf(Boolean.class).byExecuting(f0 ->
+                return ifResult(precondition).succeed().produceFutureOf(Boolean.class).byExecuting(f0 ->
                         redFutureOf(Boolean.class, TestException.INSTANCE, redTestContext));
             }
 
@@ -3053,12 +3053,12 @@ public class TestRedSynchronizer {
                     timingValidator.validatePassed(FUTURE_DELAY);
                     return futureOf(booleanSuccess(), redTestContext);
                 });
-                ifResult(result1).succeed().produceListenableFutureOf(Boolean.class)
+                ifResult(result1).succeed().produceFutureOf(Boolean.class)
                         .byExecuting(f0 -> {
                             timingValidator.validatePassed(FUTURE_DELAY);
                             return listenableFutureOf(booleanSuccess(), redTestContext);
                         });
-                ifResult(result1).succeed().produceRedFutureOf(Boolean.class)
+                ifResult(result1).succeed().produceFutureOf(Boolean.class)
                         .byExecuting(f0 -> {
                             timingValidator.validatePassed(FUTURE_DELAY);
                             return redFutureOf(booleanSuccess(), redTestContext);
@@ -3073,12 +3073,12 @@ public class TestRedSynchronizer {
                             timingValidator.validatePassed(FUTURE_DELAY * 2);
                             return futureOf(booleanSuccess(), redTestContext);
                         });
-                ifResults(result1, result2).succeed().produceListenableFutureOf(Boolean.class)
+                ifResults(result1, result2).succeed().produceFutureOf(Boolean.class)
                         .byExecuting((f0, f1) -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 2);
                             return listenableFutureOf(booleanSuccess(), redTestContext);
                         });
-                ifResults(result1, result2).succeed().produceRedFutureOf(Boolean.class)
+                ifResults(result1, result2).succeed().produceFutureOf(Boolean.class)
                         .byExecuting((f0, f1) -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 2);
                             return redFutureOf(booleanSuccess(), redTestContext);
@@ -3094,11 +3094,11 @@ public class TestRedSynchronizer {
                             return futureOf(booleanSuccess(), redTestContext);
                         });
                 ifResults(result1, result2, result3).succeed()
-                        .produceListenableFutureOf(Boolean.class).byExecuting((f0, f1, f2) -> {
+                        .produceFutureOf(Boolean.class).byExecuting((f0, f1, f2) -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 3);
                             return listenableFutureOf(booleanSuccess(), redTestContext);
                         });
-                ifResults(result1, result2, result3).succeed().produceRedFutureOf(Boolean.class)
+                ifResults(result1, result2, result3).succeed().produceFutureOf(Boolean.class)
                         .byExecuting((f0, f1, f2) -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 3);
                             return redFutureOf(booleanSuccess(), redTestContext);
@@ -3114,12 +3114,12 @@ public class TestRedSynchronizer {
                             timingValidator.validatePassed(FUTURE_DELAY * 4);
                             return futureOf(booleanSuccess(), redTestContext);
                         });
-                ifResults(result1, result2, result3, result4).succeed().produceListenableFutureOf(Boolean.class)
+                ifResults(result1, result2, result3, result4).succeed().produceFutureOf(Boolean.class)
                         .byExecuting((f0, f1, f2, f3) -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 4);
                             return listenableFutureOf(booleanSuccess(), redTestContext);
                         });
-                ifResults(result1, result2, result3, result4).succeed().produceRedFutureOf(Boolean.class)
+                ifResults(result1, result2, result3, result4).succeed().produceFutureOf(Boolean.class)
                         .byExecuting((f0, f1, f2, f3) -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 4);
                             return redFutureOf(booleanSuccess(), redTestContext);
@@ -3136,11 +3136,11 @@ public class TestRedSynchronizer {
                             return futureOf(booleanSuccess(), redTestContext);
                         });
                 ifResults(result1, result2, result3, result4, result5).succeed()
-                        .produceListenableFutureOf(Boolean.class).byExecuting((f0, f1, f2, f3, f4) -> {
+                        .produceFutureOf(Boolean.class).byExecuting((f0, f1, f2, f3, f4) -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 5);
                             return listenableFutureOf(booleanSuccess(), redTestContext);
                         });
-                ifResults(result1, result2, result3, result4, result5).succeed().produceRedFutureOf(Boolean.class)
+                ifResults(result1, result2, result3, result4, result5).succeed().produceFutureOf(Boolean.class)
                         .byExecuting((f0, f1, f2, f3, f4) -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 5);
                             return redFutureOf(booleanSuccess(), redTestContext);
@@ -3157,12 +3157,12 @@ public class TestRedSynchronizer {
                             return futureOf(booleanSuccess(), redTestContext);
                         });
                 ifResults(result1, result2, result3, result4, result5, result6).succeed()
-                        .produceListenableFutureOf(Boolean.class).byExecuting((f0, f1, f2, f3, f4, f5) -> {
+                        .produceFutureOf(Boolean.class).byExecuting((f0, f1, f2, f3, f4, f5) -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 6);
                             return listenableFutureOf(booleanSuccess(), redTestContext);
                         });
                 ifResults(result1, result2, result3, result4, result5, result6).succeed()
-                        .produceRedFutureOf(Boolean.class).byExecuting((f0, f1, f2, f3, f4, f5) -> {
+                        .produceFutureOf(Boolean.class).byExecuting((f0, f1, f2, f3, f4, f5) -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 6);
                             return redFutureOf(booleanSuccess(), redTestContext);
                         });
@@ -3178,12 +3178,12 @@ public class TestRedSynchronizer {
                             return futureOf(booleanSuccess(), redTestContext);
                         });
                 ifResults(result1, result2, result3, result4, result5, result6, result7).succeed()
-                        .produceListenableFutureOf(Boolean.class).byExecuting((f0, f1, f2, f3, f4, f5, f6) -> {
+                        .produceFutureOf(Boolean.class).byExecuting((f0, f1, f2, f3, f4, f5, f6) -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 7);
                             return listenableFutureOf(booleanSuccess(), redTestContext);
                         });
                 ifResults(result1, result2, result3, result4, result5, result6, result7).succeed()
-                        .produceRedFutureOf(Boolean.class).byExecuting((f0, f1, f2, f3, f4, f5, f6) -> {
+                        .produceFutureOf(Boolean.class).byExecuting((f0, f1, f2, f3, f4, f5, f6) -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 7);
                             return redFutureOf(booleanSuccess(), redTestContext);
                         });
@@ -3200,12 +3200,12 @@ public class TestRedSynchronizer {
                             return futureOf(booleanSuccess(), redTestContext);
                         });
                 ifResults(result1, result2, result3, result4, result5, result6, result7, result8).succeed()
-                        .produceListenableFutureOf(Boolean.class).byExecuting((f0, f1, f2, f3, f4, f5, f6, f7) -> {
+                        .produceFutureOf(Boolean.class).byExecuting((f0, f1, f2, f3, f4, f5, f6, f7) -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 8);
                             return listenableFutureOf(booleanSuccess(), redTestContext);
                         });
                 ifResults(result1, result2, result3, result4, result5, result6, result7, result8).succeed()
-                        .produceRedFutureOf(Boolean.class).byExecuting((f0, f1, f2, f3, f4, f5, f6, f7) -> {
+                        .produceFutureOf(Boolean.class).byExecuting((f0, f1, f2, f3, f4, f5, f6, f7) -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 8);
                             return redFutureOf(booleanSuccess(), redTestContext);
                         });
@@ -3222,12 +3222,12 @@ public class TestRedSynchronizer {
                             return futureOf(booleanSuccess(), redTestContext);
                         });
                 ifResults(result1, result2, result3, result4, result5, result6, result7, result8, result9).succeed()
-                        .produceListenableFutureOf(Boolean.class).byExecuting((f0, f1, f2, f3, f4, f5, f6, f7, f8) -> {
+                        .produceFutureOf(Boolean.class).byExecuting((f0, f1, f2, f3, f4, f5, f6, f7, f8) -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 9);
                             return listenableFutureOf(booleanSuccess(), redTestContext);
                         });
                 ifResults(result1, result2, result3, result4, result5, result6, result7, result8, result9).succeed()
-                        .produceRedFutureOf(Boolean.class).byExecuting((f0, f1, f2, f3, f4, f5, f6, f7, f8) -> {
+                        .produceFutureOf(Boolean.class).byExecuting((f0, f1, f2, f3, f4, f5, f6, f7, f8) -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 9);
                             return redFutureOf(booleanSuccess(), redTestContext);
                         });
@@ -3244,13 +3244,13 @@ public class TestRedSynchronizer {
                             return futureOf(booleanSuccess(), redTestContext);
                         });
                 ifResults(result1, result2, result3, result4, result5, result6, result7, result8, result9, result10)
-                        .succeed().produceListenableFutureOf(Boolean.class)
+                        .succeed().produceFutureOf(Boolean.class)
                         .byExecuting((f0, f1, f2, f3, f4, f5, f6, f7, f8, f9) -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 10);
                             return listenableFutureOf(booleanSuccess(), redTestContext);
                         });
                 ifResults(result1, result2, result3, result4, result5, result6, result7, result8, result9, result10)
-                        .succeed().produceRedFutureOf(Boolean.class)
+                        .succeed().produceFutureOf(Boolean.class)
                         .byExecuting((f0, f1, f2, f3, f4, f5, f6, f7, f8, f9) -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 10);
                             return redFutureOf(booleanSuccess(), redTestContext);
@@ -3267,12 +3267,12 @@ public class TestRedSynchronizer {
                             return futureOf(booleanSuccess(), redTestContext);
                         });
                 ifResults(result1, result2, result3, result4, result5, result6, result7, result8, result9, result10,
-                        result11).succeed().produceListenableFutureOf(Boolean.class).byExecuting(results -> {
+                        result11).succeed().produceFutureOf(Boolean.class).byExecuting(results -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 11);
                             return listenableFutureOf(booleanSuccess(), redTestContext);
                         });
                 return ifResults(result1, result2, result3, result4, result5, result6, result7, result8, result9,
-                        result10, result11).succeed().produceRedFutureOf(Boolean.class).byExecuting(results -> {
+                        result10, result11).succeed().produceFutureOf(Boolean.class).byExecuting(results -> {
                             timingValidator.validatePassed(FUTURE_DELAY * 11);
                             return redFutureOf(booleanSuccess(), redTestContext);
                         });

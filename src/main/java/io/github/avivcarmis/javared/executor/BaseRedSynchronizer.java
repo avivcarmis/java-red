@@ -96,38 +96,6 @@ abstract public class BaseRedSynchronizer {
     }
 
     /**
-     * Produce {@link ListenableFuture} of the given class directly, without waiting for any result or markers,
-     * and return a result of the execution
-     *
-     * Since the are no preconditions and the return method is already defined at this point,
-     * this call skips some middleware of the Construction Chain and goes directly to the
-     * runner phase.
-     *
-     * @param tClass class of the result to produce
-     * @param <R>    type of the result to produce
-     * @return a runner to execute upon
-     */
-    protected <R> Runner.Runner0<ListenableFuture<R>, R> produceListenableFutureOf(Class<R> tClass) {
-        return RETURN_CLASSIFIER_0.produceListenableFutureOf(tClass);
-    }
-
-    /**
-     * Produce {@link RedFutureOf} of the given class directly, without waiting for any result or markers,
-     * and return a result of the execution
-     *
-     * Since the are no preconditions and the return method is already defined at this point,
-     * this call skips some middleware of the Construction Chain and goes directly to the
-     * runner phase.
-     *
-     * @param tClass class of the result to produce
-     * @param <R>    type of the result to produce
-     * @return a runner to execute upon
-     */
-    protected <R> Runner.Runner0<RedFutureOf<R>, R> produceRedFutureOf(Class<R> tClass) {
-        return RETURN_CLASSIFIER_0.produceRedFutureOf(tClass);
-    }
-
-    /**
      * Receive markers of various executions, returns a {@link FutureTransformer} to choose which
      * kind of results to expect, and then run a certain function if condition is met.
      *
@@ -1291,28 +1259,6 @@ abstract public class BaseRedSynchronizer {
                 return new Runner.Runner0<>(preconditions(), Converter.future());
             }
 
-            /**
-             * Sets the expected result of the execution to be a {@link ListenableFuture} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner0<ListenableFuture<R>, R>
-            produceListenableFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner0<>(preconditions(), Converter.listenableFuture());
-            }
-
-            /**
-             * Sets the expected result of the execution to be a {@link RedFutureOf} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner0<RedFutureOf<R>, R>
-            produceRedFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner0<>(preconditions(), Converter.redFuture());
-            }
-
             // Private
 
             @Override
@@ -1365,28 +1311,6 @@ abstract public class BaseRedSynchronizer {
             public <R> Runner.Runner1<Future<R>, R, T0>
             produceFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
                 return new Runner.Runner1<>(preconditions(), Converter.future());
-            }
-
-            /**
-             * Sets the expected result of the execution to be a {@link ListenableFuture} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner1<ListenableFuture<R>, R, T0>
-            produceListenableFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner1<>(preconditions(), Converter.listenableFuture());
-            }
-
-            /**
-             * Sets the expected result of the execution to be a {@link RedFutureOf} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner1<RedFutureOf<R>, R, T0>
-            produceRedFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner1<>(preconditions(), Converter.redFuture());
             }
 
             // Private
@@ -1444,28 +1368,6 @@ abstract public class BaseRedSynchronizer {
                 return new Runner.Runner2<>(preconditions(), Converter.future());
             }
 
-            /**
-             * Sets the expected result of the execution to be a {@link ListenableFuture} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner2<ListenableFuture<R>, R, T0, T1>
-            produceListenableFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner2<>(preconditions(), Converter.listenableFuture());
-            }
-
-            /**
-             * Sets the expected result of the execution to be a {@link RedFutureOf} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner2<RedFutureOf<R>, R, T0, T1>
-            produceRedFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner2<>(preconditions(), Converter.redFuture());
-            }
-
             // Private
 
             @Override
@@ -1520,28 +1422,6 @@ abstract public class BaseRedSynchronizer {
             public <R> Runner.Runner3<Future<R>, R, T0, T1, T2>
             produceFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
                 return new Runner.Runner3<>(preconditions(), Converter.future());
-            }
-
-            /**
-             * Sets the expected result of the execution to be a {@link ListenableFuture} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner3<ListenableFuture<R>, R, T0, T1, T2>
-            produceListenableFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner3<>(preconditions(), Converter.listenableFuture());
-            }
-
-            /**
-             * Sets the expected result of the execution to be a {@link RedFutureOf} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner3<RedFutureOf<R>, R, T0, T1, T2>
-            produceRedFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner3<>(preconditions(), Converter.redFuture());
             }
 
             // Private
@@ -1601,28 +1481,6 @@ abstract public class BaseRedSynchronizer {
                 return new Runner.Runner4<>(preconditions(), Converter.future());
             }
 
-            /**
-             * Sets the expected result of the execution to be a {@link ListenableFuture} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner4<ListenableFuture<R>, R, T0, T1, T2, T3>
-            produceListenableFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner4<>(preconditions(), Converter.listenableFuture());
-            }
-
-            /**
-             * Sets the expected result of the execution to be a {@link RedFutureOf} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner4<RedFutureOf<R>, R, T0, T1, T2, T3>
-            produceRedFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner4<>(preconditions(), Converter.redFuture());
-            }
-
             // Private
 
             @Override
@@ -1679,28 +1537,6 @@ abstract public class BaseRedSynchronizer {
             public <R> Runner.Runner5<Future<R>, R, T0, T1, T2, T3, T4>
             produceFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
                 return new Runner.Runner5<>(preconditions(), Converter.future());
-            }
-
-            /**
-             * Sets the expected result of the execution to be a {@link ListenableFuture} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner5<ListenableFuture<R>, R, T0, T1, T2, T3, T4>
-            produceListenableFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner5<>(preconditions(), Converter.listenableFuture());
-            }
-
-            /**
-             * Sets the expected result of the execution to be a {@link RedFutureOf} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner5<RedFutureOf<R>, R, T0, T1, T2, T3, T4>
-            produceRedFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner5<>(preconditions(), Converter.redFuture());
             }
 
             // Private
@@ -1763,28 +1599,6 @@ abstract public class BaseRedSynchronizer {
                 return new Runner.Runner6<>(preconditions(), Converter.future());
             }
 
-            /**
-             * Sets the expected result of the execution to be a {@link ListenableFuture} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner6<ListenableFuture<R>, R, T0, T1, T2, T3, T4, T5>
-            produceListenableFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner6<>(preconditions(), Converter.listenableFuture());
-            }
-
-            /**
-             * Sets the expected result of the execution to be a {@link RedFutureOf} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner6<RedFutureOf<R>, R, T0, T1, T2, T3, T4, T5>
-            produceRedFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner6<>(preconditions(), Converter.redFuture());
-            }
-
             // Private
 
             @Override
@@ -1845,28 +1659,6 @@ abstract public class BaseRedSynchronizer {
             public <R> Runner.Runner7<Future<R>, R, T0, T1, T2, T3, T4, T5, T6>
             produceFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
                 return new Runner.Runner7<>(preconditions(), Converter.future());
-            }
-
-            /**
-             * Sets the expected result of the execution to be a {@link ListenableFuture} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner7<ListenableFuture<R>, R, T0, T1, T2, T3, T4, T5, T6>
-            produceListenableFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner7<>(preconditions(), Converter.listenableFuture());
-            }
-
-            /**
-             * Sets the expected result of the execution to be a {@link RedFutureOf} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner7<RedFutureOf<R>, R, T0, T1, T2, T3, T4, T5, T6>
-            produceRedFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner7<>(preconditions(), Converter.redFuture());
             }
 
             // Private
@@ -1932,28 +1724,6 @@ abstract public class BaseRedSynchronizer {
                 return new Runner.Runner8<>(preconditions(), Converter.future());
             }
 
-            /**
-             * Sets the expected result of the execution to be a {@link ListenableFuture} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner8<ListenableFuture<R>, R, T0, T1, T2, T3, T4, T5, T6, T7>
-            produceListenableFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner8<>(preconditions(), Converter.listenableFuture());
-            }
-
-            /**
-             * Sets the expected result of the execution to be a {@link RedFutureOf} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner8<RedFutureOf<R>, R, T0, T1, T2, T3, T4, T5, T6, T7>
-            produceRedFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner8<>(preconditions(), Converter.redFuture());
-            }
-
             // Private
 
             @Override
@@ -2016,28 +1786,6 @@ abstract public class BaseRedSynchronizer {
             public <R> Runner.Runner9<Future<R>, R, T0, T1, T2, T3, T4, T5, T6, T7, T8>
             produceFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
                 return new Runner.Runner9<>(preconditions(), Converter.future());
-            }
-
-            /**
-             * Sets the expected result of the execution to be a {@link ListenableFuture} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner9<ListenableFuture<R>, R, T0, T1, T2, T3, T4, T5, T6, T7, T8>
-            produceListenableFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner9<>(preconditions(), Converter.listenableFuture());
-            }
-
-            /**
-             * Sets the expected result of the execution to be a {@link RedFutureOf} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner9<RedFutureOf<R>, R, T0, T1, T2, T3, T4, T5, T6, T7, T8>
-            produceRedFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner9<>(preconditions(), Converter.redFuture());
             }
 
             // Private
@@ -2105,28 +1853,6 @@ abstract public class BaseRedSynchronizer {
                 return new Runner.Runner10<>(preconditions(), Converter.future());
             }
 
-            /**
-             * Sets the expected result of the execution to be a {@link ListenableFuture} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner10<ListenableFuture<R>, R, T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>
-            produceListenableFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner10<>(preconditions(), Converter.listenableFuture());
-            }
-
-            /**
-             * Sets the expected result of the execution to be a {@link RedFutureOf} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.Runner10<RedFutureOf<R>, R, T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>
-            produceRedFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.Runner10<>(preconditions(), Converter.redFuture());
-            }
-
             // Private
 
             @Override
@@ -2178,28 +1904,6 @@ abstract public class BaseRedSynchronizer {
             public <R> Runner.RunnerN<Future<R>, R>
             produceFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
                 return new Runner.RunnerN<>(preconditions(), Converter.future());
-            }
-
-            /**
-             * Sets the expected result of the execution to be a {@link ListenableFuture} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.RunnerN<ListenableFuture<R>, R>
-            produceListenableFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.RunnerN<>(preconditions(), Converter.listenableFuture());
-            }
-
-            /**
-             * Sets the expected result of the execution to be a {@link RedFutureOf} value of the given class
-             * @param tClass class of the result
-             * @param <R>    type of the result
-             * @return a middleware {@link Runner} instance
-             */
-            public <R> Runner.RunnerN<RedFutureOf<R>, R>
-            produceRedFutureOf(@SuppressWarnings("unused") Class<R> tClass) {
-                return new Runner.RunnerN<>(preconditions(), Converter.redFuture());
             }
 
             // Private
@@ -3356,28 +3060,6 @@ abstract public class BaseRedSynchronizer {
          */
         static <R> Converter<Future<R>, R> future() {
             return RedFuture::convert;
-        }
-
-        /**
-         * Returns a converter which receives a {@link ListenableFuture} of value and returns a
-         * {@link RedFuture} of the value
-         *
-         * @param <R> type of the converter value
-         * @return a converter converting {@link ListenableFuture} values
-         */
-        static <R> Converter<ListenableFuture<R>, R> listenableFuture() {
-            return RedFuture::convert;
-        }
-
-        /**
-         * Returns a converter which receives a {@link RedFutureOf} of value and returns a
-         * {@link RedFuture} of the value
-         *
-         * @param <R> type of the converter value
-         * @return a converter converting {@link RedFutureOf} values
-         */
-        static <R> Converter<RedFutureOf<R>, R> redFuture() {
-            return r -> r;
         }
 
     }

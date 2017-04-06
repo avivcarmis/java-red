@@ -89,7 +89,7 @@ public interface RedFuture {
      * or failure. This method is not blocking, nor is it synchronizing different thread calls.
      * @return true if the future is completed, false otherwise
      */
-    boolean isResolved();
+    boolean isDone();
 
     /**
      * Tries to blocks the thread until the future is completed.
@@ -111,7 +111,8 @@ public interface RedFuture {
      * @throws TimeoutException if the wait timed out
      * @see Future#get(long, TimeUnit)
      */
-    void waitForCompletion(long timeout, TimeUnit unit) throws ExecutionException, InterruptedException, TimeoutException;
+    void waitForCompletion(long timeout, TimeUnit unit)
+            throws ExecutionException, InterruptedException, TimeoutException;
 
     /**
      * @return the underlying Guava {@link ListenableFuture}
@@ -184,6 +185,14 @@ public interface RedFuture {
      * @return a RedFuture instance tracking the given {@link Future}
      */
     static <T> RedFutureOf<T> convert(Future<T> future) {
+        if (future instanceof RedFutureOf) {
+            return (RedFutureOf<T>) future;
+        }
+        if (future instanceof ListenableFuture) {
+            OpenRedFutureOf<T> result = futureOf();
+            result.follow((ListenableFuture<T>) future);
+            return result;
+        }
         return convert(JdkFutureAdapters.listenInPoolThread(future));
     }
 
@@ -198,34 +207,15 @@ public interface RedFuture {
      * @return a RedFuture instance tracking the given {@link Future}
      */
     static <T> RedFutureOf<T> convert(Future<T> future, Executor executor) {
+        if (future instanceof RedFutureOf) {
+            return (RedFutureOf<T>) future;
+        }
+        if (future instanceof ListenableFuture) {
+            OpenRedFutureOf<T> result = futureOf();
+            result.follow((ListenableFuture<T>) future);
+            return result;
+        }
         return convert(JdkFutureAdapters.listenInPoolThread(future, executor), executor);
-    }
-
-    /**
-     * Converts the given {@link ListenableFuture} object to a {@link RedFuture}
-     * @param future future to convert
-     * @param <T>    type of the future value
-     * @return a RedFuture instance tracking the given {@link ListenableFuture}
-     */
-    static <T> RedFutureOf<T> convert(ListenableFuture<T> future) {
-        OpenRedFutureOf<T> result = futureOf();
-        result.follow(future);
-        return result;
-    }
-
-    /**
-     * Converts the given {@link ListenableFuture} object to a {@link RedFuture}
-     * @param future   future to convert
-     * @param executor executor to execute callbacks
-     *                 note that if the future is already completed, the callbacks will be
-     *                 executed by the current thread
-     * @param <T>      type of the future value
-     * @return a RedFuture instance tracking the given {@link ListenableFuture}
-     */
-    static <T> RedFutureOf<T> convert(ListenableFuture<T> future, Executor executor) {
-        OpenRedFutureOf<T> result = futureOf();
-        result.follow(executor, future);
-        return result;
     }
 
     /**

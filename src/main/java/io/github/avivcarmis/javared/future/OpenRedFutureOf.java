@@ -190,4 +190,24 @@ public class OpenRedFutureOf<T> extends BaseOpenRedFuture<T> implements RedFutur
         return this;
     }
 
+    @Override
+    public boolean cancel(boolean mayInterruptIfRunning) {
+        return getListenableFuture().cancel(mayInterruptIfRunning);
+    }
+
+    @Override
+    public boolean isCancelled() {
+        return getListenableFuture().isCancelled();
+    }
+
+    @Override
+    public T get() throws InterruptedException, ExecutionException {
+        return getListenableFuture().get();
+    }
+
+    @Override
+    public T get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
+        return getListenableFuture().get(timeout, unit);
+    }
+
 }

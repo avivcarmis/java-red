@@ -115,7 +115,7 @@ abstract public class BaseOpenRedFuture<T> implements RedFuture {
     }
 
     @Override
-    public boolean isResolved() {
+    public boolean isDone() {
         return _settableFuture.isDone();
     }
 

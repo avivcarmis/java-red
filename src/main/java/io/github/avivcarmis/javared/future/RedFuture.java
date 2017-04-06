@@ -212,7 +212,7 @@ public interface RedFuture {
         }
         if (future instanceof ListenableFuture) {
             OpenRedFutureOf<T> result = futureOf();
-            result.follow((ListenableFuture<T>) future);
+            result.follow(executor, (ListenableFuture<T>) future);
             return result;
         }
         return convert(JdkFutureAdapters.listenInPoolThread(future, executor), executor);

@@ -2,445 +2,468 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f52086b-2ed0-4550-bc39-0af385d2691c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/concurrent-execution.JPG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/graph-execution.JPG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/linear-execution.JPG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Command$Command0.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Command$Command1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Command$Command10.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Command$Command2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Command$Command3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Command$Command4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Command$Command5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Command$Command6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Command$Command7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Command$Command8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Command$Command9.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Command$CommandN.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Command.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Converter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Function$Function0.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Function$Function1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Function$Function10.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Function$Function2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Function$Function3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Function$Function4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Function$Function5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Function$Function6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Function$Function7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Function$Function8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Function$Function9.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Function$FunctionN.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Function.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Locked$Locked0.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Locked$Locked1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Locked$Locked10.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Locked$Locked2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Locked$Locked3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Locked$Locked4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Locked$Locked5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Locked$Locked6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Locked$Locked7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Locked$Locked8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Locked$Locked9.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Locked$LockedN.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Locked.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Unlocked$Unlocked0.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Unlocked$Unlocked1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Unlocked$Unlocked10.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Unlocked$Unlocked2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Unlocked$Unlocked3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Unlocked$Unlocked4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Unlocked$Unlocked5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Unlocked$Unlocked6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Unlocked$Unlocked7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Unlocked$Unlocked8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Unlocked$Unlocked9.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Unlocked$UnlockedN.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer$Unlocked.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$FutureTransformer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Marker.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Middleware.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$PendingMarker.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Result.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Results.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$ReturnClassifier$Classifier0.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$ReturnClassifier$Classifier1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$ReturnClassifier$Classifier2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$ReturnClassifier$ReturnClassifier10.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$ReturnClassifier$ReturnClassifier3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$ReturnClassifier$ReturnClassifier4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$ReturnClassifier$ReturnClassifier5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$ReturnClassifier$ReturnClassifier6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$ReturnClassifier$ReturnClassifier7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$ReturnClassifier$ReturnClassifier8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$ReturnClassifier$ReturnClassifier9.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$ReturnClassifier$ReturnClassifierN.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$ReturnClassifier.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Runner$Runner0.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Runner$Runner1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Runner$Runner10.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Runner$Runner2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Runner$Runner3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Runner$Runner4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Runner$Runner5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Runner$Runner6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Runner$Runner7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Runner$Runner8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Runner$Runner9.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Runner$RunnerN.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer$Runner.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/BaseRedSynchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/PreconditionFailedException$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/PreconditionFailedException$Failure.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/PreconditionFailedException$Success.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/PreconditionFailedException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/RedSynchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/executor/RedVoidSynchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/future/BaseOpenRedFuture$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/future/BaseOpenRedFuture.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/future/OpenRedFuture.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/future/OpenRedFutureOf.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/future/RedFuture.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/future/RedFutureHub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/future/RedFutureOf.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/future/callbacks/Callback.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/future/callbacks/EmptyCallback.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/test/RedTestContext$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/test/RedTestContext$Assertions.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/test/RedTestContext$Fork.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/test/RedTestContext$TimingValidator$NotPassedException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/test/RedTestContext$TimingValidator$PassedException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/test/RedTestContext$TimingValidator.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/test/RedTestContext.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/test/RedTestRunner$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/test/RedTestRunner$AsyncInvokeMethod.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/javared/test/RedTestRunner.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedFuture$TestCompletedFutures.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedFuture$TestConversions.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedFuture$TestException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedFuture$TestFutureCallbacks.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedFuture$TestFutureHub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedFuture$TestFutureOfCallbacks.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedFuture$TestResolving.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedFuture$TestWaitOperations.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedFuture.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$CommandTestContext.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestObject.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$BangTestSynchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExceptionInResultCommandVoidSynchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExceptionInResultFunctionSynchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExplicitDependenciesTest10Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExplicitDependenciesTest11Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExplicitDependenciesTest12Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExplicitDependenciesTest13Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExplicitDependenciesTest14Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExplicitDependenciesTest15Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExplicitDependenciesTest16Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExplicitDependenciesTest17Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExplicitDependenciesTest18Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExplicitDependenciesTest1Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExplicitDependenciesTest2Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExplicitDependenciesTest3Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExplicitDependenciesTest4Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExplicitDependenciesTest5Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExplicitDependenciesTest6Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExplicitDependenciesTest7Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExplicitDependenciesTest8Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$ExplicitDependenciesTest9Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$FailingFutureSynchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$FailingListenableFutureSynchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$FailingRedFutureSynchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$FailingResultCommandSynchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NDependenciesTest10Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NDependenciesTest11Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NDependenciesTest12Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NDependenciesTest13Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NDependenciesTest14Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NDependenciesTest15Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NDependenciesTest16Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NDependenciesTest17Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NDependenciesTest18Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NDependenciesTest1Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NDependenciesTest2Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NDependenciesTest3Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NDependenciesTest4Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NDependenciesTest5Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NDependenciesTest6Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NDependenciesTest7Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NDependenciesTest8Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NDependenciesTest9Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NoDependenciesTest10Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NoDependenciesTest11Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NoDependenciesTest12Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NoDependenciesTest13Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NoDependenciesTest14Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NoDependenciesTest1Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NoDependenciesTest2Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NoDependenciesTest3Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NoDependenciesTest4Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NoDependenciesTest5Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NoDependenciesTest6Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NoDependenciesTest7Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NoDependenciesTest8Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$NoDependenciesTest9Synchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$PreconditionFailingSynchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$PreconditionFailingVoidSynchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$TestNDependenciesIllegalResults.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$TestPartialTransformer1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$TestPartialTransformer2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$TestPartialTransformer3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$TestPartialTransformer4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$TopLevelExceptionSynchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers$TopLevelExceptionVoidSynchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer$TestSynchronizers.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedSynchronizer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedTest$TestException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/javared/TestRedTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/avivc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core.iml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/allclasses-frame.html" afterPath="$PROJECT_DIR$/apidocs/1.0/allclasses-frame.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/allclasses-noframe.html" afterPath="$PROJECT_DIR$/apidocs/1.0/allclasses-noframe.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Command.Command0.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command0.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Command.Command1.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command1.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Command.Command10.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command10.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Command.Command2.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command2.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Command.Command3.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command3.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Command.Command4.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command4.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Command.Command5.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command5.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Command.Command6.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command6.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Command.Command7.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command7.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Command.Command8.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command8.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Command.Command9.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command9.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Command.CommandN.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.CommandN.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Command.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Function.Function0.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function0.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Function.Function1.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function1.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Function.Function10.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function10.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Function.Function2.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function2.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Function.Function3.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function3.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Function.Function4.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function4.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Function.Function5.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function5.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Function.Function6.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function6.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Function.Function7.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function7.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Function.Function8.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function8.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Function.Function9.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function9.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Function.FunctionN.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.FunctionN.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Function.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked0.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked0.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked1.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked1.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked10.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked10.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked2.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked2.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked3.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked3.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked4.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked4.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked5.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked5.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked6.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked6.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked7.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked7.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked8.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked8.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked9.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked9.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.LockedN.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.LockedN.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked0.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked0.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked1.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked1.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked10.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked10.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked2.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked2.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked3.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked3.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked4.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked4.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked5.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked5.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked6.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked6.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked7.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked7.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked8.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked8.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked9.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked9.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.UnlockedN.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.UnlockedN.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.FutureTransformer.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Marker.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Marker.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.PendingMarker.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.PendingMarker.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Result.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Result.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Results.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Results.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.Classifier0.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.Classifier0.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.Classifier1.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.Classifier1.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.Classifier2.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.Classifier2.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier10.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier10.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier3.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier3.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier4.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier4.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier5.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier5.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier6.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier6.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier7.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier7.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier8.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier8.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier9.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier9.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifierN.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifierN.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Runner.Runner0.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner0.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Runner.Runner1.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner1.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Runner.Runner10.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner10.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Runner.Runner2.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner2.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Runner.Runner3.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner3.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Runner.Runner4.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner4.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Runner.Runner5.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner5.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Runner.Runner6.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner6.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Runner.Runner7.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner7.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Runner.Runner8.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner8.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Runner.Runner9.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner9.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Runner.RunnerN.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.RunnerN.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.Runner.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/BaseRedSynchronizer.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/PreconditionFailedException.Failure.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/PreconditionFailedException.Failure.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/PreconditionFailedException.Success.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/PreconditionFailedException.Success.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/PreconditionFailedException.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/PreconditionFailedException.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/RedSynchronizer.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/RedSynchronizer.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/RedVoidSynchronizer.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/RedVoidSynchronizer.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command0.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command0.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command1.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command1.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command10.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command10.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command2.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command2.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command3.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command3.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command4.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command4.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command5.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command5.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command6.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command6.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command7.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command7.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command8.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command8.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command9.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command9.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Command.CommandN.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.CommandN.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Command.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function0.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function0.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function1.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function1.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function10.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function10.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function2.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function2.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function3.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function3.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function4.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function4.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function5.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function5.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function6.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function6.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function7.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function7.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function8.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function8.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function9.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function9.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Function.FunctionN.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.FunctionN.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Function.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked0.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked0.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked1.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked1.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked10.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked10.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked2.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked2.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked3.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked3.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked4.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked4.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked5.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked5.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked6.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked6.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked7.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked7.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked8.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked8.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked9.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked9.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.LockedN.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.LockedN.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked0.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked0.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked1.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked1.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked10.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked10.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked2.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked2.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked3.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked3.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked4.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked4.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked5.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked5.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked6.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked6.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked7.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked7.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked8.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked8.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked9.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked9.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.UnlockedN.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.UnlockedN.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Marker.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Marker.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.PendingMarker.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.PendingMarker.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Result.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Result.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Results.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Results.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.Classifier0.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.Classifier0.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.Classifier1.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.Classifier1.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.Classifier2.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.Classifier2.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier10.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier10.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier3.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier3.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier4.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier4.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier5.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier5.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier6.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier6.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier7.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier7.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier8.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier8.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier9.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier9.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifierN.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifierN.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner0.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner0.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner1.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner1.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner10.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner10.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner2.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner2.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner3.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner3.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner4.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner4.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner5.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner5.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner6.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner6.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner7.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner7.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner8.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner8.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner9.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner9.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Runner.RunnerN.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.RunnerN.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.Runner.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/BaseRedSynchronizer.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/PreconditionFailedException.Failure.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/PreconditionFailedException.Failure.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/PreconditionFailedException.Success.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/PreconditionFailedException.Success.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/PreconditionFailedException.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/PreconditionFailedException.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/RedSynchronizer.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/RedSynchronizer.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/class-use/RedVoidSynchronizer.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/RedVoidSynchronizer.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/package-frame.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/package-frame.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/package-summary.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/package-summary.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/package-tree.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/package-tree.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/executor/package-use.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/package-use.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/BaseOpenRedFuture.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/BaseOpenRedFuture.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/OpenRedFuture.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/OpenRedFuture.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/OpenRedFutureOf.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/OpenRedFutureOf.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/RedFuture.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/RedFuture.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/RedFutureHub.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/RedFutureHub.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/RedFutureOf.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/RedFutureOf.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/callbacks/Callback.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/callbacks/Callback.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/callbacks/EmptyCallback.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/callbacks/EmptyCallback.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/callbacks/class-use/Callback.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/callbacks/class-use/Callback.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/callbacks/class-use/EmptyCallback.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/callbacks/class-use/EmptyCallback.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/callbacks/package-frame.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/callbacks/package-frame.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/callbacks/package-summary.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/callbacks/package-summary.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/callbacks/package-tree.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/callbacks/package-tree.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/callbacks/package-use.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/callbacks/package-use.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/class-use/BaseOpenRedFuture.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/class-use/BaseOpenRedFuture.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/class-use/OpenRedFuture.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/class-use/OpenRedFuture.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/class-use/OpenRedFutureOf.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/class-use/OpenRedFutureOf.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/class-use/RedFuture.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/class-use/RedFuture.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/class-use/RedFutureHub.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/class-use/RedFutureHub.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/class-use/RedFutureOf.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/class-use/RedFutureOf.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/package-frame.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/package-frame.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/package-summary.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/package-summary.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/package-tree.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/package-tree.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/future/package-use.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/package-use.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/test/RedTestContext.Assertions.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/RedTestContext.Assertions.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/test/RedTestContext.Fork.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/RedTestContext.Fork.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/test/RedTestContext.TimingValidator.NotPassedException.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/RedTestContext.TimingValidator.NotPassedException.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/test/RedTestContext.TimingValidator.PassedException.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/RedTestContext.TimingValidator.PassedException.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/test/RedTestContext.TimingValidator.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/RedTestContext.TimingValidator.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/test/RedTestContext.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/RedTestContext.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/test/RedTestRunner.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/RedTestRunner.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/test/class-use/RedTestContext.Assertions.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/class-use/RedTestContext.Assertions.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/test/class-use/RedTestContext.Fork.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/class-use/RedTestContext.Fork.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/test/class-use/RedTestContext.TimingValidator.NotPassedException.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/class-use/RedTestContext.TimingValidator.NotPassedException.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/test/class-use/RedTestContext.TimingValidator.PassedException.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/class-use/RedTestContext.TimingValidator.PassedException.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/test/class-use/RedTestContext.TimingValidator.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/class-use/RedTestContext.TimingValidator.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/test/class-use/RedTestContext.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/class-use/RedTestContext.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/test/class-use/RedTestRunner.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/class-use/RedTestRunner.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/test/package-frame.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/package-frame.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/test/package-summary.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/package-summary.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/test/package-tree.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/package-tree.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/com/javared/test/package-use.html" afterPath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/package-use.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/constant-values.html" afterPath="$PROJECT_DIR$/apidocs/1.0/constant-values.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/deprecated-list.html" afterPath="$PROJECT_DIR$/apidocs/1.0/deprecated-list.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/help-doc.html" afterPath="$PROJECT_DIR$/apidocs/1.0/help-doc.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/index-all.html" afterPath="$PROJECT_DIR$/apidocs/1.0/index-all.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/index.html" afterPath="$PROJECT_DIR$/apidocs/1.0/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/overview-frame.html" afterPath="$PROJECT_DIR$/apidocs/1.0/overview-frame.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/overview-summary.html" afterPath="$PROJECT_DIR$/apidocs/1.0/overview-summary.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/overview-tree.html" afterPath="$PROJECT_DIR$/apidocs/1.0/overview-tree.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/package-list" afterPath="$PROJECT_DIR$/apidocs/1.0/package-list" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/script.js" afterPath="$PROJECT_DIR$/apidocs/1.0/script.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/serialized-form.html" afterPath="$PROJECT_DIR$/apidocs/1.0/serialized-form.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/apidocs/stylesheet.css" afterPath="$PROJECT_DIR$/apidocs/1.0/stylesheet.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Command.Command0.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Command.Command1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Command.Command10.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Command.Command2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Command.Command3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Command.Command4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Command.Command5.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Command.Command6.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Command.Command7.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Command.Command8.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Command.Command9.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Command.CommandN.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Command.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Function.Function0.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Function.Function1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Function.Function10.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Function.Function2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Function.Function3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Function.Function4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Function.Function5.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Function.Function6.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Function.Function7.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Function.Function8.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Function.Function9.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Function.FunctionN.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Function.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked0.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked10.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked5.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked6.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked7.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked8.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked9.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.LockedN.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked0.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked10.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked5.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked6.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked7.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked8.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked9.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.UnlockedN.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.FutureTransformer.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Marker.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.PendingMarker.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Result.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Results.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.ReturnClassifier.Classifier0.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.ReturnClassifier.Classifier1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.ReturnClassifier.Classifier2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier10.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier5.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier6.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier7.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier8.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier9.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifierN.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.ReturnClassifier.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Runner.Runner0.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Runner.Runner1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Runner.Runner10.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Runner.Runner2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Runner.Runner3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Runner.Runner4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Runner.Runner5.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Runner.Runner6.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Runner.Runner7.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Runner.Runner8.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Runner.Runner9.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Runner.RunnerN.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.Runner.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/BaseRedSynchronizer.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/PreconditionFailedException.Failure.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/PreconditionFailedException.Success.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/PreconditionFailedException.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/RedSynchronizer.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/RedVoidSynchronizer.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Command.Command0.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Command.Command1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Command.Command10.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Command.Command2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Command.Command3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Command.Command4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Command.Command5.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Command.Command6.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Command.Command7.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Command.Command8.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Command.Command9.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Command.CommandN.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Command.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Function.Function0.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Function.Function1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Function.Function10.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Function.Function2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Function.Function3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Function.Function4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Function.Function5.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Function.Function6.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Function.Function7.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Function.Function8.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Function.Function9.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Function.FunctionN.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Function.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked0.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked10.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked5.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked6.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked7.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked8.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked9.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.LockedN.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked0.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked10.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked5.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked6.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked7.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked8.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked9.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.UnlockedN.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Marker.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.PendingMarker.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Result.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Results.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.Classifier0.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.Classifier1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.Classifier2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier10.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier5.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier6.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier7.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier8.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier9.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifierN.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner0.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner10.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner5.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner6.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner7.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner8.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner9.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Runner.RunnerN.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.Runner.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/BaseRedSynchronizer.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/PreconditionFailedException.Failure.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/PreconditionFailedException.Success.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/PreconditionFailedException.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/RedSynchronizer.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/class-use/RedVoidSynchronizer.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/package-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/package-summary.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/package-tree.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/executor/package-use.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/BaseOpenRedFuture.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/OpenRedFuture.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/OpenRedFutureOf.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/RedFuture.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/RedFutureHub.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/RedFutureOf.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/callbacks/Callback.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/callbacks/EmptyCallback.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/callbacks/class-use/Callback.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/callbacks/class-use/EmptyCallback.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/callbacks/package-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/callbacks/package-summary.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/callbacks/package-tree.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/callbacks/package-use.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/class-use/BaseOpenRedFuture.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/class-use/OpenRedFuture.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/class-use/OpenRedFutureOf.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/class-use/RedFuture.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/class-use/RedFutureHub.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/class-use/RedFutureOf.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/package-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/package-summary.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/package-tree.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/future/package-use.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/test/RedTestContext.Assertions.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/test/RedTestContext.Fork.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/test/RedTestContext.TimingValidator.NotPassedException.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/test/RedTestContext.TimingValidator.PassedException.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/test/RedTestContext.TimingValidator.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/test/RedTestContext.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/test/RedTestRunner.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/test/class-use/RedTestContext.Assertions.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/test/class-use/RedTestContext.Fork.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/test/class-use/RedTestContext.TimingValidator.NotPassedException.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/test/class-use/RedTestContext.TimingValidator.PassedException.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/test/class-use/RedTestContext.TimingValidator.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/test/class-use/RedTestContext.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/test/class-use/RedTestRunner.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/test/package-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/test/package-summary.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/test/package-tree.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidocs/1.0/io/github/avivcarmis/javared/test/package-use.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/java-red.iml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command0.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command10.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command3.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command4.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command5.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command6.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command7.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command8.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.Command9.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.CommandN.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Command.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function0.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function10.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function3.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function4.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function5.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function6.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function7.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function8.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.Function9.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.FunctionN.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Function.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked0.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked10.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked3.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked4.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked5.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked6.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked7.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked8.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.Locked9.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.LockedN.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Locked.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked0.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked10.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked3.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked4.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked5.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked6.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked7.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked8.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked9.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.UnlockedN.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.Unlocked.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.FutureTransformer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Marker.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.PendingMarker.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Result.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Results.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.Classifier0.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.Classifier1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.Classifier2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier10.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier3.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier4.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier5.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier6.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier7.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier8.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier9.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.ReturnClassifierN.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.ReturnClassifier.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner0.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner10.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner3.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner4.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner5.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner6.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner7.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner8.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.Runner9.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.RunnerN.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.Runner.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/BaseRedSynchronizer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/PreconditionFailedException.Failure.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/PreconditionFailedException.Success.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/PreconditionFailedException.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/RedSynchronizer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/RedVoidSynchronizer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command0.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command10.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command3.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command4.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command5.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command6.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command7.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command8.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.Command9.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.CommandN.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Command.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function0.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function10.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function3.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function4.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function5.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function6.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function7.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function8.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.Function9.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.FunctionN.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Function.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked0.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked10.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked3.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked4.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked5.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked6.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked7.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked8.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.Locked9.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.LockedN.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Locked.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked0.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked10.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked3.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked4.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked5.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked6.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked7.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked8.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.Unlocked9.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.UnlockedN.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.Unlocked.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.FutureTransformer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Marker.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.PendingMarker.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Result.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Results.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.Classifier0.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.Classifier1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.Classifier2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier10.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier3.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier4.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier5.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier6.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier7.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier8.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifier9.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.ReturnClassifierN.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.ReturnClassifier.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner0.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner10.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner3.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner4.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner5.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner6.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner7.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner8.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.Runner9.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.RunnerN.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.Runner.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/BaseRedSynchronizer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/PreconditionFailedException.Failure.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/PreconditionFailedException.Success.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/PreconditionFailedException.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/RedSynchronizer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/class-use/RedVoidSynchronizer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/executor/package-use.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/BaseOpenRedFuture.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/OpenRedFuture.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/OpenRedFutureOf.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/RedFuture.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/RedFutureHub.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/RedFutureOf.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/callbacks/Callback.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/callbacks/EmptyCallback.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/callbacks/class-use/Callback.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/callbacks/class-use/EmptyCallback.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/callbacks/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/callbacks/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/callbacks/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/callbacks/package-use.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/class-use/BaseOpenRedFuture.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/class-use/OpenRedFuture.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/class-use/OpenRedFutureOf.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/class-use/RedFuture.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/class-use/RedFutureHub.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/class-use/RedFutureOf.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/future/package-use.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/RedTestContext.Assertions.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/RedTestContext.Fork.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/RedTestContext.TimingValidator.NotPassedException.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/RedTestContext.TimingValidator.PassedException.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/RedTestContext.TimingValidator.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/RedTestContext.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/RedTestRunner.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/class-use/RedTestContext.Assertions.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/class-use/RedTestContext.Fork.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/class-use/RedTestContext.TimingValidator.NotPassedException.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/class-use/RedTestContext.TimingValidator.PassedException.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/class-use/RedTestContext.TimingValidator.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/class-use/RedTestContext.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/class-use/RedTestRunner.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apidocs/1.0/com/javared/test/package-use.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apidocs/1.0/allclasses-frame.html" afterPath="$PROJECT_DIR$/apidocs/1.0/allclasses-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apidocs/1.0/allclasses-noframe.html" afterPath="$PROJECT_DIR$/apidocs/1.0/allclasses-noframe.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apidocs/1.0/constant-values.html" afterPath="$PROJECT_DIR$/apidocs/1.0/constant-values.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apidocs/1.0/deprecated-list.html" afterPath="$PROJECT_DIR$/apidocs/1.0/deprecated-list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apidocs/1.0/help-doc.html" afterPath="$PROJECT_DIR$/apidocs/1.0/help-doc.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apidocs/1.0/index-all.html" afterPath="$PROJECT_DIR$/apidocs/1.0/index-all.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apidocs/1.0/index.html" afterPath="$PROJECT_DIR$/apidocs/1.0/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apidocs/1.0/overview-frame.html" afterPath="$PROJECT_DIR$/apidocs/1.0/overview-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apidocs/1.0/overview-summary.html" afterPath="$PROJECT_DIR$/apidocs/1.0/overview-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apidocs/1.0/overview-tree.html" afterPath="$PROJECT_DIR$/apidocs/1.0/overview-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apidocs/1.0/package-list" afterPath="$PROJECT_DIR$/apidocs/1.0/package-list" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apidocs/1.0/serialized-form.html" afterPath="$PROJECT_DIR$/apidocs/1.0/serialized-form.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -667,6 +690,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -743,7 +767,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1377,37 +1400,44 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997833" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3261105" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4978678" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2707889" sideWeight="0.4927798" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27665246" sideWeight="0.4927798" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26012793" sideWeight="0.5072202" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997833" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="92" y="92" width="1736" height="856" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -1488,20 +1518,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/future/callbacks/Callback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="7" lean-forward="true" selection-start-line="8" selection-start-column="7" selection-end-line="9" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/future/callbacks/EmptyCallback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="37" lean-forward="false" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/future/callbacks/Callback.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/future/callbacks/EmptyCallback.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/test/AsyncTest.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/Test.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -1559,22 +1577,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/future/RedFutureOf.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="77" column="111" lean-forward="false" selection-start-line="77" selection-start-column="111" selection-end-line="77" selection-end-column="111" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/future/RedFutureOf.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/test/RedAsyncTestRunner.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/com/javared/RedAsyncTestTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/future/RedFutureHub.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="65" column="24" lean-forward="false" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/future/RedFutureHub.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/21.0/guava-21.0-sources.jar!/com/google/common/util/concurrent/Uninterruptibles.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -1628,13 +1634,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/future/OpenRedFutureOf.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="143" column="0" lean-forward="false" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/future/OpenRedFutureOf.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/src.zip!/java/util/function/Function.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -1656,13 +1656,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/executor/RedVoidSynchronizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="36" column="53" lean-forward="true" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/executor/RedVoidSynchronizer.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/src.zip!/java/util/concurrent/TimeUnit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
@@ -1670,130 +1664,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/javared/TestRedTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2751">
-          <caret line="141" column="35" lean-forward="false" selection-start-line="141" selection-start-column="35" selection-end-line="141" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/executor/PreconditionFailedException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/test/RedTestRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-497">
-          <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/executor/RedSynchronizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="6" lean-forward="false" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/future/RedFuture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="68" column="49" lean-forward="true" selection-start-line="68" selection-start-column="49" selection-end-line="68" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/future/BaseOpenRedFuture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="132" column="22" lean-forward="false" selection-start-line="132" selection-start-column="22" selection-end-line="132" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/javared/TestRedSynchronizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="975" column="4" lean-forward="false" selection-start-line="975" selection-start-column="4" selection-end-line="975" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/executor/BaseRedSynchronizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="2633" column="46" lean-forward="false" selection-start-line="2633" selection-start-column="46" selection-end-line="2633" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/test/RedTestContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="174" column="19" lean-forward="false" selection-start-line="174" selection-start-column="19" selection-end-line="174" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="16" column="45" lean-forward="false" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/javared/TestRedTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/executor/PreconditionFailedException.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/test/RedTestRunner.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/executor/RedSynchronizer.java" />
+    <entry file="file://$PROJECT_DIR$/README.md" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/future/RedFuture.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/future/BaseOpenRedFuture.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/javared/TestRedSynchronizer.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/executor/BaseRedSynchronizer.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/test/RedTestContext.java" />
+    <entry file="file://$PROJECT_DIR$/LICENSE" />
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/21.0/guava-21.0-sources.jar!/com/google/common/util/concurrent/Futures.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="61" column="19" lean-forward="false" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/future/OpenRedFuture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="658">
-          <caret line="103" column="8" lean-forward="false" selection-start-line="103" selection-start-column="8" selection-end-line="103" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="21" column="36" lean-forward="true" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/javared/TestRedFuture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="59" column="15" lean-forward="true" selection-start-line="59" selection-start-column="15" selection-end-line="59" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javared/future/OpenRedFuture.java" />
+    <entry file="file://$PROJECT_DIR$/.travis.yml" />
+    <entry file="file://$PROJECT_DIR$/pom.xml" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/javared/TestRedFuture.java" />
   </component>
   <component name="masterDetails">
     <states>

@@ -1,8 +1,9 @@
 # JavaRed : Effective Concurrency Modules for Java
 [![The Java Red Library](https://avivcarmis.github.io/java-red/images/logo.png "The Java Red Library")](https://github.com/avivcarmis/java-red "The Java Red Library")
-[![Java Red Build Status at Travis CI](https://travis-ci.org/avivcarmis/java-red.svg?branch=master "Java Red Build Status at Travis CI")](https://travis-ci.org/avivcarmis/java-red "Java Red Build Status at Travis CI")
 
 ------------
+
+[![Java Red Build Status at Travis CI](https://travis-ci.org/avivcarmis/java-red.svg?branch=master "Java Red Build Status at Travis CI")](https://travis-ci.org/avivcarmis/java-red "Java Red Build Status at Travis CI")
 
 The **JavaRed** library essentially introduces an effective, intuitive interface to define and manage asynchronous, concurrent [graph execution flows](https://github.com/avivcarmis/java-red/wiki/About-Graph-Execution "graph execution flows").
 JavaRed requires JDK 1.8 or higher.
